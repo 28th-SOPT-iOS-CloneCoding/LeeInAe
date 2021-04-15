@@ -35,8 +35,11 @@ class MainVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initView()
 
         mainMenuCV.dataSource = self
+        mainListTV.delegate = self
+        mainListTV.dataSource = self
 
         let layoutConfig = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         let listLayout = UICollectionViewCompositionalLayout.list(using: layoutConfig)
@@ -45,7 +48,13 @@ class MainVC: UIViewController {
         mainMenuCV.translatesAutoresizingMaskIntoConstraints = false
         navigationItem.rightBarButtonItem = editButton
         navigationItem.searchController = searchController
+    }
+}
 
+// MARK: - Custom Methods
+
+extension MainVC {
+    func initView() {
         let toolbar = UIToolbar()
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 
@@ -62,25 +71,6 @@ class MainVC: UIViewController {
         toolbar.setItems([addReminder, flexibleSpace, addList], animated: true)
     }
 }
-
-extension MainVC: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
-    }
-
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        3
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainMenuCell", for: indexPath) as? MainMenuCell else { return UICollectionViewCell() }
-        cell.setLabel(idx: indexPath.item)
-
-        return cell
-    }
-}
-
-// MARK: - Custom Methods
 
 // extension MainVC {
 //    private func createLayout() -> UICollectionViewLayout {
@@ -154,5 +144,43 @@ extension MainVC {
         guard let addListVC = storyboard?.instantiateViewController(identifier: "AddListVC") as? AddListVC else { return }
 
         present(addListVC, animated: true, completion: nil)
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension MainVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        1
+    }
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        3
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainMenuCell", for: indexPath) as? MainMenuCell else { return UICollectionViewCell() }
+        cell.setLabel(idx: indexPath.item)
+
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension MainVC: UITableViewDelegate {}
+
+// MARK: - UITableViewDataSource
+
+extension MainVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        3
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.accessoryType = .disclosureIndicator
+
+        return cell
     }
 }
