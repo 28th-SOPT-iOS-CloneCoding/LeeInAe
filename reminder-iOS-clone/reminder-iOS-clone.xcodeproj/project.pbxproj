@@ -15,7 +15,7 @@
 		AB1D454826249C470080310E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB1D454626249C470080310E /* LaunchScreen.storyboard */; };
 		AB1D455826249E080080310E /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D455726249E080080310E /* UIView+Extensions.swift */; };
 		AB668E0F2625C94400938A3E /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB668E0E2625C94400938A3E /* MainMenu.swift */; };
-		AB668E152625F87D00938A3E /* MainMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB668E142625F87D00938A3E /* MainMenuCell.swift */; };
+		ABF30F09262832C6008CD8FA /* MainMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF30F08262832C6008CD8FA /* MainMenuCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		AB1D454926249C470080310E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB1D455726249E080080310E /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		AB668E0E2625C94400938A3E /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
-		AB668E142625F87D00938A3E /* MainMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuCell.swift; sourceTree = "<group>"; };
+		ABF30F08262832C6008CD8FA /* MainMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +127,7 @@
 		AB668E132625F86600938A3E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				AB668E142625F87D00938A3E /* MainMenuCell.swift */,
+				ABF30F08262832C6008CD8FA /* MainMenuCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -207,7 +207,7 @@
 				AB1D453C26249C460080310E /* AppDelegate.swift in Sources */,
 				AB1D455826249E080080310E /* UIView+Extensions.swift in Sources */,
 				AB1D453E26249C460080310E /* SceneDelegate.swift in Sources */,
-				AB668E152625F87D00938A3E /* MainMenuCell.swift in Sources */,
+				ABF30F09262832C6008CD8FA /* MainMenuCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

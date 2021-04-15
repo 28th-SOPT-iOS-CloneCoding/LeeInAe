@@ -2,33 +2,28 @@
 //  MainMenuCell.swift
 //  reminder-iOS-clone
 //
-//  Created by inae Lee on 2021/04/14.
+//  Created by inae Lee on 2021/04/15.
 //
 
 import UIKit
 
-class MainMenuCell: UITableViewCell {
-    override var frame: CGRect {
-        get {
-            return super.frame
-        }
-        
-        set (newFrame) {
-            var frame = newFrame
-            frame.origin.x += 20
-            frame.size.width = 100
-            super.frame = frame
-        }
+class MainMenuCell: UICollectionViewCell {
+    @IBOutlet var label: UILabel!
+
+    func setLabel(idx: Int) {
+        backgroundColor = UIColor.gray
+        label.text = "index \(idx)"
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        setNeedsLayout()
+        layoutIfNeeded()
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
+        let frame = layoutAttributes.frame
 
-        // Configure the view for the selected state
+        self.frame.size.width = size.width
+        layoutAttributes.frame = frame
+        return layoutAttributes
     }
 }

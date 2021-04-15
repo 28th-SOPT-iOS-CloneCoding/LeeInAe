@@ -27,18 +27,30 @@ class MainVC: UIViewController {
 
     // MARK: - IBOutlets
 
-    @IBOutlet var mainTableView: UITableView!
+    @IBOutlet var mainMenuCV: UICollectionView!
 
     // MARK: - lifeCycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainTableView.delegate = self
-        mainTableView.dataSource = self
+
+        mainMenuCV.delegate = self
+        mainMenuCV.dataSource = self
+
+        let layoutConfig = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        let listLayout = UICollectionViewCompositionalLayout.list(using: layoutConfig)
+//
+        mainMenuCV.collectionViewLayout = listLayout
+        mainMenuCV.translatesAutoresizingMaskIntoConstraints = false
 //        self.navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.rightBarButtonItem = editButton
         navigationItem.searchController = searchController
+        navigationItem.title = ""
     }
+
+    // MARK: - Custom Methods
+
+    // MARK: - @objc Methods
 
     @objc func pressEditButton(_ sender: UIBarButtonItem) {
         if isEditingMode {
@@ -51,22 +63,37 @@ class MainVC: UIViewController {
     }
 }
 
-extension MainVC: UITableViewDelegate {}
+extension MainVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 4 {
+            return CGSize(width: collectionView.bounds.width, height: 50)
+        } else {
+            return CGSize(width: collectionView.bounds.width / 2, height: 50)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+}
 
-extension MainVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension MainVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         1
     }
 
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         5
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "mainMenuCell") as? MainMenuCell else {
-            return UITableViewCell()
-        }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainMenuCell", for: indexPath) as? MainMenuCell else { return UICollectionViewCell() }
 
+        cell.setLabel(idx: indexPath.section)
         return cell
     }
 }
