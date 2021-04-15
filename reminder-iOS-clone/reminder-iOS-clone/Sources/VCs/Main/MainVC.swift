@@ -29,6 +29,7 @@ class MainVC: UIViewController {
     // MARK: - IBOutlets
 
     @IBOutlet var mainMenuCV: UICollectionView!
+    @IBOutlet var mainListTV: UITableView!
 
     // MARK: - lifeCycle Methods
 
@@ -55,8 +56,8 @@ class MainVC: UIViewController {
         toolbar.bottomAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.bottomAnchor, multiplier: 0).isActive = true
         toolbar.trailingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.trailingAnchor, multiplier: 0).isActive = true
 
-        let addReminder = UIBarButtonItem(title: "새로운 미리 알림", style: .plain, target: self, action: nil)
-        let addList = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: nil)
+        let addReminder = UIBarButtonItem(title: "새로운 미리 알림", style: .plain, target: self, action: #selector(presentAddReminderVC))
+        let addList = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: #selector(presentAddListVC))
 
         toolbar.setItems([addReminder, flexibleSpace, addList], animated: true)
     }
@@ -141,5 +142,17 @@ extension MainVC {
             editButton.title = "완료"
             isEditingMode = true
         }
+    }
+
+    @objc func presentAddReminderVC() {
+        guard let addReminderVC = storyboard?.instantiateViewController(identifier: "AddReminderVC") as? AddReminderVC else { return }
+
+        present(addReminderVC, animated: true, completion: nil)
+    }
+
+    @objc func presentAddListVC() {
+        guard let addListVC = storyboard?.instantiateViewController(identifier: "AddListVC") as? AddListVC else { return }
+
+        present(addListVC, animated: true, completion: nil)
     }
 }
