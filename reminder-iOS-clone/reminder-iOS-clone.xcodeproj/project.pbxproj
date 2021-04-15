@@ -16,6 +16,7 @@
 		AB1D455826249E080080310E /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D455726249E080080310E /* UIView+Extensions.swift */; };
 		AB668E0F2625C94400938A3E /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB668E0E2625C94400938A3E /* MainMenu.swift */; };
 		ABF30F09262832C6008CD8FA /* MainMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF30F08262832C6008CD8FA /* MainMenuCell.swift */; };
+		ABF30F2926288322008CD8FA /* MainMyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF30F2826288322008CD8FA /* MainMyListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		AB1D455726249E080080310E /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		AB668E0E2625C94400938A3E /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		ABF30F08262832C6008CD8FA /* MainMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuCell.swift; sourceTree = "<group>"; };
+		ABF30F2826288322008CD8FA /* MainMyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMyListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				ABF30F08262832C6008CD8FA /* MainMenuCell.swift */,
+				ABF30F2826288322008CD8FA /* MainMyListCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB668E0F2625C94400938A3E /* MainMenu.swift in Sources */,
+				ABF30F2926288322008CD8FA /* MainMyListCell.swift in Sources */,
 				AB1D454026249C460080310E /* MainVC.swift in Sources */,
 				AB1D453C26249C460080310E /* AppDelegate.swift in Sources */,
 				AB1D455826249E080080310E /* UIView+Extensions.swift in Sources */,
