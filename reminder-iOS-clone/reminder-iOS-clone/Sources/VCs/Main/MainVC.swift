@@ -189,4 +189,16 @@ extension MainVC: UITableViewDataSource {
 //    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        String("나의 목록")
 //    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let info = UIContextualAction(style: .normal, title: "info") { (action, view, completion) in
+            completion(true)
+        }
+        
+        let delete = UIContextualAction(style: .destructive, title: "delete") { (action, view, completion) in
+            completion(true)
+        }
+        
+        return UISwipeActionsConfiguration(actions: [delete, info])
+    }
 }
