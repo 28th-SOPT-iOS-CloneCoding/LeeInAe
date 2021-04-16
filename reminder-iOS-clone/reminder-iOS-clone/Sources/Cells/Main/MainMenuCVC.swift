@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainMenuCell: UICollectionViewCell {
+class MainMenuCVC: UICollectionViewCell {
     @IBOutlet var label: UILabel!
 
     func setLabel(idx: Int) {

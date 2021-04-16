@@ -7,6 +7,6 @@
 
 import UIKit
 
-class MainMyListCell: UICollectionViewCell {
+class MainMyListCVC: UICollectionViewCell {
     
 }

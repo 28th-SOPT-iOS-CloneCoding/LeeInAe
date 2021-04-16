@@ -159,7 +159,7 @@ extension MainVC: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainMenuCell", for: indexPath) as? MainMenuCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainMenuCell", for: indexPath) as? MainMenuCVC else { return UICollectionViewCell() }
         cell.setLabel(idx: indexPath.item)
 
         return cell
@@ -178,9 +178,15 @@ extension MainVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainListTVC") as? MainListTVC else { return UITableViewCell() }
+
+        cell.setCell()
         cell.accessoryType = .disclosureIndicator
 
         return cell
     }
+
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        String("나의 목록")
+//    }
 }
