@@ -31,6 +31,7 @@ class MainListTVC: UITableViewCell {
         titleLabel.font = .systemFont(ofSize: 16, weight: .medium)
 
         countLabel.text = "\(0)"
+        countLabel.isHidden = false
         countLabel.font = .systemFont(ofSize: 16, weight: .semibold)
         countLabel.textColor = UIColor.gray
 

@@ -61,6 +61,8 @@ extension MainVC {
         view.addSubview(toolbar)
 
         toolbar.translatesAutoresizingMaskIntoConstraints = false
+//        toolbar.clipsToBounds = true
+//        toolbar.backgroundColor = .clear
         toolbar.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 0).isActive = true
         toolbar.bottomAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.bottomAnchor, multiplier: 0).isActive = true
         toolbar.trailingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.trailingAnchor, multiplier: 0).isActive = true
@@ -128,9 +130,11 @@ extension MainVC {
         if isEditingMode {
             editButton.title = "편집"
             isEditingMode = false
+            mainListTV.setEditing(false, animated: true)
         } else {
             editButton.title = "완료"
             isEditingMode = true
+            mainListTV.setEditing(true, animated: true)
         }
     }
 
@@ -174,7 +178,7 @@ extension MainVC: UITableViewDelegate {}
 
 extension MainVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        30
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -189,16 +193,18 @@ extension MainVC: UITableViewDataSource {
 //    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        String("나의 목록")
 //    }
-    
+
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let info = UIContextualAction(style: .normal, title: "info") { (action, view, completion) in
+        let info = UIContextualAction(style: .normal, title: "info") { _, _, completion in
             completion(true)
         }
-        
-        let delete = UIContextualAction(style: .destructive, title: "delete") { (action, view, completion) in
+
+        let delete = UIContextualAction(style: .destructive, title: "delete") { _, _, completion in
             completion(true)
         }
-        
+
         return UISwipeActionsConfiguration(actions: [delete, info])
     }
+
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {}
 }

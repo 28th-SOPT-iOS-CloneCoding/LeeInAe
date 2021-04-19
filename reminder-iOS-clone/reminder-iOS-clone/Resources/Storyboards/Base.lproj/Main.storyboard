@@ -57,7 +57,7 @@
                                 </cells>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="WX6-PU-RYC">
-                                <rect key="frame" x="0.0" y="339.5" width="414" height="522.5"/>
+                                <rect key="frame" x="0.0" y="288" width="414" height="574"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainListTVC" rowHeight="146" id="sS1-pL-mSA" customClass="MainListTVC" customModule="reminder_iOS_clone" customModuleProvider="target">
                                         <rect key="frame" x="20" y="55.5" width="374" height="146"/>
@@ -115,24 +115,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나의 목록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vev-vV-Aad">
-                                <rect key="frame" x="20" y="298" width="96" height="31.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.94914275410000004" green="0.94871443509999998" blue="0.96863073109999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="WX6-PU-RYC" firstAttribute="top" secondItem="Vev-vV-Aad" secondAttribute="bottom" constant="10" id="Amb-te-Taj"/>
-                            <constraint firstItem="Vev-vV-Aad" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Emi-pJ-XMr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="w3J-ud-G6E" secondAttribute="trailing" id="G7d-0C-pyh"/>
                             <constraint firstItem="WX6-PU-RYC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="T6z-zy-Voc"/>
                             <constraint firstItem="w3J-ud-G6E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TXI-x4-pqv"/>
                             <constraint firstItem="w3J-ud-G6E" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="c4L-IL-cwv"/>
-                            <constraint firstItem="Vev-vV-Aad" firstAttribute="top" secondItem="w3J-ud-G6E" secondAttribute="bottom" constant="10" id="fRS-0F-FH2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WX6-PU-RYC" secondAttribute="trailing" id="l4q-Q2-dvy"/>
+                            <constraint firstItem="WX6-PU-RYC" firstAttribute="top" secondItem="w3J-ud-G6E" secondAttribute="bottom" id="oHp-R4-3Ma"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WX6-PU-RYC" secondAttribute="bottom" id="tGH-kq-Aoq"/>
                         </constraints>
                     </view>
@@ -220,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEG-X3-MY4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1093" y="747"/>
+            <point key="canvasLocation" x="1072" y="775"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mdS-UC-tt8">
