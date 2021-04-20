@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MainItemView" customModule="reminder_iOS_clone" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="503" height="212"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7c-h8-kRF">
+                    <rect key="frame" x="10" y="52" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="H7c-h8-kRF" secondAttribute="height" multiplier="1:1" id="OYd-9V-3xq"/>
+                        <constraint firstAttribute="height" constant="40" id="ctb-X7-tYI"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSy-QK-4pq">
+                    <rect key="frame" x="451" y="61.5" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8o-jz-3Q1">
+                    <rect key="frame" x="10" y="100" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mSy-QK-4pq" secondAttribute="trailing" constant="10" id="3b0-It-URb"/>
+                <constraint firstItem="W8o-jz-3Q1" firstAttribute="top" secondItem="H7c-h8-kRF" secondAttribute="bottom" constant="8" id="YEH-MI-cfj"/>
+                <constraint firstItem="W8o-jz-3Q1" firstAttribute="leading" secondItem="H7c-h8-kRF" secondAttribute="leading" id="fks-D3-8RC"/>
+                <constraint firstItem="H7c-h8-kRF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="lqk-G3-Hv3"/>
+                <constraint firstItem="mSy-QK-4pq" firstAttribute="centerY" secondItem="H7c-h8-kRF" secondAttribute="centerY" id="pj4-gC-00H"/>
+                <constraint firstItem="H7c-h8-kRF" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="shQ-ma-h7G"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="countLabel" destination="mSy-QK-4pq" id="bFe-Qt-Ohm"/>
+                <outlet property="icon" destination="H7c-h8-kRF" id="KTg-mz-ekD"/>
+                <outlet property="titleLabel" destination="W8o-jz-3Q1" id="eW0-eB-eGJ"/>
+            </connections>
+            <point key="canvasLocation" x="202.17391304347828" y="-158.03571428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
