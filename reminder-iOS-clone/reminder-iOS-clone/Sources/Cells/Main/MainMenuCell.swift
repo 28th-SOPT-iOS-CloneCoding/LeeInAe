@@ -14,7 +14,7 @@ class MainMenuCell: UITableViewCell {
 
     @IBOutlet var verticalStackView: UIStackView!
 
-    func setMenuView(menuList: [Group]) {
+    func setCell(menuList: [Group]) {
         print(menuList)
         var idx: Int = 0
 

@@ -6,9 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 struct Group {
-    var title: GroupType
+    var type: GroupType
+    var title: String?
+    var icon: String?
+    var color: UIColor?
     var todos: [Todo]
     var isSelect: Bool = false
 }
@@ -19,4 +23,5 @@ enum GroupType: String {
     case forMe = "나에게 할당"
     case total = "전체"
     case flag = "깃발 표시"
+    case custom = "커스텀"
 }

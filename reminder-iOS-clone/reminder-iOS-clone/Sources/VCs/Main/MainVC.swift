@@ -69,6 +69,9 @@ extension MainVC {
 
         let menuNib = UINib(nibName: MainMenuCell.identifier, bundle: nil)
         mainTableView.register(menuNib, forCellReuseIdentifier: MainMenuCell.identifier)
+
+        let listNib = UINib(nibName: MainListCell.identifier, bundle: nil)
+        mainTableView.register(listNib, forCellReuseIdentifier: MainListCell.identifier)
     }
 }
 
@@ -122,15 +125,34 @@ extension MainVC: UITableViewDelegate {
 
 extension MainVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = mainTableView.dequeueReusableCell(withIdentifier: MainMenuCell.identifier) as? MainMenuCell else { return UITableViewCell() }
-        cell.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
-        cell.setMenuView(menuList: MainMenu.mainMenu.menuList.filter { $0.isSelect })
+        switch indexPath.section {
+        case 0:
+            guard let cell = mainTableView.dequeueReusableCell(withIdentifier: MainMenuCell.identifier) as? MainMenuCell else { return UITableViewCell() }
+            cell.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
+            cell.setCell(menuList: MainMenu.mainMenu.menuList.filter { $0.isSelect && $0.type != GroupType.custom })
 
-        return cell
+            return cell
+        case 1:
+            guard let cell = mainTableView.dequeueReusableCell(withIdentifier: MainListCell.identifier) as? MainListCell else { return UITableViewCell() }
+            cell.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 0)
+            cell.setCell(group: MainMenu.mainMenu.customGroup[indexPath.item])
+
+            return cell
+        default:
+            return UITableViewCell()
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return (MainMenu.mainMenu.menuList.filter { $0.type == GroupType.custom }).count
+        default:
+            return 0
+        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

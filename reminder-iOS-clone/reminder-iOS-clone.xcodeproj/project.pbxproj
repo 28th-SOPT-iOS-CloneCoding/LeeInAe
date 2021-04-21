@@ -22,6 +22,8 @@
 		AB87C82C262F442700BA0AFA /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB87C82B262F442700BA0AFA /* UIButton+Extensions.swift */; };
 		AB87C82F262F492300BA0AFA /* MenuItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB87C82E262F492300BA0AFA /* MenuItemView.xib */; };
 		AB87C834262F49AD00BA0AFA /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB87C833262F49AD00BA0AFA /* MenuItemView.swift */; };
+		AB8FDC5D2630493800279E95 /* MainListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8FDC5B2630493800279E95 /* MainListCell.swift */; };
+		AB8FDC5E2630493800279E95 /* MainListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB8FDC5C2630493800279E95 /* MainListCell.xib */; };
 		ABF30F2D2628A6FF008CD8FA /* AddReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF30F2C2628A6FF008CD8FA /* AddReminderVC.swift */; };
 		ABF30F312628A70C008CD8FA /* AddListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF30F302628A70C008CD8FA /* AddListVC.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +46,8 @@
 		AB87C82B262F442700BA0AFA /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		AB87C82E262F492300BA0AFA /* MenuItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemView.xib; sourceTree = "<group>"; };
 		AB87C833262F49AD00BA0AFA /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuItemView.swift; path = "reminder-iOS-clone/Sources/Xibs/Main/MenuItemView.swift"; sourceTree = SOURCE_ROOT; };
+		AB8FDC5B2630493800279E95 /* MainListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListCell.swift; sourceTree = "<group>"; };
+		AB8FDC5C2630493800279E95 /* MainListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainListCell.xib; sourceTree = "<group>"; };
 		ABF30F2C2628A6FF008CD8FA /* AddReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderVC.swift; sourceTree = "<group>"; };
 		ABF30F302628A70C008CD8FA /* AddListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,7 +93,6 @@
 		AB1D455026249C580080310E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AB1D455626249DCE0080310E /* Extensions */,
 				AB1D455326249D140080310E /* Storyboards */,
 				AB1D454426249C470080310E /* Assets.xcassets */,
 				AB1D453D26249C460080310E /* SceneDelegate.swift */,
@@ -103,6 +106,7 @@
 				AB87C814262EC78300BA0AFA /* Xibs */,
 				AB668E132625F86600938A3E /* Cells */,
 				AB668E0D2625C92B00938A3E /* Models */,
+				AB1D455626249DCE0080310E /* Extensions */,
 				AB1D455226249D020080310E /* VCs */,
 			);
 			path = Sources;
@@ -164,6 +168,7 @@
 				AB87C81B262EC81300BA0AFA /* MainMenuCell.xib */,
 				AB87C82E262F492300BA0AFA /* MenuItemView.xib */,
 				AB87C833262F49AD00BA0AFA /* MenuItemView.swift */,
+				AB8FDC5C2630493800279E95 /* MainListCell.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 		ABF30F332628A817008CD8FA /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				AB8FDC5B2630493800279E95 /* MainListCell.swift */,
 				AB87C81A262EC81300BA0AFA /* MainMenuCell.swift */,
 			);
 			path = Main;
@@ -257,6 +263,7 @@
 				AB1D454526249C470080310E /* Assets.xcassets in Resources */,
 				AB1D454326249C460080310E /* Main.storyboard in Resources */,
 				AB87C81D262EC81300BA0AFA /* MainMenuCell.xib in Resources */,
+				AB8FDC5E2630493800279E95 /* MainListCell.xib in Resources */,
 				AB87C82F262F492300BA0AFA /* MenuItemView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,6 +278,7 @@
 				AB87C826262ECA1500BA0AFA /* Group.swift in Sources */,
 				ABF30F312628A70C008CD8FA /* AddListVC.swift in Sources */,
 				AB1D454026249C460080310E /* MainVC.swift in Sources */,
+				AB8FDC5D2630493800279E95 /* MainListCell.swift in Sources */,
 				AB1D453C26249C460080310E /* AppDelegate.swift in Sources */,
 				AB87C81C262EC81300BA0AFA /* MainMenuCell.swift in Sources */,
 				AB87C821262EC9DB00BA0AFA /* MainMenu.swift in Sources */,

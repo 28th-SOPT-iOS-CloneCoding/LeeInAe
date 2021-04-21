@@ -29,7 +29,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8o-jz-3Q1">
-                    <rect key="frame" x="10" y="90" width="42" height="21"/>
+                    <rect key="frame" x="10" y="90" width="42" height="80"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -43,6 +43,7 @@
                 <constraint firstItem="W8o-jz-3Q1" firstAttribute="leading" secondItem="H7c-h8-kRF" secondAttribute="leading" id="fks-D3-8RC"/>
                 <constraint firstItem="H7c-h8-kRF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="lqk-G3-Hv3"/>
                 <constraint firstItem="mSy-QK-4pq" firstAttribute="centerY" secondItem="H7c-h8-kRF" secondAttribute="centerY" id="pj4-gC-00H"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="W8o-jz-3Q1" secondAttribute="bottom" constant="8" id="qFb-FG-E8i"/>
                 <constraint firstItem="H7c-h8-kRF" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="shQ-ma-h7G"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

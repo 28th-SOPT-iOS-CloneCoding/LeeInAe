@@ -15,20 +15,19 @@ class MenuItemView: UIView {
     @IBOutlet var countLabel: UILabel!
 
     func setView(group: Group) {
-        heightAnchor.constraint(equalToConstant: 80).isActive = true
         backgroundColor = .white
         layer.cornerRadius = 18
 
         icon.setTitle(.none, for: .normal)
         icon.tintColor = .white
         icon.layer.cornerRadius = icon.bounds.width / 2
-        icon.initButtonByGroup(groupType: group.title)
+        icon.initButtonByGroup(group: group)
         icon.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(weight: .light), forImageIn: .normal)
 
         countLabel.text = "\(group.todos.count)"
         countLabel.font = .systemFont(ofSize: 24, weight: .bold)
 
-        titleLabel.text = "\(group.title.rawValue)"
+        titleLabel.text = "\(group.type.rawValue)"
         titleLabel.font = .systemFont(ofSize: 15, weight: .semibold)
         titleLabel.textColor = .systemGray
     }

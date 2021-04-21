@@ -8,7 +8,9 @@
 import UIKit
 
 extension UIButton {
-    func initButtonByGroup(groupType: GroupType) {
+    func initButtonByGroup(group: Group) {
+        let groupType = group.type
+
         switch groupType {
         case .today:
             backgroundColor = .blue
@@ -25,6 +27,9 @@ extension UIButton {
         case .flag:
             backgroundColor = .orange
             setImage(UIImage(systemName: "flag.fill"), for: .normal)
+        case .custom:
+            backgroundColor = group.color
+            setTitle(group.icon, for: .normal)
         }
     }
 }
