@@ -172,4 +172,12 @@ extension MainVC: UITableViewDataSource {
         }
         return nil
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.text = self.tableView(tableView, titleForHeaderInSection: section)
+        
+        return label
+    }
 }
