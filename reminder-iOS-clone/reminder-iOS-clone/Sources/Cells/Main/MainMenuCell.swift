@@ -23,7 +23,7 @@ class MainMenuCell: UITableViewCell {
             hStackView.axis = .horizontal
             hStackView.alignment = .fill
             hStackView.distribution = .fillProportionally
-            hStackView.spacing = 10
+            hStackView.spacing = 15
 
             hStackView.addArrangedSubview(addItemView(group: menuList[idx]))
             idx += 1

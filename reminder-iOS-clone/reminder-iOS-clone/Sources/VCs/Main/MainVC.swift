@@ -57,7 +57,13 @@ extension MainVC {
         toolbar.bottomAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.bottomAnchor, multiplier: 0).isActive = true
         toolbar.trailingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.trailingAnchor, multiplier: 0).isActive = true
 
-        let addReminder = UIBarButtonItem(title: "새로운 미리 알림", style: .plain, target: self, action: #selector(presentAddReminderVC))
+        let plusButton = UIButton(type: .system)
+        plusButton.setTitle("  새로운 미리 알림", for: .normal)
+        plusButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+        plusButton.addTarget(self, action: #selector(presentAddReminderVC), for: .touchUpInside)
+        plusButton.sizeToFit()
+
+        let addReminder = UIBarButtonItem(customView: plusButton)
         let addList = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: #selector(presentAddListVC))
 
         toolbar.setItems([addReminder, flexibleSpace, addList], animated: true)
@@ -119,7 +125,7 @@ extension MainVC: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {}
-    
+
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if indexPath.section == 0 {
             return nil
@@ -172,12 +178,12 @@ extension MainVC: UITableViewDataSource {
         }
         return nil
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.text = self.tableView(tableView, titleForHeaderInSection: section)
-        
+
         return label
     }
 }
