@@ -41,8 +41,18 @@ class MainMenuCell: UITableViewCell {
         guard let itemNib = Bundle.main.loadNibNamed(MenuItemView.identifier, owner: self, options: nil) else { return UIView() }
         guard let itemView = itemNib.first as? MenuItemView else { return UIView() }
         itemView.setView(group: group)
-        
+
+        let tapGesture = ItemTapGesture()
+        tapGesture.addTarget(self, action: #selector(tapView(_:)))
+        tapGesture.group = group
+        itemView.addGestureRecognizer(tapGesture)
+
         return itemView
+    }
+
+    @objc func tapView(_ gesture: ItemTapGesture) {
+        print("tap")
+        print(gesture.group)
     }
 
     override func awakeFromNib() {
