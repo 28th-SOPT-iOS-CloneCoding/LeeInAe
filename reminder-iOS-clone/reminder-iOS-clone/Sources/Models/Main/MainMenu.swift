@@ -14,7 +14,7 @@ class MainMenu {
     var totalTodos: [Todo]
 
     init() {
-        menuList = [Group(title: GroupType.todo.rawValue, todos: [], isSelect: true), Group(title: GroupType.today.rawValue, todos: [], isSelect: true), Group(title: GroupType.flag.rawValue, todos: [], isSelect: true), Group(title: GroupType.forMe.rawValue, todos: [], isSelect: true), Group(title: GroupType.total.rawValue, todos: [], isSelect: true)]
+        menuList = [Group(title: GroupType.todo, todos: [], isSelect: true), Group(title: GroupType.today, todos: [], isSelect: true), Group(title: GroupType.flag, todos: [], isSelect: true), Group(title: GroupType.forMe, todos: [], isSelect: true), Group(title: GroupType.total, todos: [], isSelect: true)]
         totalTodos = []
     }
 }

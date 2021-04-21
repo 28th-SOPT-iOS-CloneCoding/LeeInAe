@@ -24,7 +24,6 @@ class MainMenuCell: UITableViewCell {
             hStackView.alignment = .fill
             hStackView.distribution = .fillProportionally
             hStackView.spacing = 10
-            hStackView.backgroundColor = .green
 
             hStackView.addArrangedSubview(addItemView(group: menuList[idx]))
             idx += 1
@@ -39,35 +38,10 @@ class MainMenuCell: UITableViewCell {
     }
 
     func addItemView(group: Group) -> UIView {
-        let itemView = UIView()
-        itemView.backgroundColor = .purple
-        itemView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        itemView.layer.cornerRadius = 18
-
-        let icon = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        icon.titleLabel?.text = "씨발"
-        icon.backgroundColor = .red
-        icon.layer.cornerRadius = icon.bounds.width / 2
-
-        let countLabel = UILabel()
-        countLabel.text = "\(group.todos.count)"
-        countLabel.font = .systemFont(ofSize: 24, weight: .bold)
-
-        let titleLabel = UILabel()
-        titleLabel.text = group.title
-        titleLabel.font = .systemFont(ofSize: 15, weight: .medium)
-        titleLabel.textColor = .systemGray
-
-        itemView.addSubview(icon)
-        itemView.addSubview(countLabel)
-        itemView.addSubview(titleLabel)
-
-        icon.leadingAnchor.constraint(equalTo: itemView.leadingAnchor, constant: 10).isActive = true
-        icon.topAnchor.constraint(equalTo: itemView.topAnchor, constant: 10).isActive = true
-
-        countLabel.trailingAnchor.constraint(equalTo: itemView.trailingAnchor, constant: 10).isActive = true
-        countLabel.centerYAnchor.constraint(equalTo: icon.centerYAnchor).isActive = true
-
+        guard let itemNib = Bundle.main.loadNibNamed(MenuItemView.identifier, owner: self, options: nil) else { return UIView() }
+        guard let itemView = itemNib.first as? MenuItemView else { return UIView() }
+        itemView.setView(group: group)
+        
         return itemView
     }
 

@@ -123,7 +123,7 @@ extension MainVC: UITableViewDelegate {
 extension MainVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = mainTableView.dequeueReusableCell(withIdentifier: MainMenuCell.identifier) as? MainMenuCell else { return UITableViewCell() }
-        cell.backgroundColor = .yellow
+        cell.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
         cell.setMenuView(menuList: MainMenu.mainMenu.menuList.filter { $0.isSelect })
 
         return cell
@@ -138,6 +138,9 @@ extension MainVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        String("나의 목록")
+        if section == 1 {
+            return String("나의 목록")
+        }
+        return nil
     }
 }

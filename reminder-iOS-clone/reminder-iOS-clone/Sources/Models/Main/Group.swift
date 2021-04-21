@@ -8,7 +8,7 @@
 import Foundation
 
 struct Group {
-    var title: String
+    var title: GroupType
     var todos: [Todo]
     var isSelect: Bool = false
 }

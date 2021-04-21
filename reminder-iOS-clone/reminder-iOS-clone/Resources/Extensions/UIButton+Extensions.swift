@@ -8,7 +8,23 @@
 import UIKit
 
 extension UIButton {
-    func getImage() {
-        
+    func initButtonByGroup(groupType: GroupType) {
+        switch groupType {
+        case .today:
+            backgroundColor = .blue
+            setImage(UIImage(systemName: "calendar"), for: .normal)
+        case .todo:
+            backgroundColor = .red
+            setImage(UIImage(systemName: "calendar"), for: .normal)
+        case .forMe:
+            backgroundColor = .systemGreen
+            setImage(UIImage(systemName: "person.fill"), for: .normal)
+        case .total:
+            backgroundColor = .darkGray
+            setImage(UIImage(systemName: "tray.fill"), for: .normal)
+        case .flag:
+            backgroundColor = .orange
+            setImage(UIImage(systemName: "flag.fill"), for: .normal)
+        }
     }
 }

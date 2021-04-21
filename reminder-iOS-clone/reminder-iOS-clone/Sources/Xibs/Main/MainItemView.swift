@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainItemView: UIView {
+class MenuItemView: UIView {
     static let identifier = "MainItemView"
     
     @IBOutlet var icon: UIButton!
