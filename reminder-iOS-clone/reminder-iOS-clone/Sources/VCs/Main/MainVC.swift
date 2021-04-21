@@ -121,6 +121,9 @@ extension MainVC: UITableViewDelegate {
             completion(true)
         }
 
+        info.image = UIImage(systemName: "info.circle.fill")
+        delete.image = UIImage(systemName: "trash.fill")
+
         return UISwipeActionsConfiguration(actions: [delete, info])
     }
 
@@ -132,6 +135,13 @@ extension MainVC: UITableViewDelegate {
         }
         return indexPath
     }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 0 {
+            return false
+        }
+        return true
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -142,14 +152,15 @@ extension MainVC: UITableViewDataSource {
         case 0:
             guard let cell = mainTableView.dequeueReusableCell(withIdentifier: MainMenuCell.identifier) as? MainMenuCell else { return UITableViewCell() }
             cell.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
-            cell.setCell(menuList: MainMenu.mainMenu.menuList.filter { $0.isSelect && $0.type != GroupType.custom })
+            cell.setCell(menuList: MainMenu.mainMenu.totalGroups.filter { $0.isSelect && $0.type != GroupType.custom })
 
             return cell
         case 1:
             guard let cell = mainTableView.dequeueReusableCell(withIdentifier: MainListCell.identifier) as? MainListCell else { return UITableViewCell() }
             cell.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
             cell.separatorInset = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 0)
-            cell.setCell(group: MainMenu.mainMenu.customGroup[indexPath.item])
+            cell.editingAccessoryType = .detailDisclosureButton
+            cell.setCell(group: MainMenu.mainMenu.customGroups[indexPath.item])
 
             return cell
         default:
@@ -162,7 +173,7 @@ extension MainVC: UITableViewDataSource {
         case 0:
             return 1
         case 1:
-            return (MainMenu.mainMenu.menuList.filter { $0.type == GroupType.custom }).count
+            return (MainMenu.mainMenu.totalGroups.filter { $0.type == GroupType.custom }).count
         default:
             return 0
         }
