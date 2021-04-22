@@ -60,17 +60,25 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="TsE-5T-hGI">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Chd-ju-q0C"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="TsE-5T-hGI" firstAttribute="leading" secondItem="Chd-ju-q0C" secondAttribute="leading" id="Ku2-Eh-MYe"/>
+                            <constraint firstItem="TsE-5T-hGI" firstAttribute="top" secondItem="kbC-B4-9dA" secondAttribute="bottom" id="NgH-pT-Ipy"/>
                             <constraint firstAttribute="trailing" secondItem="kbC-B4-9dA" secondAttribute="trailing" id="Z2s-5h-lj1"/>
                             <constraint firstItem="kbC-B4-9dA" firstAttribute="leading" secondItem="Chd-ju-q0C" secondAttribute="leading" id="l0Z-Qa-iIE"/>
                             <constraint firstItem="kbC-B4-9dA" firstAttribute="top" secondItem="Chd-ju-q0C" secondAttribute="top" id="lBn-NA-aBY"/>
+                            <constraint firstItem="Chd-ju-q0C" firstAttribute="trailing" secondItem="TsE-5T-hGI" secondAttribute="trailing" id="nYw-sW-egE"/>
+                            <constraint firstItem="Chd-ju-q0C" firstAttribute="bottom" secondItem="TsE-5T-hGI" secondAttribute="bottom" id="naz-8p-XsE"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="Lxt-wf-N9K" id="3E6-fc-0NZ"/>
+                        <outlet property="newReminderTableView" destination="TsE-5T-hGI" id="djJ-OQ-hhL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s4g-zd-o5J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
