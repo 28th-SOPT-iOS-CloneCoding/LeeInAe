@@ -25,8 +25,9 @@ class NewReminderRecordCell: UITableViewCell {
         textView.delegate = self
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont.systemFont(ofSize: 16, weight: .light)
-        setTextView()
         
+        setTextView()
+
         textField.attributedPlaceholder = NSAttributedString(string: "제목", attributes: attributes)
         textField.font = UIFont.systemFont(ofSize: 16, weight: .light)
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +41,11 @@ class NewReminderRecordCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+}
 
+// MARK: - Custom Methods
+
+extension NewReminderRecordCell {
     func setCell(idx: Int) {
         textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         textField.topAnchor.constraint(equalTo: topAnchor).isActive = true
@@ -57,9 +62,7 @@ class NewReminderRecordCell: UITableViewCell {
             textView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         }
     }
-}
 
-extension NewReminderRecordCell {
     func setTextView() {
         if textView.text.count == 0 {
             textView.text = "메모"
@@ -75,14 +78,12 @@ extension NewReminderRecordCell: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         setTextView()
     }
-    
+
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.count == 0 {
             setTextView()
         }
     }
-    
 }
 
-extension NewReminderRecordCell: UITextFieldDelegate {
-}
+extension NewReminderRecordCell: UITextFieldDelegate {}

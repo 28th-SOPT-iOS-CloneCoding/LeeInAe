@@ -12,6 +12,9 @@ class AddReminderVC: UIViewController {
 
     @IBOutlet var addButton: UIBarButtonItem!
     @IBOutlet var newReminderTableView: UITableView!
+    
+    // MARK: - local variables
+    var isEdit: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
