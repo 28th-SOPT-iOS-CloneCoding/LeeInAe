@@ -46,6 +46,7 @@ extension AddListVC {
         groupIcon.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 50, weight: .bold), forImageIn: .normal)
         groupIcon.isUserInteractionEnabled = false
 
+        groupTitleTextField.delegate = self
         groupTitleTextField.borderStyle = .none
         groupTitleTextField.layer.cornerRadius = 12
         groupTitleTextField.backgroundColor = .systemGray5
@@ -85,5 +86,11 @@ extension AddListVC: UICollectionViewDataSource {
 
         cell.colorButton.setButtonContent(color: colors[indexPath.item], image: "")
         return cell
+    }
+}
+
+extension AddListVC: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
