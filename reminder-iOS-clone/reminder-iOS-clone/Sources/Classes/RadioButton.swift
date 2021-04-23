@@ -17,6 +17,7 @@ class RadioButton: UIButton {
         colorButton.center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
         colorButton.layer.cornerRadius = width / 2
         colorButton.backgroundColor = .red
+        colorButton.isUserInteractionEnabled = false
 
         return colorButton
     }()
@@ -40,9 +41,6 @@ class RadioButton: UIButton {
         self.layer.cornerRadius = self.bounds.width / 2
         self.backgroundColor = .white
 
-//        self.setImage()
-//        self.touchUpButton()
-
         self.addSubview(self.colorButton)
     }
 
@@ -53,8 +51,7 @@ class RadioButton: UIButton {
     }
 
     func touchUpButton() {
-        self.layer.borderColor = .init(red: 1, green: 1, blue: 1, alpha: 1)
-        self.layer.borderWidth = 1.0
-        self.clipsToBounds = false
+        self.layer.borderColor = CGColor(gray: 1, alpha: 1)
+        self.layer.borderWidth = 3.0
     }
 }

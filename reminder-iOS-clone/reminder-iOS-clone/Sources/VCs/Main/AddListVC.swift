@@ -11,6 +11,9 @@ class AddListVC: UIViewController {
     // MARK: - local variables
 
     let colors: [UIColor] = [UIColor.red, UIColor.orange, UIColor.yellow, UIColor.green, UIColor.blue, UIColor.systemBlue, UIColor.purple, UIColor.systemPink, UIColor.systemTeal, UIColor.brown, UIColor.darkGray, UIColor.cyan]
+    let icons: [String] = ["list.bullet", "list.bullet", "list.bullet", "list.bullet", "list.bullet", "list.bullet", "list.bullet", "list.bullet", "bookmark.fill", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "gift.fill", "circles.hexagongrid.fill"]
+    var colorIdx: Int = 5
+    var iconIdx: Int = 1
 
     // MARK: - IBOutlets
 
@@ -60,11 +63,11 @@ extension AddListVC {
 
 extension AddListVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        8
+        5
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        10
+        0
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -74,7 +77,10 @@ extension AddListVC: UICollectionViewDelegateFlowLayout {
 
 extension AddListVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        12
+        if section == 0 {
+            return 12
+        }
+        return icons.count
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -83,9 +89,43 @@ extension AddListVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RadioButtonCell.identifier, for: indexPath) as? RadioButtonCell else { return UICollectionViewCell() }
+        cell.colorButton.isUserInteractionEnabled = false
 
-        cell.colorButton.setButtonContent(color: colors[indexPath.item], image: "")
-        return cell
+        switch indexPath.section {
+        case 0:
+            cell.colorButton.setButtonContent(color: colors[indexPath.item], image: "")
+
+            if indexPath.row == colorIdx {
+                cell.isSelected = true
+            }
+
+            return cell
+        case 1:
+            cell.colorButton.setButtonContent(color: .systemGray4, image: icons[indexPath.item])
+
+            if indexPath.row == iconIdx {
+                cell.isSelected = true
+            }
+
+            return cell
+        default:
+            return UICollectionViewCell()
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            colorIdx = indexPath.row
+            
+            groupTitleTextField.textColor = colors[colorIdx]
+            groupIcon.backgroundColor = colors[colorIdx]
+        } else {
+            iconIdx = indexPath.row
+            
+            groupIcon.setImage(UIImage(systemName: icons[iconIdx]), for: .normal)
+        }
+
+        collectionView.reloadData()
     }
 }
 

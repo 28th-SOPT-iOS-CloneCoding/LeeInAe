@@ -133,14 +133,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RadioButtonCell" id="5dd-OP-bfS" customClass="RadioButtonCell" customModule="reminder_iOS_clone" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bBy-aq-60v">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0LF-Wj-aIe" customClass="RadioButton" customModule="reminder_iOS_clone" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="5" y="5" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="0LF-Wj-aIe" secondAttribute="height" multiplier="1:1" id="4wi-5X-rpk"/>
                                                         <constraint firstAttribute="width" constant="50" id="ipG-uc-XR7"/>
@@ -149,10 +149,10 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="0LF-Wj-aIe" firstAttribute="top" secondItem="bBy-aq-60v" secondAttribute="top" id="EMG-WP-9la"/>
-                                                <constraint firstAttribute="bottom" secondItem="0LF-Wj-aIe" secondAttribute="bottom" id="X3h-Fc-X5c"/>
-                                                <constraint firstItem="0LF-Wj-aIe" firstAttribute="leading" secondItem="bBy-aq-60v" secondAttribute="leading" id="cek-w6-eD1"/>
-                                                <constraint firstAttribute="trailing" secondItem="0LF-Wj-aIe" secondAttribute="trailing" id="iMl-cj-a7i"/>
+                                                <constraint firstItem="0LF-Wj-aIe" firstAttribute="top" secondItem="bBy-aq-60v" secondAttribute="top" constant="5" id="EMG-WP-9la"/>
+                                                <constraint firstAttribute="bottom" secondItem="0LF-Wj-aIe" secondAttribute="bottom" constant="5" id="X3h-Fc-X5c"/>
+                                                <constraint firstItem="0LF-Wj-aIe" firstAttribute="leading" secondItem="bBy-aq-60v" secondAttribute="leading" constant="5" id="cek-w6-eD1"/>
+                                                <constraint firstAttribute="trailing" secondItem="0LF-Wj-aIe" secondAttribute="trailing" constant="5" id="iMl-cj-a7i"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
