@@ -54,6 +54,7 @@ extension AddListVC {
         groupTitleTextField.layer.cornerRadius = 12
         groupTitleTextField.backgroundColor = .systemGray5
         groupTitleTextField.textAlignment = .center
+        groupTitleTextField.font = UIFont.systemFont(ofSize: 18)
         groupTitleTextField.becomeFirstResponder()
 
         paletteCollectionView.delegate = self
