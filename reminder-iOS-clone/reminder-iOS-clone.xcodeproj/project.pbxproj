@@ -14,6 +14,8 @@
 		AB1D454526249C470080310E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB1D454426249C470080310E /* Assets.xcassets */; };
 		AB1D454826249C470080310E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB1D454626249C470080310E /* LaunchScreen.storyboard */; };
 		AB1D455826249E080080310E /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D455726249E080080310E /* UIView+Extensions.swift */; };
+		AB55FDE026329F9A00EE8713 /* DetailReminder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB55FDDF26329F9A00EE8713 /* DetailReminder.storyboard */; };
+		AB55FDE426329FDA00EE8713 /* DetailGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB55FDE326329FDA00EE8713 /* DetailGroupVC.swift */; };
 		AB87C81C262EC81300BA0AFA /* MainMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB87C81A262EC81300BA0AFA /* MainMenuCell.swift */; };
 		AB87C81D262EC81300BA0AFA /* MainMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB87C81B262EC81300BA0AFA /* MainMenuCell.xib */; };
 		AB87C821262EC9DB00BA0AFA /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB87C820262EC9DB00BA0AFA /* MainMenu.swift */; };
@@ -43,6 +45,8 @@
 		AB1D454726249C470080310E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB1D454926249C470080310E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB1D455726249E080080310E /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		AB55FDDF26329F9A00EE8713 /* DetailReminder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailReminder.storyboard; sourceTree = "<group>"; };
+		AB55FDE326329FDA00EE8713 /* DetailGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGroupVC.swift; sourceTree = "<group>"; };
 		AB87C81A262EC81300BA0AFA /* MainMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuCell.swift; sourceTree = "<group>"; };
 		AB87C81B262EC81300BA0AFA /* MainMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenuCell.xib; sourceTree = "<group>"; };
 		AB87C820262EC9DB00BA0AFA /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 		AB1D455226249D020080310E /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				AB55FDE226329FC400EE8713 /* Detail */,
 				ABF30F2B2628A6D5008CD8FA /* Main */,
 			);
 			path = VCs;
@@ -136,6 +141,7 @@
 			children = (
 				AB1D454626249C470080310E /* LaunchScreen.storyboard */,
 				AB1D454126249C460080310E /* Main.storyboard */,
+				AB55FDDF26329F9A00EE8713 /* DetailReminder.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -147,6 +153,14 @@
 				AB87C82B262F442700BA0AFA /* UIButton+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AB55FDE226329FC400EE8713 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				AB55FDE326329FDA00EE8713 /* DetailGroupVC.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		AB668E0D2625C92B00938A3E /* Models */ = {
@@ -307,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB8FDC9A2631C45A00279E95 /* NewReminderRecordCell.xib in Resources */,
+				AB55FDE026329F9A00EE8713 /* DetailReminder.storyboard in Resources */,
 				AB1D454826249C470080310E /* LaunchScreen.storyboard in Resources */,
 				AB1D454526249C470080310E /* Assets.xcassets in Resources */,
 				AB1D454326249C460080310E /* Main.storyboard in Resources */,
@@ -324,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB87C826262ECA1500BA0AFA /* Group.swift in Sources */,
+				AB55FDE426329FDA00EE8713 /* DetailGroupVC.swift in Sources */,
 				ABF30F312628A70C008CD8FA /* AddListVC.swift in Sources */,
 				AB1D454026249C460080310E /* MainVC.swift in Sources */,
 				AB8FDC5D2630493800279E95 /* MainListCell.swift in Sources */,

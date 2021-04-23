@@ -142,6 +142,13 @@ extension MainVC: UITableViewDelegate {
         }
         return true
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "DetailReminder", bundle: nil)
+        guard let detailGroupVC = storyboard.instantiateViewController(identifier: DetailGroupVC.identifier) as? DetailGroupVC else { return }
+
+        navigationController?.pushViewController(detailGroupVC, animated: true)
+    }
 }
 
 // MARK: - UITableViewDataSource
