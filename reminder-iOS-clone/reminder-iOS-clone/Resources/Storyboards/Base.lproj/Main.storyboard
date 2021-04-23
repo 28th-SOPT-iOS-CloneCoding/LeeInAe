@@ -115,7 +115,7 @@
                                 <state key="normal" title="Button"/>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XtO-At-IFm">
-                                <rect key="frame" x="20.5" y="282" width="373" height="50"/>
+                                <rect key="frame" x="10.5" y="282" width="393" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="CDJ-Lw-gcX"/>
                                 </constraints>
@@ -123,7 +123,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g9X-yR-4vq">
-                                <rect key="frame" x="0.0" y="362" width="414" height="500"/>
+                                <rect key="frame" x="10.5" y="362" width="393" height="500"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HlT-CL-jMW">
                                     <size key="itemSize" width="128" height="128"/>
@@ -132,13 +132,32 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5dd-OP-bfS">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RadioButtonCell" id="5dd-OP-bfS" customClass="RadioButtonCell" customModule="reminder_iOS_clone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bBy-aq-60v">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0LF-Wj-aIe" customClass="RadioButton" customModule="reminder_iOS_clone" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="0LF-Wj-aIe" secondAttribute="height" multiplier="1:1" id="4wi-5X-rpk"/>
+                                                        <constraint firstAttribute="width" constant="50" id="ipG-uc-XR7"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0LF-Wj-aIe" firstAttribute="top" secondItem="bBy-aq-60v" secondAttribute="top" id="EMG-WP-9la"/>
+                                                <constraint firstAttribute="bottom" secondItem="0LF-Wj-aIe" secondAttribute="bottom" id="X3h-Fc-X5c"/>
+                                                <constraint firstItem="0LF-Wj-aIe" firstAttribute="leading" secondItem="bBy-aq-60v" secondAttribute="leading" id="cek-w6-eD1"/>
+                                                <constraint firstAttribute="trailing" secondItem="0LF-Wj-aIe" secondAttribute="trailing" id="iMl-cj-a7i"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="colorButton" destination="0LF-Wj-aIe" id="pWK-hN-edf"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -146,19 +165,19 @@
                         <viewLayoutGuide key="safeArea" id="DPE-nl-FZ7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="g9X-yR-4vq" firstAttribute="leading" secondItem="DPE-nl-FZ7" secondAttribute="leading" id="BEv-Jc-Rfx"/>
                             <constraint firstItem="OkU-sx-l8p" firstAttribute="leading" secondItem="DPE-nl-FZ7" secondAttribute="leading" id="Dyq-0g-phT"/>
-                            <constraint firstItem="XtO-At-IFm" firstAttribute="width" secondItem="hSU-ut-IA3" secondAttribute="width" multiplier="0.9:1" id="FdI-Ak-Cmw"/>
+                            <constraint firstItem="XtO-At-IFm" firstAttribute="width" secondItem="hSU-ut-IA3" secondAttribute="width" multiplier="0.95:1" id="FdI-Ak-Cmw"/>
                             <constraint firstAttribute="trailing" secondItem="OkU-sx-l8p" secondAttribute="trailing" id="GCN-WJ-x8n"/>
                             <constraint firstItem="XtO-At-IFm" firstAttribute="top" secondItem="FlP-rR-rvo" secondAttribute="bottom" constant="30" id="Rt2-bj-aQA"/>
                             <constraint firstItem="g9X-yR-4vq" firstAttribute="top" secondItem="XtO-At-IFm" secondAttribute="bottom" constant="30" id="TrQ-WV-6EX"/>
                             <constraint firstItem="FlP-rR-rvo" firstAttribute="top" secondItem="OkU-sx-l8p" secondAttribute="bottom" constant="40" id="Vjw-8w-wyK"/>
-                            <constraint firstItem="DPE-nl-FZ7" firstAttribute="trailing" secondItem="g9X-yR-4vq" secondAttribute="trailing" id="Zr7-dq-Po5"/>
+                            <constraint firstItem="g9X-yR-4vq" firstAttribute="width" secondItem="XtO-At-IFm" secondAttribute="width" id="WD6-qZ-fKr"/>
                             <constraint firstItem="FlP-rR-rvo" firstAttribute="width" secondItem="hSU-ut-IA3" secondAttribute="width" multiplier="0.3:1" id="hFv-zq-dm4"/>
                             <constraint firstItem="OkU-sx-l8p" firstAttribute="top" secondItem="DPE-nl-FZ7" secondAttribute="top" id="hQq-mo-rQS"/>
                             <constraint firstItem="FlP-rR-rvo" firstAttribute="centerX" secondItem="DPE-nl-FZ7" secondAttribute="centerX" id="jqp-Dn-Hjg"/>
                             <constraint firstItem="DPE-nl-FZ7" firstAttribute="bottom" secondItem="g9X-yR-4vq" secondAttribute="bottom" id="n8h-VD-ect"/>
                             <constraint firstItem="XtO-At-IFm" firstAttribute="centerX" secondItem="FlP-rR-rvo" secondAttribute="centerX" id="r7u-mf-gtr"/>
+                            <constraint firstItem="g9X-yR-4vq" firstAttribute="centerX" secondItem="XtO-At-IFm" secondAttribute="centerX" id="xVD-oX-3Yh"/>
                         </constraints>
                     </view>
                     <connections>
