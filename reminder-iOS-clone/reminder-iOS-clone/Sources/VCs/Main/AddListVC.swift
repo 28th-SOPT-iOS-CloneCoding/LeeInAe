@@ -41,8 +41,13 @@ extension AddListVC {
         addButton.isEnabled = false
 
         groupIcon.layoutIfNeeded()
-        groupIcon.backgroundColor = .blue
+        groupIcon.backgroundColor = colors[colorIdx]
         groupIcon.layer.cornerRadius = groupIcon.bounds.size.width / 2
+        groupIcon.layer.shadowOffset = .init(width: 0, height: 0)
+        groupIcon.layer.shadowColor = colors[colorIdx].cgColor
+        groupIcon.layer.shadowRadius = 10
+        groupIcon.layer.shadowOpacity = 0.8
+        groupIcon.layer.shouldRasterize = true
         groupIcon.setImage(UIImage(systemName: "list.bullet"), for: .normal)
         groupIcon.setTitle(.none, for: .normal)
         groupIcon.tintColor = .white
@@ -120,6 +125,7 @@ extension AddListVC: UICollectionViewDataSource {
             
             groupTitleTextField.textColor = colors[colorIdx]
             groupIcon.backgroundColor = colors[colorIdx]
+            groupIcon.layer.shadowColor = colors[colorIdx].cgColor
         } else {
             iconIdx = indexPath.row
             
