@@ -34,6 +34,18 @@ class AddListVC: UIViewController {
     }
 }
 
+// MARK: - Actions
+
+extension AddListVC {
+    @objc func editTextField(_ sender: UITextField) {
+        if groupTitleTextField.text?.count == 0 {
+            addButton.isEnabled = false
+        } else {
+            addButton.isEnabled = true
+        }
+    }
+}
+
 // MARK: - Custom Methods
 
 extension AddListVC {
@@ -60,12 +72,16 @@ extension AddListVC {
         groupTitleTextField.backgroundColor = .systemGray5
         groupTitleTextField.textAlignment = .center
         groupTitleTextField.font = UIFont.systemFont(ofSize: 18)
+        groupTitleTextField.textColor = colors[colorIdx]
         groupTitleTextField.becomeFirstResponder()
+        groupTitleTextField.addTarget(self, action: #selector(editTextField(_:)), for: .editingChanged)
 
         paletteCollectionView.delegate = self
         paletteCollectionView.dataSource = self
     }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension AddListVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -80,6 +96,8 @@ extension AddListVC: UICollectionViewDelegateFlowLayout {
         UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension AddListVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -122,19 +140,21 @@ extension AddListVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             colorIdx = indexPath.row
-            
+
             groupTitleTextField.textColor = colors[colorIdx]
             groupIcon.backgroundColor = colors[colorIdx]
             groupIcon.layer.shadowColor = colors[colorIdx].cgColor
         } else {
             iconIdx = indexPath.row
-            
+
             groupIcon.setImage(UIImage(systemName: icons[iconIdx]), for: .normal)
         }
 
         collectionView.reloadData()
     }
 }
+
+// MARK: - UITextFieldDelegate
 
 extension AddListVC: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
