@@ -40,6 +40,7 @@ class RadioButton: UIButton {
         self.setTitle("", for: .normal)
         self.layer.cornerRadius = self.bounds.width / 2
         self.backgroundColor = .white
+        self.clipsToBounds = true
 
         self.addSubview(self.colorButton)
     }
@@ -51,7 +52,7 @@ class RadioButton: UIButton {
     }
 
     func touchUpButton() {
-        self.layer.borderColor = CGColor(gray: 1, alpha: 1)
+        self.layer.borderColor = UIColor.systemGray4.cgColor
         self.layer.borderWidth = 3.0
     }
 }
