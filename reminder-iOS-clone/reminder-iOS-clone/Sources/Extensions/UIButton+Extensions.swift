@@ -29,7 +29,12 @@ extension UIButton {
             setImage(UIImage(systemName: "flag.fill"), for: .normal)
         case .custom:
             backgroundColor = group.color
-            setTitle(group.icon, for: .normal)
+
+            if let gropIcon = group.icon {
+                if UIImage(systemName: gropIcon) == nil {
+                    setTitle(group.icon, for: .normal)
+                }
+            }
         }
     }
 }

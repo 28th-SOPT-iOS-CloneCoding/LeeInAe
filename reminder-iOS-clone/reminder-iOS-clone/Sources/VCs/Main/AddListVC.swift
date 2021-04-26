@@ -7,13 +7,23 @@
 
 import UIKit
 
+protocol SaveGroupDelegate {
+    func saveGroup(_ addReminderVC: AddListVC)
+}
+
 class AddListVC: UIViewController {
+    static let identifier = "AddListVC"
+
     // MARK: - local variables
 
     let colors: [UIColor] = [UIColor.red, UIColor.orange, UIColor.yellow, UIColor.green, UIColor.blue, UIColor.systemBlue, UIColor.purple, UIColor.systemPink, UIColor.systemTeal, UIColor.brown, UIColor.darkGray, UIColor.cyan]
     let icons: [String] = ["list.bullet", "list.bullet", "list.bullet", "list.bullet", "list.bullet", "list.bullet", "list.bullet", "list.bullet", "bookmark.fill", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "mappin", "gift.fill", "circles.hexagongrid.fill"]
     var colorIdx: Int = 5
     var iconIdx: Int = 1
+
+    // MARK: - delegate
+
+    var saveDelegate: SaveGroupDelegate?
 
     // MARK: - IBOutlets
 
@@ -44,6 +54,18 @@ extension AddListVC {
             addButton.isEnabled = true
         }
     }
+
+    @objc func addNewGroup(_ sender: UIButton) {
+        if let title = groupTitleTextField.text {
+            let icon = icons[iconIdx]
+            let color = colors[colorIdx]
+
+            MainMenu.mainMenu.totalGroups.append(Group(type: GroupType.custom, title: title, icon: icon, color: color, todos: [], isSelect: false))
+
+            saveDelegate?.saveGroup(self)
+            dismiss(animated: true, completion: nil)
+        }
+    }
 }
 
 // MARK: - Custom Methods
@@ -51,6 +73,8 @@ extension AddListVC {
 extension AddListVC {
     func initView() {
         addButton.isEnabled = false
+        addButton.target = self
+        addButton.action = #selector(addNewGroup(_:))
 
         groupIcon.layoutIfNeeded()
         groupIcon.backgroundColor = colors[colorIdx]

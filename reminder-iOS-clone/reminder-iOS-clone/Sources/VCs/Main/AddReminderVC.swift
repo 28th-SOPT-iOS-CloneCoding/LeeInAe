@@ -8,12 +8,15 @@
 import UIKit
 
 class AddReminderVC: UIViewController {
+    static let identifier = "AddReminderVC"
+
     // MARK: - IBOutlets
 
     @IBOutlet var addButton: UIBarButtonItem!
     @IBOutlet var newReminderTableView: UITableView!
-    
+
     // MARK: - local variables
+
     var isEdit: Bool = false
 
     override func viewDidLoad() {
@@ -84,9 +87,10 @@ extension AddReminderVC: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
+
 extension AddReminderVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 && indexPath.item == 1 {
+        if indexPath.section == 0, indexPath.item == 1 {
             return 80
         }
         return 40

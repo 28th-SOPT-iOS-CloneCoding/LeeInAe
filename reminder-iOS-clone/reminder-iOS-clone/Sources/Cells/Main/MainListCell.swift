@@ -22,17 +22,22 @@ class MainListCell: UITableViewCell {
         icon.tintColor = .white
         icon.layer.cornerRadius = icon.bounds.width / 2
         icon.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(weight: .light), forImageIn: .normal)
+        icon.isUserInteractionEnabled = false
         icon.initButtonByGroup(group: group)
-        
+
         countLabel.text = "\(group.todos.count)"
         countLabel.font = .systemFont(ofSize: 15)
         countLabel.textColor = .systemGray
 
-        titleLabel.text = "\(group.title!)"
+        if let groupTitle = group.title,
+           let groupIcon = group.icon
+        {
+            titleLabel.text = "\(groupTitle)"
+            icon.setImage(UIImage(systemName: groupIcon), for: .normal)
+        }
         titleLabel.font = .systemFont(ofSize: 15)
 
         accessoryType = .disclosureIndicator
-        
     }
 
     override func awakeFromNib() {

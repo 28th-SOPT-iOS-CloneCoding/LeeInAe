@@ -97,13 +97,14 @@ extension MainVC {
     }
 
     @objc func presentAddReminderVC() {
-        guard let addReminderVC = storyboard?.instantiateViewController(identifier: "AddReminderVC") as? AddReminderVC else { return }
+        guard let addReminderVC = storyboard?.instantiateViewController(withIdentifier: AddReminderVC.identifier) as? AddReminderVC else { return }
 
         present(addReminderVC, animated: true, completion: nil)
     }
 
     @objc func presentAddListVC() {
-        guard let addListVC = storyboard?.instantiateViewController(identifier: "AddListVC") as? AddListVC else { return }
+        guard let addListVC = storyboard?.instantiateViewController(identifier: AddListVC.identifier) as? AddListVC else { return }
+        addListVC.saveDelegate = self
 
         present(addListVC, animated: true, completion: nil)
     }
@@ -180,7 +181,7 @@ extension MainVC: UITableViewDataSource {
         case 0:
             return 1
         case 1:
-            return (MainMenu.mainMenu.totalGroups.filter { $0.type == GroupType.custom }).count
+            return MainMenu.mainMenu.customGroups.count
         default:
             return 0
         }
@@ -203,5 +204,13 @@ extension MainVC: UITableViewDataSource {
         label.text = self.tableView(tableView, titleForHeaderInSection: section)
 
         return label
+    }
+}
+
+// MARK: - SaveGroupDelegate
+
+extension MainVC: SaveGroupDelegate {
+    func saveGroup(_ addReminderVC: AddListVC) {
+        mainTableView.insertRows(at: [IndexPath(row: MainMenu.mainMenu.customGroups.count - 1, section: 1)], with: .fade)
     }
 }

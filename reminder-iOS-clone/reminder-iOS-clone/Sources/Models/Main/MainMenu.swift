@@ -15,6 +15,7 @@ class MainMenu {
             customGroups = totalGroups.filter { $0.type == GroupType.custom }
         }
     }
+
     var totalTodos: [Todo]
     var customGroups: [Group]
 
