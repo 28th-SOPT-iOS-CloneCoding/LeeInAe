@@ -24,6 +24,8 @@
 		AB87C82C262F442700BA0AFA /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB87C82B262F442700BA0AFA /* UIButton+Extensions.swift */; };
 		AB87C82F262F492300BA0AFA /* MenuItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB87C82E262F492300BA0AFA /* MenuItemView.xib */; };
 		AB87C834262F49AD00BA0AFA /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB87C833262F49AD00BA0AFA /* MenuItemView.swift */; };
+		AB8A152826384024008268D2 /* DetailGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8A152626384024008268D2 /* DetailGroupCell.swift */; };
+		AB8A152926384024008268D2 /* DetailGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB8A152726384024008268D2 /* DetailGroupCell.xib */; };
 		AB8FDC5D2630493800279E95 /* MainListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8FDC5B2630493800279E95 /* MainListCell.swift */; };
 		AB8FDC5E2630493800279E95 /* MainListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB8FDC5C2630493800279E95 /* MainListCell.xib */; };
 		AB8FDC6626308F7F00279E95 /* ItemTapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8FDC6526308F7F00279E95 /* ItemTapGesture.swift */; };
@@ -55,6 +57,8 @@
 		AB87C82B262F442700BA0AFA /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		AB87C82E262F492300BA0AFA /* MenuItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemView.xib; sourceTree = "<group>"; };
 		AB87C833262F49AD00BA0AFA /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuItemView.swift; path = "reminder-iOS-clone/Sources/Xibs/Main/MenuItemView.swift"; sourceTree = SOURCE_ROOT; };
+		AB8A152626384024008268D2 /* DetailGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGroupCell.swift; sourceTree = "<group>"; };
+		AB8A152726384024008268D2 /* DetailGroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailGroupCell.xib; sourceTree = "<group>"; };
 		AB8FDC5B2630493800279E95 /* MainListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListCell.swift; sourceTree = "<group>"; };
 		AB8FDC5C2630493800279E95 /* MainListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainListCell.xib; sourceTree = "<group>"; };
 		AB8FDC6526308F7F00279E95 /* ItemTapGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTapGesture.swift; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 		AB668E132625F86600938A3E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				AB8A152526384001008268D2 /* Detail */,
 				AB8FDCA22632565500279E95 /* NewList */,
 				AB8FDC9D2631C46500279E95 /* NewReminder */,
 				ABF30F332628A817008CD8FA /* Main */,
@@ -184,6 +189,7 @@
 		AB87C814262EC78300BA0AFA /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				AB8A152B2638402A008268D2 /* Detail */,
 				AB8FDC962631C11800279E95 /* NewReminder */,
 				AB87C815262EC7BC00BA0AFA /* Main */,
 			);
@@ -209,6 +215,22 @@
 				AB87C828262ECA4900BA0AFA /* Todo.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		AB8A152526384001008268D2 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				AB8A152626384024008268D2 /* DetailGroupCell.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		AB8A152B2638402A008268D2 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				AB8A152726384024008268D2 /* DetailGroupCell.xib */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		AB8FDC6426308F6600279E95 /* Classes */ = {
@@ -326,6 +348,7 @@
 				AB1D454526249C470080310E /* Assets.xcassets in Resources */,
 				AB1D454326249C460080310E /* Main.storyboard in Resources */,
 				AB87C81D262EC81300BA0AFA /* MainMenuCell.xib in Resources */,
+				AB8A152926384024008268D2 /* DetailGroupCell.xib in Resources */,
 				AB8FDC5E2630493800279E95 /* MainListCell.xib in Resources */,
 				AB87C82F262F492300BA0AFA /* MenuItemView.xib in Resources */,
 			);
@@ -351,6 +374,7 @@
 				AB8FDCA42632568C00279E95 /* RadioButtonCell.swift in Sources */,
 				AB1D453E26249C460080310E /* SceneDelegate.swift in Sources */,
 				AB8FDC992631C45A00279E95 /* NewReminderRecordCell.swift in Sources */,
+				AB8A152826384024008268D2 /* DetailGroupCell.swift in Sources */,
 				AB87C834262F49AD00BA0AFA /* MenuItemView.swift in Sources */,
 				AB8FDC6626308F7F00279E95 /* ItemTapGesture.swift in Sources */,
 				ABF30F2D2628A6FF008CD8FA /* AddReminderVC.swift in Sources */,

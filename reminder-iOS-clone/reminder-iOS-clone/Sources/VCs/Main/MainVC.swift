@@ -148,6 +148,7 @@ extension MainVC: UITableViewDelegate {
         let storyboard = UIStoryboard(name: "DetailReminder", bundle: nil)
         guard let detailGroupVC = storyboard.instantiateViewController(identifier: DetailGroupVC.identifier) as? DetailGroupVC else { return }
 
+        detailGroupVC.group = MainMenu.mainMenu.customGroups[indexPath.row]
         navigationController?.pushViewController(detailGroupVC, animated: true)
     }
 }
