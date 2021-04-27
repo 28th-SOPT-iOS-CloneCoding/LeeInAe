@@ -17,12 +17,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="330" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzP-yA-RNw">
-                        <rect key="frame" x="50" y="14.5" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7kM-4f-ofk">
                         <rect key="frame" x="10" y="10" width="30" height="30"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -38,29 +32,43 @@
                             <action selector="touchUpRadionBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ii7-Qh-IDG"/>
                         </connections>
                     </button>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AXw-e2-lCP">
+                        <rect key="frame" x="50" y="10" width="270" height="30"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <color key="textColor" systemColor="labelColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="AXw-e2-lCP" firstAttribute="centerY" secondItem="zsF-Pu-N9r" secondAttribute="centerY" id="A8b-dE-JKQ"/>
+                    <constraint firstItem="AXw-e2-lCP" firstAttribute="height" secondItem="zsF-Pu-N9r" secondAttribute="height" id="CKF-u1-2dE"/>
                     <constraint firstItem="7kM-4f-ofk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="D5E-Rx-EH6"/>
                     <constraint firstItem="zsF-Pu-N9r" firstAttribute="leading" secondItem="7kM-4f-ofk" secondAttribute="leading" id="HTY-wd-dde"/>
-                    <constraint firstItem="KzP-yA-RNw" firstAttribute="centerY" secondItem="7kM-4f-ofk" secondAttribute="centerY" id="VP1-Hu-8Rn"/>
                     <constraint firstItem="zsF-Pu-N9r" firstAttribute="height" secondItem="7kM-4f-ofk" secondAttribute="height" id="YFE-GX-WZq"/>
                     <constraint firstItem="zsF-Pu-N9r" firstAttribute="top" secondItem="7kM-4f-ofk" secondAttribute="top" id="cah-Ab-oaG"/>
                     <constraint firstItem="zsF-Pu-N9r" firstAttribute="bottom" secondItem="7kM-4f-ofk" secondAttribute="bottom" id="dRP-Ua-mvq"/>
                     <constraint firstAttribute="bottom" secondItem="7kM-4f-ofk" secondAttribute="bottom" constant="10" id="dr2-Se-hyZ"/>
+                    <constraint firstAttribute="trailing" secondItem="AXw-e2-lCP" secondAttribute="trailing" constant="10" id="hAh-Sk-6MY"/>
                     <constraint firstItem="7kM-4f-ofk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="m8k-3x-Lsz"/>
-                    <constraint firstItem="KzP-yA-RNw" firstAttribute="leading" secondItem="7kM-4f-ofk" secondAttribute="trailing" constant="10" id="nCe-ce-nV0"/>
                     <constraint firstItem="zsF-Pu-N9r" firstAttribute="width" secondItem="7kM-4f-ofk" secondAttribute="width" id="y8d-Wx-Fhh"/>
+                    <constraint firstItem="AXw-e2-lCP" firstAttribute="leading" secondItem="7kM-4f-ofk" secondAttribute="trailing" constant="10" id="zVh-vX-KNx"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="circleView" destination="7kM-4f-ofk" id="r8z-1q-lzV"/>
                 <outlet property="radioButton" destination="zsF-Pu-N9r" id="gN0-JL-AR4"/>
+                <outlet property="titleTextView" destination="AXw-e2-lCP" id="iKL-pO-siO"/>
             </connections>
             <point key="canvasLocation" x="-184.05797101449278" y="40.848214285714285"/>
         </tableViewCell>
     </objects>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
