@@ -24,18 +24,11 @@ class DetailGroupVC: UIViewController {
 
     @IBOutlet var groupTableView: UITableView!
 
-    override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
-        print(groupTableView.contentInset)
-        print(groupTableView.adjustedContentInset)
-
-        if #available(iOS 11.0, *), color != nil {
-            navigationController?.navigationBar.prefersLargeTitles = true
-            navigationController?.navigationBar.largeTitleTextAttributes = [
-                NSAttributedString.Key.foregroundColor: color
-            ]
-        }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        print("viewWillAppear")
+//        print(groupTableView.contentInset)
+//        print(groupTableView.adjustedContentInset)
+//    }
 
 //
 //    override func viewDidLayoutSubviews() {
@@ -76,15 +69,26 @@ extension DetailGroupVC {
         let detailGroupCellNib = UINib(nibName: DetailGroupCell.identifier, bundle: nil)
         groupTableView.register(detailGroupCellNib, forCellReuseIdentifier: DetailGroupCell.identifier)
 
+        groupTableView.separatorStyle = .none
         groupTableView.delegate = self
         groupTableView.dataSource = self
 
         groupTableView.contentInsetAdjustmentBehavior = .never
 
+        navigationController?.navigationBar.topItem?.title = "목록"
+
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = group?.title
-
         navigationController?.navigationItem.largeTitleDisplayMode = .always
+
+        if let currColor = color {
+            if #available(iOS 11.0, *) {
+                navigationController?.navigationBar.prefersLargeTitles = true
+                navigationController?.navigationBar.largeTitleTextAttributes = [
+                    NSAttributedString.Key.foregroundColor: currColor
+                ]
+            }
+        }
     }
 }
 
@@ -105,6 +109,13 @@ extension DetailGroupVC: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailGroupCell.identifier) as? DetailGroupCell else { return UITableViewCell() }
+
+        // FIXME: - height... 다른 방식 알아보기
+        let bottomBorder = CALayer()
+
+        bottomBorder.frame = CGRect(x: 40.0, y: 44.5, width: tableView.bounds.width, height: 0.8)
+        bottomBorder.backgroundColor = UIColor.systemGray4.cgColor
+        cell.contentView.layer.addSublayer(bottomBorder)
 
         if let groupColor = group?.color {
             cell.color = groupColor
