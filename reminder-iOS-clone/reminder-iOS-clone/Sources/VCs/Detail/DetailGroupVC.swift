@@ -77,8 +77,6 @@ extension DetailGroupVC {
 
         groupTableView.contentInsetAdjustmentBehavior = .never
 
-        navigationController?.navigationBar.topItem?.title = "목록"
-
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = group?.title
         navigationController?.navigationItem.largeTitleDisplayMode = .always

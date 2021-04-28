@@ -45,6 +45,9 @@ extension MainVC {
         navigationItem.rightBarButtonItem = editButton
         navigationItem.searchController = searchController
 
+        let backBarButtonItem = UIBarButtonItem(title: "목록", style: .plain, target: self, action: nil)
+        navigationItem.backBarButtonItem = backBarButtonItem
+
         let toolbar = UIToolbar()
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 
