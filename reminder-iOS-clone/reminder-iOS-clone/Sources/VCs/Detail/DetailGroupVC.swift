@@ -24,11 +24,19 @@ class DetailGroupVC: UIViewController {
 
     @IBOutlet var groupTableView: UITableView!
 
-//    override func viewWillAppear(_ animated: Bool) {
-//        print("viewWillAppear")
-//        print(groupTableView.contentInset)
-//        print(groupTableView.adjustedContentInset)
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        print(groupTableView.contentInset)
+        print(groupTableView.adjustedContentInset)
+
+        if #available(iOS 11.0, *), color != nil {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationController?.navigationBar.largeTitleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: color
+            ]
+        }
+    }
+
 //
 //    override func viewDidLayoutSubviews() {
 //        print("viewDidLayoutSubviews")
