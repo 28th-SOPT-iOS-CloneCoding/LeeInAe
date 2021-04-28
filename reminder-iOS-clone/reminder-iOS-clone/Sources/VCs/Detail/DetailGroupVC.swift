@@ -14,17 +14,47 @@ class DetailGroupVC: UIViewController {
 
     var titleLabel: String?
     var color: UIColor?
-    var group: Group?
+    var group: Group? {
+        didSet {
+            color = group?.color
+        }
+    }
 
     // MARK: - IBOutlets
 
     @IBOutlet var groupTableView: UITableView!
+
+//    override func viewWillAppear(_ animated: Bool) {
+//        print("viewWillAppear")
+//        print(groupTableView.contentInset)
+//        print(groupTableView.adjustedContentInset)
+//    }
+//
+//    override func viewDidLayoutSubviews() {
+//        print("viewDidLayoutSubviews")
+//        print(self.title)
+//        print(self.groupTableView.adjustedContentInset)
+//        print(self.groupTableView.contentInset)
+//    }
+//
+//    override func viewWillLayoutSubviews() {
+//        print("viewWillLayoutSubviews")
+//        print(groupTableView.contentInset)
+//        print(groupTableView.adjustedContentInset)
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initView()
     }
+
+//    override func viewSafeAreaInsetsDidChange() {
+//        print("viewSafeAreaInsetsDidChange")
+//        print(navigationController?.navigationBar.bounds)
+//        print(groupTableView.contentInset)
+//        print(groupTableView.adjustedContentInset)
+//    }
 }
 
 // MARK: - Custom Methods
@@ -41,8 +71,12 @@ extension DetailGroupVC {
         groupTableView.delegate = self
         groupTableView.dataSource = self
 
-        // FIXME: - 외않되
-        groupTableView.largeContentTitle = group?.title
+        groupTableView.contentInsetAdjustmentBehavior = .never
+
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = group?.title
+
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
     }
 }
 
@@ -63,6 +97,10 @@ extension DetailGroupVC: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailGroupCell.identifier) as? DetailGroupCell else { return UITableViewCell() }
+
+        if let groupColor = group?.color {
+            cell.color = groupColor
+        }
         cell.delegate = self
 
         return cell
