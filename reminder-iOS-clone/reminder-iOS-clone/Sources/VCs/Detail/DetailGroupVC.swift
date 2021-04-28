@@ -48,6 +48,7 @@ class DetailGroupVC: UIViewController {
         super.viewDidLoad()
 
         initView()
+        initToolbar()
     }
 
 //    override func viewSafeAreaInsetsDidChange() {
@@ -89,6 +90,29 @@ extension DetailGroupVC {
                 ]
             }
         }
+    }
+
+    func initToolbar() {
+        let toolbar = UIToolbar()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+
+        view.addSubview(toolbar)
+
+        toolbar.backgroundColor = .clear
+
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        toolbar.leadingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.leadingAnchor, multiplier: 0).isActive = true
+        toolbar.bottomAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.bottomAnchor, multiplier: 0).isActive = true
+        toolbar.trailingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.trailingAnchor, multiplier: 0).isActive = true
+
+        let plusButton = UIButton(type: .system)
+        plusButton.setTitle("  새로운 미리 알림", for: .normal)
+        plusButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+        plusButton.sizeToFit()
+
+        let addReminder = UIBarButtonItem(customView: plusButton)
+
+        toolbar.setItems([addReminder, flexibleSpace], animated: true)
     }
 }
 
