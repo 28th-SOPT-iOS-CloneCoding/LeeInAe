@@ -49,6 +49,7 @@ class DetailGroupVC: UIViewController {
 
         initView()
         initToolbar()
+        initBarButtonItem()
     }
 
 //    override func viewSafeAreaInsetsDidChange() {
@@ -113,6 +114,30 @@ extension DetailGroupVC {
         let addReminder = UIBarButtonItem(customView: plusButton)
 
         toolbar.setItems([addReminder, flexibleSpace], animated: true)
+    }
+
+    func initBarButtonItem() {
+        let rightButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"))
+
+        let trashButton = UIButton()
+        trashButton.setImage(UIImage(systemName: "trash"), for: .normal)
+        trashButton.titleLabel?.text = "목록 삭제"
+        trashButton.tintColor = .red
+
+        let barButtonMenu = UIMenu(title: "", children: [
+            UIAction(title: NSLocalizedString("이름 및 모양", comment: ""), image: UIImage(systemName: "pencil"), handler: menuHandler),
+            UIAction(title: NSLocalizedString("목록 공유", comment: ""), image: UIImage(systemName: "person.crop.circle.badge.plus"), handler: menuHandler),
+            UIAction(title: NSLocalizedString("미리 알림 선택...", comment: ""), image: UIImage(systemName: "checkmark.circle"), handler: menuHandler),
+            UIAction(title: NSLocalizedString("완료된 항목 보기", comment: ""), image: UIImage(systemName: "eye"), handler: menuHandler),
+            UIAction(title: NSLocalizedString("목록 삭제", comment: ""), image: UIImage(systemName: "trash")?.withTintColor(.red, renderingMode: .alwaysOriginal), handler: menuHandler)
+        ])
+
+        rightButton.menu = barButtonMenu
+        navigationItem.rightBarButtonItem = rightButton
+    }
+
+    func menuHandler(action: UIAction) {
+        Swift.debugPrint("Menu handler: \(action.title)")
     }
 }
 
