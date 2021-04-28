@@ -167,31 +167,7 @@ extension DetailGroupVC: UITableViewDataSource {
         if let groupColor = group?.color {
             cell.color = groupColor
         }
-        cell.delegate = self
-
+        cell.resignFirstResponder()
         return cell
-    }
-}
-
-// FIXME: - 동작 안 함..
-
-// MARK: - DetailGroupCellDelegate
-
-extension DetailGroupVC: DetailGroupCellDelegate {
-    func updateHeightRow(_ cell: DetailGroupCell, _ textView: UITextView) {
-        let size = textView.bounds.size
-        let newSize = groupTableView.sizeThatFits(CGSize(width: size.width, height: CGFloat.greatestFiniteMagnitude))
-
-        if size.height != newSize.height {
-            print(size.height, newSize.height)
-            UIView.setAnimationsEnabled(false)
-            groupTableView.beginUpdates()
-            groupTableView.endUpdates()
-            UIView.setAnimationsEnabled(true)
-
-            if let idx = groupTableView.indexPath(for: cell) {
-                groupTableView.scrollToRow(at: idx, at: .bottom, animated: true)
-            }
-        }
     }
 }

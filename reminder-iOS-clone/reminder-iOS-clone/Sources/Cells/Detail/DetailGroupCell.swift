@@ -38,7 +38,22 @@ class DetailGroupCell: UITableViewCell {
 
         titleTextView.text = "새로운 미리 알림"
         titleTextView.isScrollEnabled = false
-        titleTextView.delegate = self
+
+        let bar = UIToolbar()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+
+        let calendar = UIBarButtonItem(image: UIImage(systemName: "calendar.badge.clock"), style: .plain, target: self, action: nil)
+
+        let gps = UIBarButtonItem(image: UIImage(systemName: "location"), style: .plain, target: self, action: nil)
+
+        let flag = UIBarButtonItem(image: UIImage(systemName: "flag"), style: .plain, target: self, action: nil)
+
+        let camera = UIBarButtonItem(image: UIImage(systemName: "camera"), style: .plain, target: self, action: nil)
+
+        bar.items = [flexibleSpace, calendar, flexibleSpace, gps, flexibleSpace, flag, flexibleSpace, camera, flexibleSpace]
+        bar.tintColor = .black
+        bar.sizeToFit()
+        titleTextView.inputAccessoryView = bar
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

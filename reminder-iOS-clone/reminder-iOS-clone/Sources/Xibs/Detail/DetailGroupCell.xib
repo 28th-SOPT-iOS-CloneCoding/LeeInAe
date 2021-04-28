@@ -42,10 +42,11 @@
                     </textView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="AXw-e2-lCP" firstAttribute="top" secondItem="zsF-Pu-N9r" secondAttribute="top" id="0ty-BK-Hi5"/>
                     <constraint firstItem="AXw-e2-lCP" firstAttribute="centerY" secondItem="zsF-Pu-N9r" secondAttribute="centerY" id="A8b-dE-JKQ"/>
-                    <constraint firstItem="AXw-e2-lCP" firstAttribute="height" secondItem="zsF-Pu-N9r" secondAttribute="height" id="CKF-u1-2dE"/>
                     <constraint firstItem="7kM-4f-ofk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="D5E-Rx-EH6"/>
                     <constraint firstItem="zsF-Pu-N9r" firstAttribute="leading" secondItem="7kM-4f-ofk" secondAttribute="leading" id="HTY-wd-dde"/>
+                    <constraint firstItem="AXw-e2-lCP" firstAttribute="bottom" secondItem="zsF-Pu-N9r" secondAttribute="bottom" id="XpA-Bw-SUP"/>
                     <constraint firstItem="zsF-Pu-N9r" firstAttribute="height" secondItem="7kM-4f-ofk" secondAttribute="height" id="YFE-GX-WZq"/>
                     <constraint firstItem="zsF-Pu-N9r" firstAttribute="top" secondItem="7kM-4f-ofk" secondAttribute="top" id="cah-Ab-oaG"/>
                     <constraint firstItem="zsF-Pu-N9r" firstAttribute="bottom" secondItem="7kM-4f-ofk" secondAttribute="bottom" id="dRP-Ua-mvq"/>
