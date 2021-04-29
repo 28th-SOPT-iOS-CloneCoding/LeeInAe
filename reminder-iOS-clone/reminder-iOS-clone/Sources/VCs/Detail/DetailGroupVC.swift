@@ -143,8 +143,16 @@ extension DetailGroupVC {
 
 extension DetailGroupVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.resignFirstResponder()
+        print("select")
+        guard let cell = tableView.cellForRow(at: indexPath) as? DetailGroupCell else { return }
+        cell.isSelected = true
     }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? DetailGroupCell else { return }
+        cell.isSelected = false
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -167,7 +175,6 @@ extension DetailGroupVC: UITableViewDataSource {
         if let groupColor = group?.color {
             cell.color = groupColor
         }
-        cell.resignFirstResponder()
         return cell
     }
 }

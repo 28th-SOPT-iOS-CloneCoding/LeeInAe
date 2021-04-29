@@ -43,6 +43,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="AXw-e2-lCP" firstAttribute="top" secondItem="zsF-Pu-N9r" secondAttribute="top" id="0ty-BK-Hi5"/>
+                    <constraint firstAttribute="trailing" secondItem="AXw-e2-lCP" secondAttribute="trailing" constant="10" id="99G-NJ-HKb"/>
                     <constraint firstItem="AXw-e2-lCP" firstAttribute="centerY" secondItem="zsF-Pu-N9r" secondAttribute="centerY" id="A8b-dE-JKQ"/>
                     <constraint firstItem="7kM-4f-ofk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="D5E-Rx-EH6"/>
                     <constraint firstItem="zsF-Pu-N9r" firstAttribute="leading" secondItem="7kM-4f-ofk" secondAttribute="leading" id="HTY-wd-dde"/>
@@ -51,7 +52,6 @@
                     <constraint firstItem="zsF-Pu-N9r" firstAttribute="top" secondItem="7kM-4f-ofk" secondAttribute="top" id="cah-Ab-oaG"/>
                     <constraint firstItem="zsF-Pu-N9r" firstAttribute="bottom" secondItem="7kM-4f-ofk" secondAttribute="bottom" id="dRP-Ua-mvq"/>
                     <constraint firstAttribute="bottom" secondItem="7kM-4f-ofk" secondAttribute="bottom" constant="10" id="dr2-Se-hyZ"/>
-                    <constraint firstAttribute="trailing" secondItem="AXw-e2-lCP" secondAttribute="trailing" constant="10" id="hAh-Sk-6MY"/>
                     <constraint firstItem="7kM-4f-ofk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="m8k-3x-Lsz"/>
                     <constraint firstItem="zsF-Pu-N9r" firstAttribute="width" secondItem="7kM-4f-ofk" secondAttribute="width" id="y8d-Wx-Fhh"/>
                     <constraint firstItem="AXw-e2-lCP" firstAttribute="leading" secondItem="7kM-4f-ofk" secondAttribute="trailing" constant="10" id="zVh-vX-KNx"/>

@@ -25,6 +25,18 @@ class DetailGroupCell: UITableViewCell {
         }
     }
 
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                let flagImage = UIImageView(image: UIImage(systemName: "info.circle"))
+
+                accessoryView = flagImage
+            } else {
+                accessoryView = nil
+            }
+        }
+    }
+
     var delegate: DetailGroupCellDelegate?
 
     override func awakeFromNib() {
@@ -36,8 +48,13 @@ class DetailGroupCell: UITableViewCell {
 
         radioButton.isChecked = false
 
+        titleTextView.delegate = self
         titleTextView.text = "새로운 미리 알림"
         titleTextView.isScrollEnabled = false
+        titleTextView.autocorrectionType = .no
+        titleTextView.isUserInteractionEnabled = true
+        titleTextView.isMultipleTouchEnabled = false
+        titleTextView.keyboardDismissMode = .interactive
 
         let bar = UIToolbar()
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
