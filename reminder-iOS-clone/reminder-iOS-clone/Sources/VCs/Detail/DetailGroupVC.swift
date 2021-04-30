@@ -57,6 +57,7 @@ class DetailGroupVC: UIViewController {
 //        print(navigationController?.navigationBar.bounds)
 //        print(groupTableView.contentInset)
 //        print(groupTableView.adjustedContentInset)
+//        print(view.safeAreaInsets)
 //    }
 }
 
@@ -104,10 +105,19 @@ extension DetailGroupVC {
         toolbar.bottomAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.bottomAnchor, multiplier: 0).isActive = true
         toolbar.trailingAnchor.constraint(equalToSystemSpacingAfter: view.safeAreaLayoutGuide.trailingAnchor, multiplier: 0).isActive = true
 
+        let addAction = UIAction { _ in
+            if let count = self.group?.todos.count {
+                self.group?.todos.append(Todo(title: "메롱", memo: "", url: "", flag: false))
+
+                self.groupTableView.insertRows(at: [IndexPath(row: count, section: 0)], with: .none)
+            }
+        }
+
         let plusButton = UIButton(type: .system)
         plusButton.setTitle("  새로운 미리 알림", for: .normal)
         plusButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
         plusButton.sizeToFit()
+        plusButton.addAction(addAction, for: .touchUpInside)
 
         let addReminder = UIBarButtonItem(customView: plusButton)
 
@@ -145,6 +155,7 @@ extension DetailGroupVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("select")
         guard let cell = tableView.cellForRow(at: indexPath) as? DetailGroupCell else { return }
+        cell.titleTextView.resignFirstResponder()
         cell.isSelected = true
     }
 
@@ -152,14 +163,13 @@ extension DetailGroupVC: UITableViewDelegate {
         guard let cell = tableView.cellForRow(at: indexPath) as? DetailGroupCell else { return }
         cell.isSelected = false
     }
-    
 }
 
 // MARK: - UITableViewDataSource
 
 extension DetailGroupVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        group?.todos.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

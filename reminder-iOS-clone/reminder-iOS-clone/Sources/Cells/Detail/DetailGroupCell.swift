@@ -52,7 +52,7 @@ class DetailGroupCell: UITableViewCell {
         titleTextView.text = "새로운 미리 알림"
         titleTextView.isScrollEnabled = false
         titleTextView.autocorrectionType = .no
-        titleTextView.isUserInteractionEnabled = true
+        titleTextView.isUserInteractionEnabled = false
         titleTextView.isMultipleTouchEnabled = false
         titleTextView.keyboardDismissMode = .interactive
 
