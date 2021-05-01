@@ -25,38 +25,80 @@ class DetailGroupVC: UIViewController {
     @IBOutlet var groupTableView: UITableView!
 
 //    override func viewWillAppear(_ animated: Bool) {
-//        print("viewWillAppear")
+//        print("======================================")
+//        print("viewWillAppear\n\n")
+//        print(navigationItem.title)
+//        print(navigationController?.navigationBar.frame)
+//        print()
 //        print(groupTableView.contentInset)
 //        print(groupTableView.adjustedContentInset)
+//        print(groupTableView.bounds)
+//        print()
+//        print(view.safeAreaInsets)
+//        print("offset", groupTableView.contentOffset)
 //    }
 //
 //    override func viewDidLayoutSubviews() {
-//        print("viewDidLayoutSubviews")
-//        print(title)
-//        print(groupTableView.adjustedContentInset)
+//        print("======================================")
+//        print("viewDidLayoutSubviews\n\n")
+//        print(navigationItem.title)
+//        print(navigationController?.navigationBar.frame)
+//        print()
 //        print(groupTableView.contentInset)
+//        print(groupTableView.adjustedContentInset)
+//        print(groupTableView.bounds)
+//        print()
+//        print(view.safeAreaInsets)
+//        print("offset", groupTableView.contentOffset)
 //    }
 //
 //    override func viewWillLayoutSubviews() {
-//        print("viewWillLayoutSubviews")
+//        print("======================================")
+//        print("viewWillLayoutSubviews\n\n")
+//        print(navigationItem.title)
+//        print(navigationController?.navigationBar.frame)
+//        print()
 //        print(groupTableView.contentInset)
 //        print(groupTableView.adjustedContentInset)
-//    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        initView()
-        initToolbar()
-        initBarButtonItem()
-    }
-
-//    override func viewSafeAreaInsetsDidChange() {
-//        print("viewSafeAreaInsetsDidChange")
-//        print(navigationController?.navigationBar.bounds)
-//        print(groupTableView.contentInset)
-//        print(groupTableView.adjustedContentInset)
+//        print(groupTableView.bounds)
+//        print()
 //        print(view.safeAreaInsets)
+//        print("offset", groupTableView.contentOffset)
+//    }
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        initView()
+//        initToolbar()
+//        initBarButtonItem()
+//
+//        print("======================================")
+//        print("viewDidLoad\n\n")
+//        print(navigationItem.title)
+//        print(navigationController?.navigationBar.frame)
+//        print()
+//        print(groupTableView.contentInset)
+//        print(groupTableView.adjustedContentInset)
+//        print(groupTableView.bounds)
+//        print()
+//        print(view.safeAreaInsets)
+//        print("offset", groupTableView.contentOffset)
+//
+//    }
+//
+//    override func viewSafeAreaInsetsDidChange() {
+//        print("======================================")
+//        print("viewSafeAreaInsetsDidChange\n\n")
+//        print(navigationItem.title)
+//        print(navigationController?.navigationBar.frame)
+//        print()
+//        print(groupTableView.contentInset)
+//        print(groupTableView.adjustedContentInset)
+//        print(groupTableView.bounds)
+//        print()
+//        print(view.safeAreaInsets)
+//        print("offset", groupTableView.contentOffset)
 //    }
 }
 
@@ -75,7 +117,7 @@ extension DetailGroupVC {
         groupTableView.delegate = self
         groupTableView.dataSource = self
 
-//        groupTableView.contentInsetAdjustmentBehavior = .never
+        groupTableView.contentInsetAdjustmentBehavior = .never
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = group?.title
