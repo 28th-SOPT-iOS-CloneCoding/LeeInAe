@@ -29,13 +29,12 @@ class DetailGroupVC: UIViewController {
 //        print(groupTableView.contentInset)
 //        print(groupTableView.adjustedContentInset)
 //    }
-
 //
 //    override func viewDidLayoutSubviews() {
 //        print("viewDidLayoutSubviews")
-//        print(self.title)
-//        print(self.groupTableView.adjustedContentInset)
-//        print(self.groupTableView.contentInset)
+//        print(title)
+//        print(groupTableView.adjustedContentInset)
+//        print(groupTableView.contentInset)
 //    }
 //
 //    override func viewWillLayoutSubviews() {
@@ -76,7 +75,7 @@ extension DetailGroupVC {
         groupTableView.delegate = self
         groupTableView.dataSource = self
 
-        groupTableView.contentInsetAdjustmentBehavior = .never
+//        groupTableView.contentInsetAdjustmentBehavior = .never
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = group?.title
@@ -93,7 +92,10 @@ extension DetailGroupVC {
     }
 
     func initToolbar() {
-        let toolbar = UIToolbar()
+        /// 레이아웃 제약조건이 중복되어 변경함 (width가 0으로 들어감 -> fixed 해준다)
+        /// 혹은 updateConstraintsIfNeeded() 호출
+        let toolbar = UIToolbar(frame: CGRect(origin: .zero, size: CGSize(width: view.bounds.width, height: 44)))
+
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 
         view.addSubview(toolbar)
