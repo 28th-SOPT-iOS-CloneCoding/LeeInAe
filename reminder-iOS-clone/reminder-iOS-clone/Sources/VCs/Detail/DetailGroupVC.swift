@@ -141,6 +141,9 @@ extension DetailGroupVC {
                 self.group?.todos.append(Todo(title: "메롱", memo: "", url: "", flag: false))
 
                 self.groupTableView.insertRows(at: [IndexPath(row: count, section: 0)], with: .none)
+
+                guard let cell = self.groupTableView.cellForRow(at: IndexPath(row: count, section: 0)) as? DetailGroupCell else { return }
+                cell.titleTextView.becomeFirstResponder()
             }
         }
 
