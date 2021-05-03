@@ -66,26 +66,14 @@ class DetailGroupVC: UIViewController {
 //        print("offset", groupTableView.contentOffset)
 //    }
 //
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        initView()
-//        initToolbar()
-//        initBarButtonItem()
-//
-//        print("======================================")
-//        print("viewDidLoad\n\n")
-//        print(navigationItem.title)
-//        print(navigationController?.navigationBar.frame)
-//        print()
-//        print(groupTableView.contentInset)
-//        print(groupTableView.adjustedContentInset)
-//        print(groupTableView.bounds)
-//        print()
-//        print(view.safeAreaInsets)
-//        print("offset", groupTableView.contentOffset)
-//
-//    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        initView()
+        initToolbar()
+        initBarButtonItem()
+    }
+
 //
 //    override func viewSafeAreaInsetsDidChange() {
 //        print("======================================")
@@ -119,9 +107,8 @@ extension DetailGroupVC {
 
         groupTableView.contentInsetAdjustmentBehavior = .never
 
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = group?.title
-        navigationController?.navigationItem.largeTitleDisplayMode = .always
+        navigationItem.largeTitleDisplayMode = .always
 
         if let currColor = color {
             if #available(iOS 11.0, *) {

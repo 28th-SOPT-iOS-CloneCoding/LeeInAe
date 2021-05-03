@@ -44,6 +44,8 @@ extension MainVC {
     func initView() {
         navigationItem.rightBarButtonItem = editButton
         navigationItem.searchController = searchController
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .never
 
         let backBarButtonItem = UIBarButtonItem(title: "목록", style: .plain, target: self, action: nil)
         navigationItem.backBarButtonItem = backBarButtonItem
