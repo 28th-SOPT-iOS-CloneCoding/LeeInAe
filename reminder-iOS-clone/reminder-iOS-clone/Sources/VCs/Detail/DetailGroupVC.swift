@@ -14,6 +14,15 @@ class DetailGroupVC: UIViewController {
 
     var titleLabel: String?
     var color: UIColor?
+    // FIXME: - 1개 -> 0개 처리가 안돰
+    var selectedItemCount = 0 {
+        willSet {
+            if let count = groupTableView.indexPathsForSelectedRows?.count {
+                navigationItem.title = "선택된 항목 \(count)개"
+            }
+        }
+    }
+
     var group: Group? {
         didSet {
             color = group?.color
@@ -104,6 +113,7 @@ extension DetailGroupVC {
         groupTableView.separatorStyle = .none
         groupTableView.delegate = self
         groupTableView.dataSource = self
+        groupTableView.allowsMultipleSelectionDuringEditing = true
 
         groupTableView.contentInsetAdjustmentBehavior = .never
 
@@ -144,6 +154,7 @@ extension DetailGroupVC {
 
                 guard let cell = self.groupTableView.cellForRow(at: IndexPath(row: count, section: 0)) as? DetailGroupCell else { return }
                 cell.titleTextView.becomeFirstResponder()
+                cell.titleTextView.text = .none
             }
         }
 
@@ -169,12 +180,18 @@ extension DetailGroupVC {
         let barButtonMenu = UIMenu(title: "", children: [
             UIAction(title: NSLocalizedString("이름 및 모양", comment: ""), image: UIImage(systemName: "pencil"), handler: presentAddListVC),
             UIAction(title: NSLocalizedString("목록 공유", comment: ""), image: UIImage(systemName: "person.crop.circle.badge.plus"), handler: menuHandler),
-            UIAction(title: NSLocalizedString("미리 알림 선택...", comment: ""), image: UIImage(systemName: "checkmark.circle"), handler: menuHandler),
+            UIAction(title: NSLocalizedString("미리 알림 선택...", comment: ""), image: UIImage(systemName: "checkmark.circle"), handler: selectReminder),
             UIAction(title: NSLocalizedString("완료된 항목 보기", comment: ""), image: UIImage(systemName: "eye"), handler: menuHandler),
             UIAction(title: NSLocalizedString("목록 삭제", comment: ""), image: UIImage(systemName: "trash")?.withTintColor(.red, renderingMode: .alwaysOriginal), handler: menuHandler)
         ])
 
         rightButton.menu = barButtonMenu
+        navigationItem.rightBarButtonItem = rightButton
+    }
+
+    func initCompleteButton() {
+        let rightButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(completeEditTable(_:)))
+
         navigationItem.rightBarButtonItem = rightButton
     }
 
@@ -188,6 +205,41 @@ extension DetailGroupVC {
 
         present(addListVC, animated: true, completion: nil)
     }
+
+    func selectReminder(action: UIAction) {
+        navigationItem.title = "선택된 항목 \(selectedItemCount)개"
+        initCompleteButton()
+
+        groupTableView.isEditing = true
+        groupTableView.setEditing(true, animated: true)
+
+        isHiddenRadioButton(true)
+    }
+
+    func isHiddenRadioButton(_ isHidden: Bool) {
+        guard let cells = groupTableView.visibleCells as? [DetailGroupCell] else {
+            return
+        }
+
+        cells.map {
+            $0.circleView.isHidden = isHidden
+            $0.radioButton.isHidden = isHidden
+        }
+    }
+}
+
+// MARK: - @objc
+
+extension DetailGroupVC {
+    @objc func completeEditTable(_ sender: UIButton) {
+        navigationItem.title = group?.title
+        initBarButtonItem()
+
+        groupTableView.isEditing = false
+        groupTableView.setEditing(false, animated: true)
+
+        isHiddenRadioButton(false)
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -197,11 +249,15 @@ extension DetailGroupVC: UITableViewDelegate {
         guard let cell = tableView.cellForRow(at: indexPath) as? DetailGroupCell else { return }
         cell.titleTextView.becomeFirstResponder()
         cell.isSelected = true
+
+        selectedItemCount += 1
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? DetailGroupCell else { return }
         cell.isSelected = false
+
+        selectedItemCount -= 1
     }
 }
 
@@ -214,6 +270,7 @@ extension DetailGroupVC: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailGroupCell.identifier) as? DetailGroupCell else { return UITableViewCell() }
+        cell.selectionStyle = .blue
 
         // FIXME: - height... 다른 방식 알아보기
         let bottomBorder = CALayer()
