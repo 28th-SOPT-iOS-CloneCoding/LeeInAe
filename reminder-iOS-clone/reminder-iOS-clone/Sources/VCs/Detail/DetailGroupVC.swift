@@ -184,9 +184,8 @@ extension DetailGroupVC {
 
 extension DetailGroupVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("select")
         guard let cell = tableView.cellForRow(at: indexPath) as? DetailGroupCell else { return }
-        cell.titleTextView.resignFirstResponder()
+        cell.titleTextView.becomeFirstResponder()
         cell.isSelected = true
     }
 
