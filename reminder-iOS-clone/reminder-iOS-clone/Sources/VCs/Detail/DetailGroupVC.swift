@@ -128,6 +128,9 @@ extension DetailGroupVC {
                 ]
             }
         }
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchTableView(_:)))
+        groupTableView.addGestureRecognizer(tapGesture)
     }
 
     func initToolbar() {
@@ -239,6 +242,13 @@ extension DetailGroupVC {
         groupTableView.setEditing(false, animated: true)
 
         isHiddenRadioButton(false)
+    }
+
+    /// cancelsTouchesInView: 탭 제스처가 제스처를 인식하면 나머지 터치 정보를 뷰로 전달하지 않고 이전에 전달된 터치는 취소됨 (기본값 true일 때)
+    /// false인 경우 제스처 인식 후에도  터치 정보를 뷰로도 전달함
+    @objc func touchTableView(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+        sender.cancelsTouchesInView = false
     }
 }
 
