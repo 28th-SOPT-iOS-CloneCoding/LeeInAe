@@ -164,7 +164,7 @@ extension DetailGroupVC {
         trashButton.tintColor = .red
 
         let barButtonMenu = UIMenu(title: "", children: [
-            UIAction(title: NSLocalizedString("이름 및 모양", comment: ""), image: UIImage(systemName: "pencil"), handler: menuHandler),
+            UIAction(title: NSLocalizedString("이름 및 모양", comment: ""), image: UIImage(systemName: "pencil"), handler: presentAddListVC),
             UIAction(title: NSLocalizedString("목록 공유", comment: ""), image: UIImage(systemName: "person.crop.circle.badge.plus"), handler: menuHandler),
             UIAction(title: NSLocalizedString("미리 알림 선택...", comment: ""), image: UIImage(systemName: "checkmark.circle"), handler: menuHandler),
             UIAction(title: NSLocalizedString("완료된 항목 보기", comment: ""), image: UIImage(systemName: "eye"), handler: menuHandler),
@@ -177,6 +177,13 @@ extension DetailGroupVC {
 
     func menuHandler(action: UIAction) {
         Swift.debugPrint("Menu handler: \(action.title)")
+    }
+
+    func presentAddListVC(action: UIAction) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let addListVC = storyboard.instantiateViewController(withIdentifier: AddListVC.identifier) as? AddListVC else { return }
+
+        present(addListVC, animated: true, completion: nil)
     }
 }
 

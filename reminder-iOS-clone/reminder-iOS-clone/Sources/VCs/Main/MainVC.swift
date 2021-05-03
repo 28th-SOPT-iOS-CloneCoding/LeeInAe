@@ -50,7 +50,7 @@ extension MainVC {
         let backBarButtonItem = UIBarButtonItem(title: "목록", style: .plain, target: self, action: nil)
         navigationItem.backBarButtonItem = backBarButtonItem
 
-        let toolbar = UIToolbar()
+        let toolbar = UIToolbar(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 
         view.addSubview(toolbar)
