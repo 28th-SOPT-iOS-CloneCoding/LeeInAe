@@ -47,9 +47,8 @@ extension DetailMenuVC {
         let detailGroupCellNib = UINib(nibName: DetailGroupCell.identifier, bundle: nil)
         menuTableView.register(detailGroupCellNib, forCellReuseIdentifier: DetailGroupCell.identifier)
 
-        menuTableView.separatorStyle = .none
-//        menuTableView.delegate = self
-//        menuTableView.dataSource = self
+        menuTableView.delegate = self
+        menuTableView.dataSource = self
         menuTableView.allowsMultipleSelectionDuringEditing = true
 
         menuTableView.contentInsetAdjustmentBehavior = .never
@@ -183,5 +182,35 @@ extension DetailMenuVC {
     @objc func touchTableView(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
         sender.cancelsTouchesInView = false
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension DetailMenuVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        UIView()
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        UIView()
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension DetailMenuVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        group?.todos.count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailGroupCell.identifier) as? DetailGroupCell else { return UITableViewCell() }
+        cell.selectionStyle = .blue
+
+        if let groupColor = group?.color {
+            cell.color = groupColor
+        }
+        return cell
     }
 }
