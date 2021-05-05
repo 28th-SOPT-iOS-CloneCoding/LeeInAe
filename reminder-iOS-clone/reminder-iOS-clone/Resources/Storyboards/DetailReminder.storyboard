@@ -38,6 +38,36 @@
             </objects>
             <point key="canvasLocation" x="-29" y="0.0"/>
         </scene>
+        <!--Detail MenuVC-->
+        <scene sceneID="C58-SZ-xFO">
+            <objects>
+                <viewController storyboardIdentifier="DetailMenuVC" id="mSL-dH-9Sc" customClass="DetailMenuVC" customModule="reminder_iOS_clone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OQv-wj-AHK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZHj-s0-oLa">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="AKQ-ra-Fui"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="AKQ-ra-Fui" firstAttribute="trailing" secondItem="ZHj-s0-oLa" secondAttribute="trailing" id="LYu-df-ni0"/>
+                            <constraint firstItem="AKQ-ra-Fui" firstAttribute="bottom" secondItem="ZHj-s0-oLa" secondAttribute="bottom" id="Oii-2B-WEb"/>
+                            <constraint firstItem="ZHj-s0-oLa" firstAttribute="leading" secondItem="AKQ-ra-Fui" secondAttribute="leading" id="ar1-bU-FOF"/>
+                            <constraint firstItem="ZHj-s0-oLa" firstAttribute="top" secondItem="AKQ-ra-Fui" secondAttribute="top" id="bsg-Yn-tXg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="menuTableView" destination="ZHj-s0-oLa" id="FI1-tt-hDO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TwE-Fn-XQs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="713" y="0.0"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

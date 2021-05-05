@@ -12,7 +12,6 @@ class RadioButtonCell: UICollectionViewCell {
 
     @IBOutlet var colorButton: RadioButton!
 
-    // FIXME: - 스크롤에 따라 isSelected값이 변경됨
     override var isSelected: Bool {
         didSet {
             if isSelected {

@@ -72,6 +72,8 @@ extension MainVC {
         let addList = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: #selector(presentAddListVC))
 
         toolbar.setItems([addReminder, flexibleSpace, addList], animated: true)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(presentMenuView(_:)), name: NSNotification.Name("MainMenu"), object: nil)
     }
 
     func initTableView() {
@@ -112,6 +114,17 @@ extension MainVC {
         addListVC.saveDelegate = self
 
         present(addListVC, animated: true, completion: nil)
+    }
+
+    @objc func presentMenuView(_ notification: Notification) {
+        let storyboard = UIStoryboard(name: "DetailReminder", bundle: nil)
+        guard let menuVC = storyboard.instantiateViewController(identifier: DetailMenuVC.identifier) as? DetailMenuVC else { return }
+
+        if let menuGroup = notification.object as? Group {
+            menuVC.group = menuGroup
+        }
+
+        navigationController?.pushViewController(menuVC, animated: true)
     }
 }
 

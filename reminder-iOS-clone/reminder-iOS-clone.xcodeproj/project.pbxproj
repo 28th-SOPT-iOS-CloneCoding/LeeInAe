@@ -35,6 +35,7 @@
 		AB8FDCA42632568C00279E95 /* RadioButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8FDCA32632568B00279E95 /* RadioButtonCell.swift */; };
 		ABF30F2D2628A6FF008CD8FA /* AddReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF30F2C2628A6FF008CD8FA /* AddReminderVC.swift */; };
 		ABF30F312628A70C008CD8FA /* AddListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF30F302628A70C008CD8FA /* AddListVC.swift */; };
+		ABF7FF1E2641BD16007B60BB /* DetailMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF7FF1D2641BD16007B60BB /* DetailMenuVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		AB8FDCA32632568B00279E95 /* RadioButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonCell.swift; sourceTree = "<group>"; };
 		ABF30F2C2628A6FF008CD8FA /* AddReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderVC.swift; sourceTree = "<group>"; };
 		ABF30F302628A70C008CD8FA /* AddListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListVC.swift; sourceTree = "<group>"; };
+		ABF7FF1D2641BD16007B60BB /* DetailMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMenuVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				AB55FDE326329FDA00EE8713 /* DetailGroupVC.swift */,
+				ABF7FF1D2641BD16007B60BB /* DetailMenuVC.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 			files = (
 				AB87C826262ECA1500BA0AFA /* Group.swift in Sources */,
 				AB55FDE426329FDA00EE8713 /* DetailGroupVC.swift in Sources */,
+				ABF7FF1E2641BD16007B60BB /* DetailMenuVC.swift in Sources */,
 				ABF30F312628A70C008CD8FA /* AddListVC.swift in Sources */,
 				AB1D454026249C460080310E /* MainVC.swift in Sources */,
 				AB8FDC5D2630493800279E95 /* MainListCell.swift in Sources */,

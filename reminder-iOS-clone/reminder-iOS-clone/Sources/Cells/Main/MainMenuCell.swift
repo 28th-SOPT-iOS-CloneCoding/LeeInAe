@@ -53,6 +53,8 @@ class MainMenuCell: UITableViewCell {
     @objc func tapView(_ gesture: ItemTapGesture) {
         print("tap")
         print(gesture.group)
+
+        NotificationCenter.default.post(name: NSNotification.Name("MainMenu"), object: gesture.group)
     }
 
     override func awakeFromNib() {
