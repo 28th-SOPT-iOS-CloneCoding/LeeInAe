@@ -21,6 +21,16 @@ class DetailMenuVC: UIViewController {
         }
     }
 
+    var selectedCount = 0 {
+        willSet(newValue) {
+            if newValue == 0 {
+                navigationItem.title = group?.title
+            } else {
+                navigationItem.title = "선택된 항목 \(newValue)"
+            }
+        }
+    }
+
     // MARK: - IBOutlets
 
     @IBOutlet var menuTableView: UITableView!
@@ -117,7 +127,7 @@ extension DetailMenuVC {
         trashButton.tintColor = .red
 
         let barButtonMenu = UIMenu(title: "", children: [
-            UIAction(title: NSLocalizedString("미리 알림 선택...", comment: ""), image: UIImage(systemName: "checkmark.circle"), handler: menuHandler),
+            UIAction(title: NSLocalizedString("미리 알림 선택...", comment: ""), image: UIImage(systemName: "checkmark.circle"), handler: selectReminder),
             UIAction(title: NSLocalizedString("완료된 항목 보기", comment: ""), image: UIImage(systemName: "eye"), handler: menuHandler)
         ])
 
@@ -142,15 +152,14 @@ extension DetailMenuVC {
         present(addListVC, animated: true, completion: nil)
     }
 
-//    func selectReminder(action: UIAction) {
-//        navigationItem.title = "선택된 항목 \(selectedItemCount)개"
-//        initCompleteButton()
-//
-//        groupTableView.isEditing = true
-//        groupTableView.setEditing(true, animated: true)
-//
-//        isHiddenRadioButton(true)
-//    }
+    func selectReminder(action: UIAction) {
+        initCompleteButton()
+
+        menuTableView.isEditing = true
+        menuTableView.setEditing(true, animated: true)
+
+        isHiddenRadioButton(true)
+    }
 
     func isHiddenRadioButton(_ isHidden: Bool) {
         guard let cells = menuTableView.visibleCells as? [DetailGroupCell] else {
@@ -200,6 +209,12 @@ extension DetailMenuVC: UITableViewDelegate {
         guard let cell = tableView.cellForRow(at: indexPath) as? DetailGroupCell else { return }
         cell.titleTextView.becomeFirstResponder()
         cell.isSelected = true
+
+        selectedCount = tableView.indexPathsForSelectedRows?.count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        selectedCount = tableView.indexPathsForSelectedRows?.count ?? 0
     }
 }
 

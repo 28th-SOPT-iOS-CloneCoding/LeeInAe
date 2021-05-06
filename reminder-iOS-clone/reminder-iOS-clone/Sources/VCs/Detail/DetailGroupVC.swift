@@ -14,11 +14,13 @@ class DetailGroupVC: UIViewController {
 
     var titleLabel: String?
     var color: UIColor?
-    // FIXME: - 1개 -> 0개 처리가 안돰
-    var selectedItemCount = 0 {
-        willSet {
-            if let count = groupTableView.indexPathsForSelectedRows?.count {
-                navigationItem.title = "선택된 항목 \(count)개"
+
+    var selectedCount = 0 {
+        willSet(newValue) {
+            if newValue == 0 {
+                navigationItem.title = group?.title
+            } else {
+                navigationItem.title = "선택된 항목 \(newValue)"
             }
         }
     }
@@ -210,7 +212,6 @@ extension DetailGroupVC {
     }
 
     func selectReminder(action: UIAction) {
-        navigationItem.title = "선택된 항목 \(selectedItemCount)개"
         initCompleteButton()
 
         groupTableView.isEditing = true
@@ -260,14 +261,14 @@ extension DetailGroupVC: UITableViewDelegate {
         cell.titleTextView.becomeFirstResponder()
         cell.isSelected = true
 
-        selectedItemCount += 1
+        selectedCount = tableView.indexPathsForSelectedRows?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? DetailGroupCell else { return }
         cell.isSelected = false
 
-        selectedItemCount -= 1
+        selectedCount = tableView.indexPathsForSelectedRows?.count ?? 0
     }
 }
 
