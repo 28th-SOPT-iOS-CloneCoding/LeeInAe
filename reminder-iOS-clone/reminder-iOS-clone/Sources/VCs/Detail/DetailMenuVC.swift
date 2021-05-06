@@ -23,7 +23,7 @@ class DetailMenuVC: UIViewController {
 
     var selectedCount = 0 {
         willSet(newValue) {
-            if newValue == 0 {
+            if newValue == 0, !menuTableView.isEditing {
                 navigationItem.title = group?.title
             } else {
                 navigationItem.title = "선택된 항목 \(newValue)"
@@ -210,11 +210,19 @@ extension DetailMenuVC: UITableViewDelegate {
         cell.titleTextView.becomeFirstResponder()
         cell.isSelected = true
 
-        selectedCount = tableView.indexPathsForSelectedRows?.count ?? 0
+        if tableView.isEditing {
+            selectedCount = tableView.indexPathsForSelectedRows?.count ?? 0
+        }
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        selectedCount = tableView.indexPathsForSelectedRows?.count ?? 0
+        if tableView.isEditing {
+            selectedCount = tableView.indexPathsForSelectedRows?.count ?? 0
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        selectedCount = 0
     }
 }
 
