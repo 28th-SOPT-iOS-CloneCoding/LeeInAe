@@ -195,6 +195,12 @@ extension DetailMenuVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         UIView()
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? DetailGroupCell else { return }
+        cell.titleTextView.becomeFirstResponder()
+        cell.isSelected = true
+    }
 }
 
 // MARK: - UITableViewDataSource
