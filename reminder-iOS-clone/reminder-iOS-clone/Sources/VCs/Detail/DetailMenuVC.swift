@@ -31,6 +31,18 @@ class DetailMenuVC: UIViewController {
         }
     }
 
+    var reminderCount = 0 {
+        willSet(newValue) {
+            if newValue == 0 {
+                showEmptyView()
+            } else {
+                hideEmptyLabel()
+            }
+        }
+    }
+
+    lazy var emptyLabel = UILabel()
+
     // MARK: - IBOutlets
 
     @IBOutlet var menuTableView: UITableView!
@@ -41,8 +53,13 @@ class DetailMenuVC: UIViewController {
         super.viewDidLoad()
 
         initView()
-        initToolbar()
         initBarButtonItem()
+
+        guard let currGroup = group else { return }
+        reminderCount = currGroup.todos.count
+        if currGroup.type == GroupType.today {
+            initToolbar()
+        }
     }
 }
 
@@ -97,6 +114,7 @@ extension DetailMenuVC {
 
         let addAction = UIAction { _ in
             if let count = self.group?.todos.count {
+                self.reminderCount = count + 1
                 self.group?.todos.append(Todo(title: "메롱", memo: "", url: "", flag: false))
 
                 self.menuTableView.insertRows(at: [IndexPath(row: count, section: 0)], with: .none)
@@ -139,6 +157,22 @@ extension DetailMenuVC {
         let rightButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(completeEditTable(_:)))
 
         navigationItem.rightBarButtonItem = rightButton
+    }
+
+    func showEmptyView() {
+        emptyLabel.text = "미리 알림 없음"
+        emptyLabel.textColor = .lightGray
+        emptyLabel.font = UIFont.systemFont(ofSize: 15)
+        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(emptyLabel)
+
+        emptyLabel.centerXAnchor.constraint(equalTo: menuTableView.centerXAnchor).isActive = true
+        emptyLabel.centerYAnchor.constraint(equalTo: menuTableView.centerYAnchor).isActive = true
+    }
+
+    func hideEmptyLabel() {
+        emptyLabel.removeFromSuperview()
     }
 
     func menuHandler(action: UIAction) {
@@ -199,6 +233,10 @@ extension DetailMenuVC {
 extension DetailMenuVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         UIView()
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        1
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

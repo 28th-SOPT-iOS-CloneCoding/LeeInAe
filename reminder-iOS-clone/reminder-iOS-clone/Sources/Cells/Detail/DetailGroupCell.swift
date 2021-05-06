@@ -80,6 +80,7 @@ class DetailGroupCell: UITableViewCell {
     // FIXME: - color 로컬 변수로 바꾸기 + Noti로 누름 처리 + table delete
     @IBAction func touchUpRadionBtn(_ sender: Any) {
         print("눌렀슴니다요")
+        print(sender)
         radioButton.touchUpButton(color: color, borderSize: 1.4)
     }
 }
