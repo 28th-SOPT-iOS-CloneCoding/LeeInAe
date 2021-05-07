@@ -14,6 +14,7 @@ class DetailGroupVC: UIViewController {
 
     var titleLabel: String?
     var color: UIColor?
+    var isCreated: Bool = false
 
     var selectedCount = 0 {
         willSet(newValue) {
@@ -250,6 +251,30 @@ extension DetailGroupVC {
     @objc func touchTableView(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
         sender.cancelsTouchesInView = false
+
+        if let count = group?.todos.count, !groupTableView.isEditing {
+            if isCreated {
+                guard let cell = groupTableView.cellForRow(at: IndexPath(row: count - 1, section: 0)) as? DetailGroupCell else { return }
+
+                if cell.titleTextView.text.count == 0 {
+                    group?.todos.removeLast()
+                    groupTableView.deleteRows(at: [IndexPath(row: count - 1, section: 0)], with: .fade)
+                }
+
+                isCreated = false
+            } else {
+                group?.todos.append(Todo(title: "메롱", memo: "", url: "", flag: false))
+
+                groupTableView.insertRows(at: [IndexPath(row: count, section: 0)], with: .none)
+
+                guard let cell = groupTableView.cellForRow(at: IndexPath(row: count, section: 0)) as? DetailGroupCell else { return }
+
+                cell.titleTextView.becomeFirstResponder()
+                cell.titleTextView.text = .none
+
+                isCreated = true
+            }
+        }
     }
 }
 

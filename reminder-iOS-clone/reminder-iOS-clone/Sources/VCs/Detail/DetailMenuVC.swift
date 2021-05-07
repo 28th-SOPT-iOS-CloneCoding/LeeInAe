@@ -55,10 +55,12 @@ class DetailMenuVC: UIViewController {
 
         initView()
         initBarButtonItem()
-        initToolbar()
 
         guard let currGroup = group else { return }
         reminderCount = currGroup.todos.count
+        if currGroup.type == GroupType.flag || currGroup.type == GroupType.today {
+            initToolbar()
+        }
     }
 }
 
@@ -225,7 +227,7 @@ extension DetailMenuVC {
         view.endEditing(true)
         sender.cancelsTouchesInView = false
 
-        if let count = group?.todos.count {
+        if let count = group?.todos.count, !menuTableView.isEditing {
             if isCreated {
                 guard let cell = menuTableView.cellForRow(at: IndexPath(row: count - 1, section: 0)) as? DetailGroupCell else { return }
 
