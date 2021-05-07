@@ -14,6 +14,7 @@ class DetailMenuVC: UIViewController {
 
     var titleLabel: String?
     var color: UIColor?
+    var isCreated: Bool = false
 
     var group: Group? {
         didSet {
@@ -54,12 +55,10 @@ class DetailMenuVC: UIViewController {
 
         initView()
         initBarButtonItem()
+        initToolbar()
 
         guard let currGroup = group else { return }
         reminderCount = currGroup.todos.count
-        if currGroup.type == GroupType.today {
-            initToolbar()
-        }
     }
 }
 
@@ -225,6 +224,33 @@ extension DetailMenuVC {
     @objc func touchTableView(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
         sender.cancelsTouchesInView = false
+
+        if let count = group?.todos.count {
+            if isCreated {
+                guard let cell = menuTableView.cellForRow(at: IndexPath(row: count - 1, section: 0)) as? DetailGroupCell else { return }
+
+                if cell.titleTextView.text.count == 0 {
+                    reminderCount = count - 1
+
+                    group?.todos.removeLast()
+                    menuTableView.deleteRows(at: [IndexPath(row: count - 1, section: 0)], with: .fade)
+                }
+
+                isCreated = false
+            } else {
+                reminderCount = count + 1
+                group?.todos.append(Todo(title: "메롱", memo: "", url: "", flag: false))
+
+                menuTableView.insertRows(at: [IndexPath(row: count, section: 0)], with: .none)
+
+                guard let cell = menuTableView.cellForRow(at: IndexPath(row: count, section: 0)) as? DetailGroupCell else { return }
+
+                cell.titleTextView.becomeFirstResponder()
+                cell.titleTextView.text = .none
+
+                isCreated = true
+            }
+        }
     }
 }
 
