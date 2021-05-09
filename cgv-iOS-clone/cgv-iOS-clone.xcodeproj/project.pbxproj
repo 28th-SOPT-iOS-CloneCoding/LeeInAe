@@ -14,9 +14,13 @@
 		ABD2F19826484E3A0019BCED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABD2F19726484E3A0019BCED /* Assets.xcassets */; };
 		ABD2F19B26484E3A0019BCED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABD2F19926484E3A0019BCED /* LaunchScreen.storyboard */; };
 		ABD2F1A8264850880019BCED /* MoreMovieChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD2F1A7264850880019BCED /* MoreMovieChartVC.swift */; };
+		E61ED452B2D5C38E70976D8D /* Pods_cgv_iOS_clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD78B6409211CA4537D38DE /* Pods_cgv_iOS_clone.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3CE3C13488DA8B6A2962932C /* Pods-cgv-iOS-clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cgv-iOS-clone.release.xcconfig"; path = "Target Support Files/Pods-cgv-iOS-clone/Pods-cgv-iOS-clone.release.xcconfig"; sourceTree = "<group>"; };
+		4DD78B6409211CA4537D38DE /* Pods_cgv_iOS_clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cgv_iOS_clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		615042BEB77665631B5B697E /* Pods-cgv-iOS-clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cgv-iOS-clone.debug.xcconfig"; path = "Target Support Files/Pods-cgv-iOS-clone/Pods-cgv-iOS-clone.debug.xcconfig"; sourceTree = "<group>"; };
 		ABD2F18B26484E380019BCED /* cgv-iOS-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cgv-iOS-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD2F18E26484E380019BCED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABD2F19026484E380019BCED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,17 +37,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E61ED452B2D5C38E70976D8D /* Pods_cgv_iOS_clone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56F3AA5BA10EA8380C375C36 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				615042BEB77665631B5B697E /* Pods-cgv-iOS-clone.debug.xcconfig */,
+				3CE3C13488DA8B6A2962932C /* Pods-cgv-iOS-clone.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		ABD2F18226484E380019BCED = {
 			isa = PBXGroup;
 			children = (
 				ABD2F18D26484E380019BCED /* cgv-iOS-clone */,
 				ABD2F18C26484E380019BCED /* Products */,
+				56F3AA5BA10EA8380C375C36 /* Pods */,
+				E18FD53B780F8532F3D9235F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +103,14 @@
 			path = MovieChart;
 			sourceTree = "<group>";
 		};
+		E18FD53B780F8532F3D9235F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DD78B6409211CA4537D38DE /* Pods_cgv_iOS_clone.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -93,9 +118,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABD2F19F26484E3A0019BCED /* Build configuration list for PBXNativeTarget "cgv-iOS-clone" */;
 			buildPhases = (
+				D692CECF9C0D03CCF69A2DDC /* [CP] Check Pods Manifest.lock */,
 				ABD2F18726484E380019BCED /* Sources */,
 				ABD2F18826484E380019BCED /* Frameworks */,
 				ABD2F18926484E380019BCED /* Resources */,
+				14B9DCF41933C4F745EB750F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -150,6 +177,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14B9DCF41933C4F745EB750F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cgv-iOS-clone/Pods-cgv-iOS-clone-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cgv-iOS-clone/Pods-cgv-iOS-clone-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cgv-iOS-clone/Pods-cgv-iOS-clone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D692CECF9C0D03CCF69A2DDC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cgv-iOS-clone-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		ABD2F18726484E380019BCED /* Sources */ = {
@@ -303,6 +372,7 @@
 		};
 		ABD2F1A026484E3A0019BCED /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 615042BEB77665631B5B697E /* Pods-cgv-iOS-clone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -322,6 +392,7 @@
 		};
 		ABD2F1A126484E3A0019BCED /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CE3C13488DA8B6A2962932C /* Pods-cgv-iOS-clone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
