@@ -285,6 +285,7 @@ extension DetailGroupVC: UITableViewDelegate {
         guard let cell = tableView.cellForRow(at: indexPath) as? DetailGroupCell else { return }
         cell.titleTextView.becomeFirstResponder()
         cell.isSelected = true
+        cell.selectionStyle = .gray
 
         if tableView.isEditing {
             selectedCount = tableView.indexPathsForSelectedRows?.count ?? 0
