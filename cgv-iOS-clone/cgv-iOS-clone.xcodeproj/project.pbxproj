@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABCFBADC26498471003BF2B6 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBADB26498471003BF2B6 /* UIView+Extension.swift */; };
 		ABD2F18F26484E380019BCED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD2F18E26484E380019BCED /* AppDelegate.swift */; };
 		ABD2F19126484E380019BCED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD2F19026484E380019BCED /* SceneDelegate.swift */; };
 		ABD2F19326484E380019BCED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD2F19226484E380019BCED /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 		3CE3C13488DA8B6A2962932C /* Pods-cgv-iOS-clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cgv-iOS-clone.release.xcconfig"; path = "Target Support Files/Pods-cgv-iOS-clone/Pods-cgv-iOS-clone.release.xcconfig"; sourceTree = "<group>"; };
 		4DD78B6409211CA4537D38DE /* Pods_cgv_iOS_clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cgv_iOS_clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		615042BEB77665631B5B697E /* Pods-cgv-iOS-clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cgv-iOS-clone.debug.xcconfig"; path = "Target Support Files/Pods-cgv-iOS-clone/Pods-cgv-iOS-clone.debug.xcconfig"; sourceTree = "<group>"; };
+		ABCFBADB26498471003BF2B6 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		ABD2F18B26484E380019BCED /* cgv-iOS-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cgv-iOS-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD2F18E26484E380019BCED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABD2F19026484E380019BCED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,8 +52,15 @@
 				615042BEB77665631B5B697E /* Pods-cgv-iOS-clone.debug.xcconfig */,
 				3CE3C13488DA8B6A2962932C /* Pods-cgv-iOS-clone.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		ABCFBADA26498445003BF2B6 /* Extentsion */ = {
+			isa = PBXGroup;
+			children = (
+				ABCFBADB26498471003BF2B6 /* UIView+Extension.swift */,
+			);
+			path = Extentsion;
 			sourceTree = "<group>";
 		};
 		ABD2F18226484E380019BCED = {
@@ -75,6 +84,8 @@
 		ABD2F18D26484E380019BCED /* cgv-iOS-clone */ = {
 			isa = PBXGroup;
 			children = (
+				ABCFBADA26498445003BF2B6 /* Extentsion */,
+				ABD2F1AC26485C820019BCED /* Network */,
 				ABD2F1A426484E5D0019BCED /* MovieChart */,
 				ABD2F1A326484E530019BCED /* Main */,
 				ABD2F18E26484E380019BCED /* AppDelegate.swift */,
@@ -101,6 +112,13 @@
 				ABD2F1A7264850880019BCED /* MoreMovieChartVC.swift */,
 			);
 			path = MovieChart;
+			sourceTree = "<group>";
+		};
+		ABD2F1AC26485C820019BCED /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		E18FD53B780F8532F3D9235F /* Frameworks */ = {
@@ -228,6 +246,7 @@
 				ABD2F19326484E380019BCED /* ViewController.swift in Sources */,
 				ABD2F18F26484E380019BCED /* AppDelegate.swift in Sources */,
 				ABD2F19126484E380019BCED /* SceneDelegate.swift in Sources */,
+				ABCFBADC26498471003BF2B6 /* UIView+Extension.swift in Sources */,
 				ABD2F1A8264850880019BCED /* MoreMovieChartVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
