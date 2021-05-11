@@ -5,6 +5,7 @@
 //  Created by inae Lee on 2021/05/11.
 //
 
+import Kingfisher
 import SnapKit
 import UIKit
 
@@ -23,16 +24,32 @@ class MovieChartTVC: UITableViewCell {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.AppleSDGothic(type: .bold, size: 18)
+        label.font = UIFont.AppleSDGothic(type: .bold, size: 14)
         label.numberOfLines = 1
         label.lineBreakMode = .byTruncatingTail
-        
+
         return label
     }()
 
     private let releaseDateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.AppleSDGothic(type: .light, size: 13)
+        label.font = UIFont.AppleSDGothic(type: .light, size: 11)
+
+        return label
+    }()
+
+    private let popularityLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.AppleSDGothic(type: .semiBold, size: 12)
+        label.textColor = UIColor.adultColor
+
+        return label
+    }()
+
+    private let voteLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.AppleSDGothic(type: .regular, size: 11)
+        label.textColor = UIColor.lightGray
 
         return label
     }()
@@ -57,11 +74,6 @@ class MovieChartTVC: UITableViewCell {
     }()
 
     // MARK: - local Variables
-
-    private var titleName: String?
-    private var posterPath: String?
-    private var releaseDate: String?
-    private var isAdult: Bool?
 
     // MARK: - Initializer
 
@@ -97,16 +109,27 @@ class MovieChartTVC: UITableViewCell {
 
     // MARK: - Custom Methods
 
-    func setValue(title: String, poster: String, release: String, isAdult: Bool) {
+    func setValue(title: String, poster: String, release: String, isAdult: Bool, popularity: Double) {
         titleLabel.text = title
-        posterImage.image = UIImage(systemName: "bookmark")
-        releaseDateLabel.text = release
+        posterImage.kf.setImage(with: URL(string: MovieService.imageBaseURL + poster))
         screenGradeButton.backgroundColor = isAdult ? UIColor.adultColor : UIColor.allAgeColor
-        screenGradeButton.setTitle(isAdult ? "청불" : "all", for: .normal)
+        screenGradeButton.setTitle(isAdult ? "청불" : "전체", for: .normal)
+        popularityLabel.text = "인기도 \(Int(popularity))"
+
+        /// fomatt release date
+        let date = Date().getStringToDate(date: release)
+        let newDate = Date().getDateToString(date: date)
+        releaseDateLabel.text = "\(newDate) 개봉"
+
+        /// change popularityLabel color
+        let attributedStr = NSMutableAttributedString(string: popularityLabel.text!)
+
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.black, range: (popularityLabel.text! as NSString).range(of: "인기도"))
+        popularityLabel.attributedText = attributedStr
     }
 
     func setConstraints() {
-        contentView.addSubviews([posterImage, titleLabel, screenGradeButton, reservationButton])
+        contentView.addSubviews([posterImage, titleLabel, screenGradeButton, popularityLabel, releaseDateLabel, reservationButton])
 
         // FIXME: - height Constraint log 없애고 싶음..
         posterImage.snp.makeConstraints { make in
@@ -118,15 +141,25 @@ class MovieChartTVC: UITableViewCell {
         }
 
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(posterImage.snp.top).inset(13)
+            make.top.equalTo(posterImage.snp.top).inset(8)
             make.leading.equalTo(posterImage.snp.trailing).inset(-10)
         }
 
         screenGradeButton.snp.makeConstraints { make in
             make.leading.equalTo(titleLabel.snp.trailing).inset(-5)
             make.trailing.lessThanOrEqualToSuperview().inset(10)
-            make.height.width.equalTo(20)
+            make.height.width.equalTo(18)
             make.centerY.equalTo(titleLabel.snp.centerY)
+        }
+
+        popularityLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).inset(-5)
+            make.leading.equalTo(titleLabel.snp.leading)
+        }
+
+        releaseDateLabel.snp.makeConstraints { make in
+            make.top.equalTo(popularityLabel.snp.bottom).inset(-3)
+            make.leading.equalTo(titleLabel.snp.leading)
         }
 
         reservationButton.snp.makeConstraints { make in

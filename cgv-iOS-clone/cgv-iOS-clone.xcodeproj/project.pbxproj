@@ -11,6 +11,7 @@
 		ABAACCFF264AB3440042C48F /* MovieChartTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAACCFD264AB3440042C48F /* MovieChartTVC.xib */; };
 		ABAACD02264AB4EB0042C48F /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAACD01264AB4EB0042C48F /* UIFont+Extension.swift */; };
 		ABAACD0A264ABD330042C48F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAACD09264ABD330042C48F /* UIColor+Extension.swift */; };
+		ABAACD18264B05220042C48F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAACD17264B05220042C48F /* Date+Extension.swift */; };
 		ABCFBADC26498471003BF2B6 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBADB26498471003BF2B6 /* UIView+Extension.swift */; };
 		ABCFBAE226499FE2003BF2B6 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBAE126499FE2003BF2B6 /* Movie.swift */; };
 		ABCFBAE52649A106003BF2B6 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBAE42649A106003BF2B6 /* NetworkResponse.swift */; };
@@ -33,6 +34,7 @@
 		ABAACCFD264AB3440042C48F /* MovieChartTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieChartTVC.xib; sourceTree = "<group>"; };
 		ABAACD01264AB4EB0042C48F /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		ABAACD09264ABD330042C48F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		ABAACD17264B05220042C48F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		ABCFBADB26498471003BF2B6 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		ABCFBAE126499FE2003BF2B6 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		ABCFBAE42649A106003BF2B6 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				ABCFBADB26498471003BF2B6 /* UIView+Extension.swift */,
 				ABAACD01264AB4EB0042C48F /* UIFont+Extension.swift */,
 				ABAACD09264ABD330042C48F /* UIColor+Extension.swift */,
+				ABAACD17264B05220042C48F /* Date+Extension.swift */,
 			);
 			path = Extentsion;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				ABCFBAE52649A106003BF2B6 /* NetworkResponse.swift in Sources */,
 				ABAACD0A264ABD330042C48F /* UIColor+Extension.swift in Sources */,
 				ABCFBAE226499FE2003BF2B6 /* Movie.swift in Sources */,
+				ABAACD18264B05220042C48F /* Date+Extension.swift in Sources */,
 				ABD2F19126484E380019BCED /* SceneDelegate.swift in Sources */,
 				ABCFBADC26498471003BF2B6 /* UIView+Extension.swift in Sources */,
 				ABCFBAE82649A882003BF2B6 /* MovieService.swift in Sources */,

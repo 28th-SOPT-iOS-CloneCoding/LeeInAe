@@ -9,12 +9,13 @@ import Foundation
 import Moya
 
 enum MovieService {
+    static let apiKey = "324d8aa817aaa5f3aeffef566e892eb7"
+    static let imageBaseURL = "https://image.tmdb.org/t/p/w500"
+    
     case getPopular(page: Int)
 }
 
 extension MovieService: TargetType {
-    static let api_key = "324d8aa817aaa5f3aeffef566e892eb7"
-    
     var baseURL: URL {
         URL(string: "https://api.themoviedb.org/3/movie")!
     }
