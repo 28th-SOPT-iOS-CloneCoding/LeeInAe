@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABAACCFE264AB3440042C48F /* MovieChartTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAACCFC264AB3440042C48F /* MovieChartTVC.swift */; };
+		ABAACCFF264AB3440042C48F /* MovieChartTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAACCFD264AB3440042C48F /* MovieChartTVC.xib */; };
+		ABAACD02264AB4EB0042C48F /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAACD01264AB4EB0042C48F /* UIFont+Extension.swift */; };
+		ABAACD0A264ABD330042C48F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAACD09264ABD330042C48F /* UIColor+Extension.swift */; };
 		ABCFBADC26498471003BF2B6 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBADB26498471003BF2B6 /* UIView+Extension.swift */; };
 		ABCFBAE226499FE2003BF2B6 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBAE126499FE2003BF2B6 /* Movie.swift */; };
 		ABCFBAE52649A106003BF2B6 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBAE42649A106003BF2B6 /* NetworkResponse.swift */; };
@@ -25,6 +29,10 @@
 		3CE3C13488DA8B6A2962932C /* Pods-cgv-iOS-clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cgv-iOS-clone.release.xcconfig"; path = "Target Support Files/Pods-cgv-iOS-clone/Pods-cgv-iOS-clone.release.xcconfig"; sourceTree = "<group>"; };
 		4DD78B6409211CA4537D38DE /* Pods_cgv_iOS_clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cgv_iOS_clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		615042BEB77665631B5B697E /* Pods-cgv-iOS-clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cgv-iOS-clone.debug.xcconfig"; path = "Target Support Files/Pods-cgv-iOS-clone/Pods-cgv-iOS-clone.debug.xcconfig"; sourceTree = "<group>"; };
+		ABAACCFC264AB3440042C48F /* MovieChartTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieChartTVC.swift; sourceTree = "<group>"; };
+		ABAACCFD264AB3440042C48F /* MovieChartTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieChartTVC.xib; sourceTree = "<group>"; };
+		ABAACD01264AB4EB0042C48F /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		ABAACD09264ABD330042C48F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		ABCFBADB26498471003BF2B6 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		ABCFBAE126499FE2003BF2B6 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		ABCFBAE42649A106003BF2B6 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
@@ -65,6 +73,8 @@
 			isa = PBXGroup;
 			children = (
 				ABCFBADB26498471003BF2B6 /* UIView+Extension.swift */,
+				ABAACD01264AB4EB0042C48F /* UIFont+Extension.swift */,
+				ABAACD09264ABD330042C48F /* UIColor+Extension.swift */,
 			);
 			path = Extentsion;
 			sourceTree = "<group>";
@@ -72,6 +82,8 @@
 		ABCFBADF26499E1C003BF2B6 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				ABAACCFC264AB3440042C48F /* MovieChartTVC.swift */,
+				ABAACCFD264AB3440042C48F /* MovieChartTVC.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -214,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABD2F19B26484E3A0019BCED /* LaunchScreen.storyboard in Resources */,
+				ABAACCFF264AB3440042C48F /* MovieChartTVC.xib in Resources */,
 				ABD2F19826484E3A0019BCED /* Assets.xcassets in Resources */,
 				ABD2F19626484E380019BCED /* Main.storyboard in Resources */,
 			);
@@ -271,11 +284,14 @@
 				ABD2F19326484E380019BCED /* ViewController.swift in Sources */,
 				ABD2F18F26484E380019BCED /* AppDelegate.swift in Sources */,
 				ABCFBAE52649A106003BF2B6 /* NetworkResponse.swift in Sources */,
+				ABAACD0A264ABD330042C48F /* UIColor+Extension.swift in Sources */,
 				ABCFBAE226499FE2003BF2B6 /* Movie.swift in Sources */,
 				ABD2F19126484E380019BCED /* SceneDelegate.swift in Sources */,
 				ABCFBADC26498471003BF2B6 /* UIView+Extension.swift in Sources */,
 				ABCFBAE82649A882003BF2B6 /* MovieService.swift in Sources */,
 				ABD2F1A8264850880019BCED /* MoreMovieChartVC.swift in Sources */,
+				ABAACD02264AB4EB0042C48F /* UIFont+Extension.swift in Sources */,
+				ABAACCFE264AB3440042C48F /* MovieChartTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
