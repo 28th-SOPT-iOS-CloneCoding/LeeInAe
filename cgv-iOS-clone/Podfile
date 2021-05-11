@@ -8,5 +8,6 @@ target 'cgv-iOS-clone' do
   # Pods for cgv-iOS-clone
   pod 'Moya', '~> 14.0'
   pod 'SnapKit', '~> 5.0.0'
+  pod 'Kingfisher', '~> 6.0'
 
 end
