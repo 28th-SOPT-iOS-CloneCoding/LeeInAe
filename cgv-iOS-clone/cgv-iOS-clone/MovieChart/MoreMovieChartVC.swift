@@ -5,6 +5,7 @@
 //  Created by inae Lee on 2021/05/10.
 //
 
+import Moya
 import SnapKit
 import UIKit
 
@@ -15,6 +16,8 @@ enum MovieChart: String {
 }
 
 class MoreMovieChartVC: UIViewController {
+    private let movieProvider = MoyaProvider<MovieService>()
+
     // MARK: - IBOutlets
 
     private lazy var tableView: UITableView = {
@@ -33,11 +36,13 @@ class MoreMovieChartVC: UIViewController {
     // MARK: - local variable
 
     let segmentItems: [String] = [MovieChart.movieChart.rawValue, MovieChart.artHouse.rawValue, MovieChart.upcoming.rawValue]
+    var movieChartList: [Movie] = []
 
     // MARK: - LifeCycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getPopularMovie()
 
         setConstraints()
     }
@@ -60,6 +65,23 @@ class MoreMovieChartVC: UIViewController {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(segmentControl.snp.bottom)
             make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+
+    func getPopularMovie() {
+        movieProvider.request(.getPopular(page: 1)) { response in
+            switch response {
+            case .success(let result):
+                do {
+                    let data = try result.map(NetworkResponse.self)
+                    print("😻 : ", data)
+                    self.movieChartList = data.results
+                } catch {
+                    print("parsing error")
+                }
+            case .failure(let err):
+                print(err)
+            }
         }
     }
 }

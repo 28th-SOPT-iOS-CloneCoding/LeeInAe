@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		ABCFBADC26498471003BF2B6 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBADB26498471003BF2B6 /* UIView+Extension.swift */; };
+		ABCFBAE226499FE2003BF2B6 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBAE126499FE2003BF2B6 /* Movie.swift */; };
+		ABCFBAE52649A106003BF2B6 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBAE42649A106003BF2B6 /* NetworkResponse.swift */; };
+		ABCFBAE82649A882003BF2B6 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBAE72649A882003BF2B6 /* MovieService.swift */; };
 		ABD2F18F26484E380019BCED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD2F18E26484E380019BCED /* AppDelegate.swift */; };
 		ABD2F19126484E380019BCED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD2F19026484E380019BCED /* SceneDelegate.swift */; };
 		ABD2F19326484E380019BCED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD2F19226484E380019BCED /* ViewController.swift */; };
@@ -23,6 +26,9 @@
 		4DD78B6409211CA4537D38DE /* Pods_cgv_iOS_clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cgv_iOS_clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		615042BEB77665631B5B697E /* Pods-cgv-iOS-clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cgv-iOS-clone.debug.xcconfig"; path = "Target Support Files/Pods-cgv-iOS-clone/Pods-cgv-iOS-clone.debug.xcconfig"; sourceTree = "<group>"; };
 		ABCFBADB26498471003BF2B6 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		ABCFBAE126499FE2003BF2B6 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		ABCFBAE42649A106003BF2B6 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		ABCFBAE72649A882003BF2B6 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		ABD2F18B26484E380019BCED /* cgv-iOS-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cgv-iOS-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD2F18E26484E380019BCED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABD2F19026484E380019BCED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +67,21 @@
 				ABCFBADB26498471003BF2B6 /* UIView+Extension.swift */,
 			);
 			path = Extentsion;
+			sourceTree = "<group>";
+		};
+		ABCFBADF26499E1C003BF2B6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		ABCFBAE026499FD6003BF2B6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABCFBAE126499FE2003BF2B6 /* Movie.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		ABD2F18226484E380019BCED = {
@@ -109,6 +130,8 @@
 		ABD2F1A426484E5D0019BCED /* MovieChart */ = {
 			isa = PBXGroup;
 			children = (
+				ABCFBAE026499FD6003BF2B6 /* Model */,
+				ABCFBADF26499E1C003BF2B6 /* Cell */,
 				ABD2F1A7264850880019BCED /* MoreMovieChartVC.swift */,
 			);
 			path = MovieChart;
@@ -117,6 +140,8 @@
 		ABD2F1AC26485C820019BCED /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				ABCFBAE42649A106003BF2B6 /* NetworkResponse.swift */,
+				ABCFBAE72649A882003BF2B6 /* MovieService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -245,8 +270,11 @@
 			files = (
 				ABD2F19326484E380019BCED /* ViewController.swift in Sources */,
 				ABD2F18F26484E380019BCED /* AppDelegate.swift in Sources */,
+				ABCFBAE52649A106003BF2B6 /* NetworkResponse.swift in Sources */,
+				ABCFBAE226499FE2003BF2B6 /* Movie.swift in Sources */,
 				ABD2F19126484E380019BCED /* SceneDelegate.swift in Sources */,
 				ABCFBADC26498471003BF2B6 /* UIView+Extension.swift in Sources */,
+				ABCFBAE82649A882003BF2B6 /* MovieService.swift in Sources */,
 				ABD2F1A8264850880019BCED /* MoreMovieChartVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
