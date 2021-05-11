@@ -26,7 +26,6 @@ class MovieChartTVC: UITableViewCell {
         label.font = UIFont.AppleSDGothic(type: .bold, size: 18)
         label.numberOfLines = 1
         label.lineBreakMode = .byTruncatingTail
-        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         return label
     }()

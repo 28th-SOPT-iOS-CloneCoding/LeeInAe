@@ -70,7 +70,8 @@ class MoreMovieChartVC: UIViewController {
 
         tableView.snp.makeConstraints { make in
             make.top.equalTo(segmentControl.snp.bottom)
-            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalToSuperview()
         }
     }
 
