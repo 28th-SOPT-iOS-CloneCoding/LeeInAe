@@ -13,7 +13,8 @@ extension UIView {
     }
 
     func cornerRounds() {
-        self.layer.cornerRadius = self.bounds.size.width / 2
+        print("🧡", self.layer.frame.height)
+        self.layer.cornerRadius = self.layer.frame.height / 2
         self.layer.masksToBounds = true
     }
 

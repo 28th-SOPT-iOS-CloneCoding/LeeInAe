@@ -23,9 +23,11 @@ class MovieChartTVC: UITableViewCell {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.AppleSDGothic(type: .semiBold, size: 15)
-        label.numberOfLines = 0
-
+        label.font = UIFont.AppleSDGothic(type: .bold, size: 18)
+        label.numberOfLines = 1
+        label.lineBreakMode = .byTruncatingTail
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        
         return label
     }()
 
@@ -39,8 +41,8 @@ class MovieChartTVC: UITableViewCell {
     private let reservationButton: UIButton = {
         let button = UIButton()
         button.setTitle("지금 예매", for: .normal)
+        button.titleLabel?.font = UIFont.AppleSDGothic(type: .bold, size: 11)
         button.tintColor = .white
-        button.cornerRound(radius: 10)
         button.backgroundColor = UIColor(red: 185/255, green: 51/255, blue: 49/255, alpha: 1)
 
         return button
@@ -48,9 +50,9 @@ class MovieChartTVC: UITableViewCell {
 
     private let screenGradeButton: UIButton = {
         let button = UIButton()
-        button.cornerRounds()
         button.backgroundColor = UIColor.allAgeColor
         button.titleLabel?.font = UIFont.AppleSDGothic(type: .semiBold, size: 9)
+        button.titleLabel?.textAlignment = .center
 
         return button
     }()
@@ -78,12 +80,20 @@ class MovieChartTVC: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-//        setConstraints()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
+    }
+
+    override func updateConstraints() {
+        layoutIfNeeded()
+
+        screenGradeButton.cornerRounds()
+        reservationButton.cornerRound(radius: 3)
+
+        super.updateConstraints()
     }
 
     // MARK: - Custom Methods
@@ -93,16 +103,19 @@ class MovieChartTVC: UITableViewCell {
         posterImage.image = UIImage(systemName: "bookmark")
         releaseDateLabel.text = release
         screenGradeButton.backgroundColor = isAdult ? UIColor.adultColor : UIColor.allAgeColor
-        screenGradeButton.setTitle(isAdult ? "all" : "청불", for: .normal)
+        screenGradeButton.setTitle(isAdult ? "청불" : "all", for: .normal)
     }
 
     func setConstraints() {
-        contentView.addSubviews([posterImage, titleLabel, screenGradeButton])
+        contentView.addSubviews([posterImage, titleLabel, screenGradeButton, reservationButton])
+
+        // FIXME: - height Constraint log 없애고 싶음..
         posterImage.snp.makeConstraints { make in
             make.width.equalTo(90)
             make.height.equalTo(120)
-            make.top.leading.bottom.equalToSuperview().inset(10)
-            make.centerY.equalToSuperview()
+            make.top.equalTo(contentView.snp.top).inset(10)
+            make.leading.equalTo(contentView.snp.leading).inset(10)
+            make.bottom.equalTo(contentView.snp.bottom).inset(10)
         }
 
         titleLabel.snp.makeConstraints { make in
@@ -111,10 +124,16 @@ class MovieChartTVC: UITableViewCell {
         }
 
         screenGradeButton.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.top)
-            make.leading.equalTo(titleLabel.snp.trailing).inset(-10)
-            make.bottom.equalTo(titleLabel.snp.bottom)
-            make.width.equalTo(self.bounds.height)
+            make.leading.equalTo(titleLabel.snp.trailing).inset(-5)
+            make.trailing.lessThanOrEqualToSuperview().inset(10)
+            make.height.width.equalTo(20)
+            make.centerY.equalTo(titleLabel.snp.centerY)
+        }
+
+        reservationButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(10)
+            make.width.equalTo(50)
+            make.bottom.equalTo(posterImage.snp.bottom)
         }
     }
 }

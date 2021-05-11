@@ -16,6 +16,7 @@ extension UIFont {
     }
 
     public enum AppleSDGothicType {
+        case bold
         case semiBold
         case regular
         case light
@@ -26,6 +27,8 @@ extension UIFont {
                 return "AppleSDGothicNeo-Regular"
             case .semiBold:
                 return "AppleSDGothicNeo-SemiBold"
+            case .bold:
+                return "AppleSDGothicNeo-Bold"
             case .light:
                 return "AppleSDGothicNeo-Light"
             }
