@@ -15,6 +15,15 @@ enum MovieChart: String {
     case upcoming = "개봉예정"
 }
 
+enum sortCase: Int {
+    case popularity = 0
+    case vote = 1
+}
+
+enum filterCase: Int {
+    case nowPlaying = 0
+}
+
 class MoreMovieChartVC: UIViewController {
     private let movieProvider = MoyaProvider<MovieService>()
 
@@ -38,16 +47,75 @@ class MoreMovieChartVC: UIViewController {
         seg.backgroundColor = .clear
         seg.tintColor = .clear
 
-        seg.setBackgroundImage(UIImage(color: .white, size: CGSize(width: UIScreen.main.bounds.width, height: 10)), for: .normal, barMetrics: .default)
+        seg.setBackgroundImage(UIImage(color: .white, size: CGSize(width: UIScreen.main.bounds.width, height: 13)), for: .normal, barMetrics: .default)
         seg.setDividerImage(UIImage(color: .clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
 
-        seg.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.AppleSDGothic(type: .semiBold, size: 15) ?? UIFont.systemFont(ofSize: 15)], for: .normal)
+        seg.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.grayTextColor, NSAttributedString.Key.font: UIFont.AppleSDGothic(type: .semiBold, size: 15) ?? UIFont.systemFont(ofSize: 15)], for: .normal)
         seg.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
 
         seg.selectedSegmentIndex = 0
         seg.addTarget(self, action: #selector(changeSegControl(_:)), for: .valueChanged)
-        
+
         return seg
+    }()
+
+    private lazy var filterHeaderView: UIView = {
+        let view = UIView()
+
+        view.backgroundColor = UIColor.grayViewColor
+        // FIXME: - 레이아웃 어디에 뺼 수 없을까...
+        view.addSubviews([popularitySortButton, voteSortButton, nowPlayingMovie])
+
+        popularitySortButton.snp.makeConstraints { make in
+            make.leading.equalTo(view.snp.leading).inset(10)
+            make.centerY.equalTo(view.snp.centerY)
+        }
+
+        voteSortButton.snp.makeConstraints { make in
+            make.leading.equalTo(popularitySortButton.snp.trailing).inset(-10)
+            make.centerY.equalTo(view.snp.centerY)
+        }
+
+        nowPlayingMovie.snp.makeConstraints { make in
+            make.trailing.equalTo(view.snp.trailing).inset(10)
+            make.centerY.equalTo(view.snp.centerY)
+        }
+
+        return view
+    }()
+
+    private let popularitySortButton: UIButton = {
+        let btn = UIButton()
+        btn.tag = sortCase.popularity.rawValue
+        btn.setTitle("• 인기순", for: .normal)
+        btn.setTitleColor(UIColor.grayTextColor, for: .normal)
+        btn.setTitleColor(UIColor.black, for: .highlighted)
+        btn.titleLabel?.font = UIFont.AppleSDGothic(type: .regular, size: 13)
+        btn.addTarget(self, action: #selector(touchUpSort(_:)), for: .touchUpInside)
+
+        return btn
+    }()
+
+    private let voteSortButton: UIButton = {
+        let btn = UIButton()
+        btn.tag = sortCase.vote.rawValue
+        btn.setTitle("• 투표율순", for: .normal)
+        btn.setTitleColor(UIColor.grayTextColor, for: .normal)
+        btn.titleLabel?.font = UIFont.AppleSDGothic(type: .regular, size: 13)
+        btn.addTarget(self, action: #selector(touchUpSort(_:)), for: .touchUpInside)
+
+        return btn
+    }()
+
+    private let nowPlayingMovie: UIButton = {
+        let btn = UIButton()
+        btn.tag = filterCase.nowPlaying.rawValue
+        btn.setTitle("✓ 현재상영작보기", for: .normal)
+        btn.setTitleColor(UIColor.grayTextColor, for: .normal)
+        btn.titleLabel?.font = UIFont.AppleSDGothic(type: .regular, size: 13)
+        btn.addTarget(self, action: #selector(touchUpSort(_:)), for: .touchUpInside)
+
+        return btn
     }()
 
     // MARK: - local variable
@@ -68,6 +136,10 @@ class MoreMovieChartVC: UIViewController {
 
     @objc func changeSegControl(_ sender: UISegmentedControl) {
         print(sender.selectedSegmentIndex)
+    }
+
+    @objc func touchUpSort(_ sender: UIButton) {
+        print("꾹", sender.tag)
     }
 
     // MARK: - Custom Methods
@@ -106,7 +178,15 @@ class MoreMovieChartVC: UIViewController {
 
 // MARK: - UITableViewDelegate
 
-extension MoreMovieChartVC: UITableViewDelegate {}
+extension MoreMovieChartVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        filterHeaderView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        44
+    }
+}
 
 // MARK: - UITableViewDataSource
 
