@@ -140,6 +140,17 @@ class MoreMovieChartVC: UIViewController {
 
     @objc func touchUpSort(_ sender: UIButton) {
         print("꾹", sender.tag)
+
+        switch sender.tag {
+        case 0:
+            movieChartList.sort { ($0.popularity > $1.popularity) }
+        case 1:
+            movieChartList.sort { ($0.voteCount > $1.voteCount) }
+        default:
+            break
+        }
+
+        tableView.reloadData()
     }
 
     // MARK: - Custom Methods
