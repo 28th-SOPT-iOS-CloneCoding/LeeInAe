@@ -33,6 +33,8 @@ class MoreMovieChartVC: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
+
+        tableView.backgroundColor = UIColor.grayViewColor
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableView.automaticDimension
 
@@ -88,8 +90,7 @@ class MoreMovieChartVC: UIViewController {
         let btn = UIButton()
         btn.tag = sortCase.popularity.rawValue
         btn.setTitle("• 인기순", for: .normal)
-        btn.setTitleColor(UIColor.grayTextColor, for: .normal)
-        btn.setTitleColor(UIColor.black, for: .highlighted)
+        btn.setTitleColor(UIColor.black, for: .normal)
         btn.titleLabel?.font = UIFont.AppleSDGothic(type: .regular, size: 13)
         btn.addTarget(self, action: #selector(touchUpSort(_:)), for: .touchUpInside)
 
@@ -123,6 +124,29 @@ class MoreMovieChartVC: UIViewController {
     let segmentItems: [String] = [MovieChart.movieChart.rawValue, MovieChart.artHouse.rawValue, MovieChart.upcoming.rawValue]
     var movieChartList: [Movie] = []
 
+    var sortButtonStatus: Int = 0 {
+        willSet(newValue) {
+            switch newValue {
+            case 0:
+                movieChartList.sort { ($0.popularity > $1.popularity) }
+
+                popularitySortButton.setTitleColor(UIColor.black, for: .normal)
+                voteSortButton.setTitleColor(UIColor.grayTextColor, for: .normal)
+            case 1:
+                movieChartList.sort { ($0.voteCount > $1.voteCount) }
+
+                popularitySortButton.setTitleColor(UIColor.grayTextColor, for: .normal)
+                voteSortButton.setTitleColor(UIColor.black, for: .normal)
+            default:
+                break
+            }
+
+            if sortButtonStatus != newValue {
+                tableView.reloadData()
+            }
+        }
+    }
+
     // MARK: - LifeCycle Methods
 
     override func viewDidLoad() {
@@ -139,18 +163,7 @@ class MoreMovieChartVC: UIViewController {
     }
 
     @objc func touchUpSort(_ sender: UIButton) {
-        print("꾹", sender.tag)
-
-        switch sender.tag {
-        case 0:
-            movieChartList.sort { ($0.popularity > $1.popularity) }
-        case 1:
-            movieChartList.sort { ($0.voteCount > $1.voteCount) }
-        default:
-            break
-        }
-
-        tableView.reloadData()
+        sortButtonStatus = sender.tag
     }
 
     // MARK: - Custom Methods
@@ -211,6 +224,7 @@ extension MoreMovieChartVC: UITableViewDataSource {
         let movie = movieChartList[indexPath.row]
         cell.setValue(title: movie.title, poster: movie.posterPath, release: movie.releaseDate, isAdult: movie.adult, popularity: movie.popularity.rounded(), voteCount: movie.voteCount, voteAvg: movie.voteAverage)
 
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         return cell
     }
 }
