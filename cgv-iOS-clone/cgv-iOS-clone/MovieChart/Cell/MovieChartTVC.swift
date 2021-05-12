@@ -24,7 +24,7 @@ class MovieChartTVC: UITableViewCell {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.AppleSDGothic(type: .bold, size: 14)
+        label.font = UIFont.AppleSDGothic(type: .bold, size: 17)
         label.numberOfLines = 1
         label.lineBreakMode = .byTruncatingTail
 
@@ -134,8 +134,8 @@ class MovieChartTVC: UITableViewCell {
 
         // FIXME: - height Constraint log 없애고 싶음..
         posterImage.snp.makeConstraints { make in
-            make.width.equalTo(90)
-            make.height.equalTo(120)
+            make.width.equalTo(80)
+            make.height.equalTo(110)
             make.top.equalTo(contentView.snp.top).inset(10)
             make.leading.equalTo(contentView.snp.leading).inset(10)
             make.bottom.equalTo(contentView.snp.bottom).inset(10)

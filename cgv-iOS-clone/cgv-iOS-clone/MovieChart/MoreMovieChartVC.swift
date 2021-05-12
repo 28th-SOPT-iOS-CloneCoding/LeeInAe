@@ -34,8 +34,19 @@ class MoreMovieChartVC: UIViewController {
 
     private lazy var segmentControl: UISegmentedControl = {
         let seg = UISegmentedControl(items: segmentItems)
+
+        seg.backgroundColor = .clear
+        seg.tintColor = .clear
+
+        seg.setBackgroundImage(UIImage(color: .white, size: CGSize(width: UIScreen.main.bounds.width, height: 10)), for: .normal, barMetrics: .default)
+        seg.setDividerImage(UIImage(color: .clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+
+        seg.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.AppleSDGothic(type: .semiBold, size: 15) ?? UIFont.systemFont(ofSize: 15)], for: .normal)
+        seg.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
+
         seg.selectedSegmentIndex = 0
         seg.addTarget(self, action: #selector(changeSegControl(_:)), for: .valueChanged)
+        
         return seg
     }()
 
@@ -81,7 +92,6 @@ class MoreMovieChartVC: UIViewController {
             case .success(let result):
                 do {
                     let data = try result.map(NetworkResponse.self)
-//                    print("😻 : ", data)
                     self.movieChartList = data.results
                     self.tableView.reloadData()
                 } catch {
