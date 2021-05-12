@@ -20,10 +20,6 @@ enum sortCase: Int {
     case vote = 1
 }
 
-enum filterCase: Int {
-    case nowPlaying = 0
-}
-
 class MoreMovieChartVC: UIViewController {
     private let movieProvider = MoyaProvider<MovieService>()
 
@@ -66,7 +62,7 @@ class MoreMovieChartVC: UIViewController {
 
         view.backgroundColor = UIColor.grayViewColor
         // FIXME: - 레이아웃 어디에 뺼 수 없을까...
-        view.addSubviews([popularitySortButton, voteSortButton, nowPlayingMovie])
+        view.addSubviews([popularitySortButton, voteSortButton, nowPlayingMovieButton])
 
         popularitySortButton.snp.makeConstraints { make in
             make.leading.equalTo(view.snp.leading).inset(10)
@@ -78,7 +74,7 @@ class MoreMovieChartVC: UIViewController {
             make.centerY.equalTo(view.snp.centerY)
         }
 
-        nowPlayingMovie.snp.makeConstraints { make in
+        nowPlayingMovieButton.snp.makeConstraints { make in
             make.trailing.equalTo(view.snp.trailing).inset(10)
             make.centerY.equalTo(view.snp.centerY)
         }
@@ -91,8 +87,8 @@ class MoreMovieChartVC: UIViewController {
         btn.tag = sortCase.popularity.rawValue
         btn.setTitle("• 인기순", for: .normal)
         btn.setTitleColor(UIColor.black, for: .normal)
-        btn.titleLabel?.font = UIFont.AppleSDGothic(type: .regular, size: 13)
-        btn.addTarget(self, action: #selector(touchUpSort(_:)), for: .touchUpInside)
+        btn.titleLabel?.font = UIFont.AppleSDGothic(type: .semiBold, size: 13)
+        btn.addTarget(self, action: #selector(changeSortStatus(_:)), for: .touchUpInside)
 
         return btn
     }()
@@ -102,38 +98,39 @@ class MoreMovieChartVC: UIViewController {
         btn.tag = sortCase.vote.rawValue
         btn.setTitle("• 투표율순", for: .normal)
         btn.setTitleColor(UIColor.grayTextColor, for: .normal)
-        btn.titleLabel?.font = UIFont.AppleSDGothic(type: .regular, size: 13)
-        btn.addTarget(self, action: #selector(touchUpSort(_:)), for: .touchUpInside)
+        btn.titleLabel?.font = UIFont.AppleSDGothic(type: .semiBold, size: 13)
+        btn.addTarget(self, action: #selector(changeSortStatus(_:)), for: .touchUpInside)
 
         return btn
     }()
 
-    private let nowPlayingMovie: UIButton = {
+    /// filter 종류가 여러 개면 sort처럼 enum으로 관리하는게 좋을 듯
+    private let nowPlayingMovieButton: UIButton = {
         let btn = UIButton()
-        btn.tag = filterCase.nowPlaying.rawValue
         btn.setTitle("✓ 현재상영작보기", for: .normal)
         btn.setTitleColor(UIColor.grayTextColor, for: .normal)
-        btn.titleLabel?.font = UIFont.AppleSDGothic(type: .regular, size: 13)
-        btn.addTarget(self, action: #selector(touchUpSort(_:)), for: .touchUpInside)
+        btn.titleLabel?.font = UIFont.AppleSDGothic(type: .semiBold, size: 13)
+        btn.addTarget(self, action: #selector(applyFilter(_:)), for: .touchUpInside)
 
         return btn
     }()
 
     // MARK: - local variable
 
-    let segmentItems: [String] = [MovieChart.movieChart.rawValue, MovieChart.artHouse.rawValue, MovieChart.upcoming.rawValue]
-    var movieChartList: [Movie] = []
+    private let segmentItems: [String] = [MovieChart.movieChart.rawValue, MovieChart.artHouse.rawValue, MovieChart.upcoming.rawValue]
+    private var movieChartList: [Movie] = []
+    private var filteredMovieChartList: [Movie] = []
 
-    var sortButtonStatus: Int = 0 {
+    private var sortButtonStatus: Int = 0 {
         willSet(newValue) {
             switch newValue {
             case 0:
-                movieChartList.sort { ($0.popularity > $1.popularity) }
+                filterButtonStatus ? filteredMovieChartList.sort { ($0.popularity > $1.popularity) } : movieChartList.sort { ($0.popularity > $1.popularity) }
 
                 popularitySortButton.setTitleColor(UIColor.black, for: .normal)
                 voteSortButton.setTitleColor(UIColor.grayTextColor, for: .normal)
             case 1:
-                movieChartList.sort { ($0.voteCount > $1.voteCount) }
+                filterButtonStatus ? filteredMovieChartList.sort { ($0.voteCount > $1.voteCount) } : movieChartList.sort { ($0.voteCount > $1.voteCount) }
 
                 popularitySortButton.setTitleColor(UIColor.grayTextColor, for: .normal)
                 voteSortButton.setTitleColor(UIColor.black, for: .normal)
@@ -143,6 +140,26 @@ class MoreMovieChartVC: UIViewController {
 
             if sortButtonStatus != newValue {
                 tableView.reloadData()
+            }
+        }
+    }
+
+    private var filterButtonStatus: Bool = false {
+        didSet {
+            tableView.reloadData()
+        }
+
+        willSet(newValue) {
+            if newValue {
+                nowPlayingMovieButton.setTitleColor(UIColor.adultColor, for: .normal)
+
+                filteredMovieChartList = movieChartList.filter {
+                    let diff = Calendar.current.dateComponents([.year, .month, .day], from: Date().getStringToDate(date: $0.releaseDate), to: Date())
+
+                    return diff.month ?? 100 <= 1
+                }
+            } else {
+                nowPlayingMovieButton.setTitleColor(UIColor.grayTextColor, for: .normal)
             }
         }
     }
@@ -162,8 +179,12 @@ class MoreMovieChartVC: UIViewController {
         print(sender.selectedSegmentIndex)
     }
 
-    @objc func touchUpSort(_ sender: UIButton) {
+    @objc func changeSortStatus(_ sender: UIButton) {
         sortButtonStatus = sender.tag
+    }
+
+    @objc func applyFilter(_ sender: UIButton) {
+        filterButtonStatus.toggle()
     }
 
     // MARK: - Custom Methods
@@ -216,12 +237,12 @@ extension MoreMovieChartVC: UITableViewDelegate {
 
 extension MoreMovieChartVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        movieChartList.count
+        filterButtonStatus ? filteredMovieChartList.count : movieChartList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieChartTVC.identifier) as? MovieChartTVC else { return UITableViewCell() }
-        let movie = movieChartList[indexPath.row]
+        let movie = filterButtonStatus ? filteredMovieChartList[indexPath.row] : movieChartList[indexPath.row]
         cell.setValue(title: movie.title, poster: movie.posterPath, release: movie.releaseDate, isAdult: movie.adult, popularity: movie.popularity.rounded(), voteCount: movie.voteCount, voteAvg: movie.voteAverage)
 
         cell.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
