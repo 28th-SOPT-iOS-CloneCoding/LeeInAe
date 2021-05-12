@@ -108,7 +108,7 @@ extension MoreMovieChartVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieChartTVC.identifier) as? MovieChartTVC else { return UITableViewCell() }
         let movie = movieChartList[indexPath.row]
-        cell.setValue(title: movie.title, poster: movie.posterPath, release: movie.releaseDate, isAdult: movie.adult, popularity: movie.popularity.rounded())
+        cell.setValue(title: movie.title, poster: movie.posterPath, release: movie.releaseDate, isAdult: movie.adult, popularity: movie.popularity.rounded(), voteCount: movie.voteCount, voteAvg: movie.voteAverage)
 
         return cell
     }

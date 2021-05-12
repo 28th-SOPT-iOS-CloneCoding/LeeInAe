@@ -109,12 +109,13 @@ class MovieChartTVC: UITableViewCell {
 
     // MARK: - Custom Methods
 
-    func setValue(title: String, poster: String, release: String, isAdult: Bool, popularity: Double) {
+    func setValue(title: String, poster: String, release: String, isAdult: Bool, popularity: Double, voteCount: Int, voteAvg: Double) {
         titleLabel.text = title
         posterImage.kf.setImage(with: URL(string: MovieService.imageBaseURL + poster))
         screenGradeButton.backgroundColor = isAdult ? UIColor.adultColor : UIColor.allAgeColor
         screenGradeButton.setTitle(isAdult ? "청불" : "전체", for: .normal)
-        popularityLabel.text = "인기도 \(Int(popularity))"
+        popularityLabel.text = "인기도 \(String().commaToNumbers(num: Int(popularity)))"
+        voteLabel.text = "투표율 \(String().commaToNumbers(num: Int(voteCount))) • 투표 평균 \(String().commaToNumbers(num: Int(voteAvg)))"
 
         /// fomatt release date
         let date = Date().getStringToDate(date: release)
@@ -129,7 +130,7 @@ class MovieChartTVC: UITableViewCell {
     }
 
     func setConstraints() {
-        contentView.addSubviews([posterImage, titleLabel, screenGradeButton, popularityLabel, releaseDateLabel, reservationButton])
+        contentView.addSubviews([posterImage, titleLabel, screenGradeButton, popularityLabel, releaseDateLabel, reservationButton, voteLabel])
 
         // FIXME: - height Constraint log 없애고 싶음..
         posterImage.snp.makeConstraints { make in
@@ -159,6 +160,11 @@ class MovieChartTVC: UITableViewCell {
 
         releaseDateLabel.snp.makeConstraints { make in
             make.top.equalTo(popularityLabel.snp.bottom).inset(-3)
+            make.leading.equalTo(titleLabel.snp.leading)
+        }
+
+        voteLabel.snp.makeConstraints { make in
+            make.top.equalTo(releaseDateLabel.snp.bottom).inset(-3)
             make.leading.equalTo(titleLabel.snp.leading)
         }
 
