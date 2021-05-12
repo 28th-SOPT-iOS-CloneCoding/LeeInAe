@@ -30,7 +30,7 @@ class MoreMovieChartVC: UIViewController {
     // MARK: - IBOutlets
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 120
