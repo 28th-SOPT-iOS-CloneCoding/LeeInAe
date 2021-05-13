@@ -13,23 +13,29 @@ enum MovieService {
     static let imageBaseURL = "https://image.tmdb.org/t/p/w500"
     
     case getPopular(page: Int)
+    case getTrend(page: Int)
+    case getUpcoming(page: Int)
 }
 
 extension MovieService: TargetType {
     var baseURL: URL {
-        URL(string: "https://api.themoviedb.org/3/movie")!
+        URL(string: "https://api.themoviedb.org/3")!
     }
     
     var path: String {
         switch self {
         case .getPopular:
-            return "/popular"
+            return "/movie/popular"
+        case .getTrend:
+            return "/trending/movie/week"
+        case .getUpcoming:
+            return "/movie/upcoming"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getPopular:
+        case .getPopular, .getTrend, .getUpcoming:
             return .get
         }
     }
@@ -41,7 +47,11 @@ extension MovieService: TargetType {
     var task: Task {
         switch self {
         case .getPopular(let page):
-            return .requestParameters(parameters: ["api_key": "324d8aa817aaa5f3aeffef566e892eb7", "language": "ko", "page": page], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["api_key": MovieService.apiKey, "language": "ko", "page": page], encoding: URLEncoding.default)
+        case .getTrend(page: let page):
+            return .requestParameters(parameters: ["api_key": MovieService.apiKey, "language": "ko", "page": page], encoding: URLEncoding.default)
+        case .getUpcoming(page: let page):
+            return .requestParameters(parameters: ["api_key": MovieService.apiKey, "language": "ko", "page": page, "region": "KR"], encoding: URLEncoding.default)
         }
     }
     

@@ -210,6 +210,18 @@ extension MoreMovieChartVC {
         }
     }
 
+    func setNavigationBar() {
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.topItem?.title = "영화"
+
+        let listButton = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(presentListVC(_:)))
+        navigationItem.rightBarButtonItem = listButton
+    }
+}
+
+// MARK: - Network
+
+extension MoreMovieChartVC {
     func getPopularMovie() {
         movieProvider.request(.getPopular(page: 1)) { response in
             switch response {
@@ -227,12 +239,42 @@ extension MoreMovieChartVC {
         }
     }
 
-    func setNavigationBar() {
-        navigationController?.navigationBar.tintColor = .black
-        navigationController?.navigationBar.topItem?.title = "영화"
+    func getTrendMovie() {
+        movieProvider.request(.getTrend(page: 1)) { response in
+            switch response {
+            case .success(let result):
+                do {
+                    let data = try result.map(NetworkResponse.self)
+                    print("🧡")
+                    print(data)
+                    self.movieChartList = data.results
+                    self.tableView.reloadData()
+                } catch {
+                    print("parsing error")
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
 
-        let listButton = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(presentListVC(_:)))
-        navigationItem.rightBarButtonItem = listButton
+    func getUpcomingMovie() {
+        movieProvider.request(.getUpcoming(page: 1)) { response in
+            switch response {
+            case .success(let result):
+                do {
+                    let data = try result.map(NetworkResponse.self)
+                    print("🧡")
+                    print(data)
+                    self.movieChartList = data.results
+                    self.tableView.reloadData()
+                } catch {
+                    print("parsing error")
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
     }
 }
 
