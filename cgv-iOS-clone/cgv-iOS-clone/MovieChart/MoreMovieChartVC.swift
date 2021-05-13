@@ -169,7 +169,7 @@ class MoreMovieChartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getPopularMovie()
+        getMovieDataBySelectedSegmented(selectedIdx: segmentControl.selectedSegmentIndex)
         setConstraints()
         setNavigationBar()
     }
@@ -177,7 +177,14 @@ class MoreMovieChartVC: UIViewController {
     // MARK: - Action Methods
 
     @objc func changeSegControl(_ sender: UISegmentedControl) {
-        print(sender.selectedSegmentIndex)
+        switch sender.selectedSegmentIndex {
+        case 2:
+            nowPlayingMovieButton.isHidden = true
+        default:
+            nowPlayingMovieButton.isHidden = false
+        }
+
+        getMovieDataBySelectedSegmented(selectedIdx: sender.selectedSegmentIndex)
     }
 
     @objc func changeSortStatus(_ sender: UIButton) {
@@ -217,6 +224,18 @@ extension MoreMovieChartVC {
         let listButton = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(presentListVC(_:)))
         navigationItem.rightBarButtonItem = listButton
     }
+
+    func getMovieDataBySelectedSegmented(selectedIdx: Int) {
+        switch selectedIdx {
+        case 0:
+            getPopularMovie()
+        case 1:
+            getTrendMovie()
+        case 2:
+            getUpcomingMovie()
+        default: break
+        }
+    }
 }
 
 // MARK: - Network
@@ -229,6 +248,7 @@ extension MoreMovieChartVC {
                 do {
                     let data = try result.map(NetworkResponse.self)
                     self.movieChartList = data.results
+
                     self.tableView.reloadData()
                 } catch {
                     print("parsing error")
@@ -245,9 +265,8 @@ extension MoreMovieChartVC {
             case .success(let result):
                 do {
                     let data = try result.map(NetworkResponse.self)
-                    print("🧡")
-                    print(data)
                     self.movieChartList = data.results
+
                     self.tableView.reloadData()
                 } catch {
                     print("parsing error")
@@ -264,9 +283,8 @@ extension MoreMovieChartVC {
             case .success(let result):
                 do {
                     let data = try result.map(NetworkResponse.self)
-                    print("🧡")
-                    print(data)
                     self.movieChartList = data.results
+
                     self.tableView.reloadData()
                 } catch {
                     print("parsing error")
