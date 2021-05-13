@@ -14,14 +14,16 @@ class MainVC: UIViewController {
         let button = UIButton()
         button.setTitle("더보기", for: .normal)
         button.setTitleColor(UIColor.red, for: .normal)
-        button.addTarget(self, action: #selector(touchUpMoreMovieButton(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(presentMoreMovieVC(_:)), for: .touchUpInside)
 
         return button
     }()
 
     // MARK: - Life Cycle Methods
-    
+
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -34,11 +36,11 @@ class MainVC: UIViewController {
     }
 
     // MARK: - Actions
-    
-    @objc func touchUpMoreMovieButton(_ sender: UIButton) {
+
+    @objc func presentMoreMovieVC(_ sender: UIButton) {
         let moreMovieChartVC = MoreMovieChartVC()
-        
-        self.navigationController?.pushViewController(moreMovieChartVC, animated: true)
+
+        navigationController?.pushViewController(moreMovieChartVC, animated: true)
     }
 }
 

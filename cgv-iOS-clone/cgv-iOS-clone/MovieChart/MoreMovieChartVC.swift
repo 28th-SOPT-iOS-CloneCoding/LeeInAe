@@ -171,6 +171,7 @@ class MoreMovieChartVC: UIViewController {
 
         getPopularMovie()
         setConstraints()
+        setNavigationBar()
     }
 
     // MARK: - Action Methods
@@ -187,8 +188,14 @@ class MoreMovieChartVC: UIViewController {
         filterButtonStatus.toggle()
     }
 
-    // MARK: - Custom Methods
+    @objc func presentListVC(_ sender: UIBarButtonItem) {
+        print("list")
+    }
+}
 
+// MARK: - Custom Methods
+
+extension MoreMovieChartVC {
     func setConstraints() {
         view.addSubviews([segmentControl, tableView])
 
@@ -218,6 +225,14 @@ class MoreMovieChartVC: UIViewController {
                 print(err)
             }
         }
+    }
+
+    func setNavigationBar() {
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.topItem?.title = "영화"
+
+        let listButton = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(presentListVC(_:)))
+        navigationItem.rightBarButtonItem = listButton
     }
 }
 
