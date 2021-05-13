@@ -19,8 +19,7 @@
 		ABCFBAE82649A882003BF2B6 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBAE72649A882003BF2B6 /* MovieService.swift */; };
 		ABD2F18F26484E380019BCED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD2F18E26484E380019BCED /* AppDelegate.swift */; };
 		ABD2F19126484E380019BCED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD2F19026484E380019BCED /* SceneDelegate.swift */; };
-		ABD2F19326484E380019BCED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD2F19226484E380019BCED /* ViewController.swift */; };
-		ABD2F19626484E380019BCED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABD2F19426484E380019BCED /* Main.storyboard */; };
+		ABD2F19326484E380019BCED /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD2F19226484E380019BCED /* MainVC.swift */; };
 		ABD2F19826484E3A0019BCED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABD2F19726484E3A0019BCED /* Assets.xcassets */; };
 		ABD2F19B26484E3A0019BCED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABD2F19926484E3A0019BCED /* LaunchScreen.storyboard */; };
 		ABD2F1A8264850880019BCED /* MoreMovieChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD2F1A7264850880019BCED /* MoreMovieChartVC.swift */; };
@@ -44,8 +43,7 @@
 		ABD2F18B26484E380019BCED /* cgv-iOS-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cgv-iOS-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD2F18E26484E380019BCED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABD2F19026484E380019BCED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ABD2F19226484E380019BCED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		ABD2F19526484E380019BCED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ABD2F19226484E380019BCED /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		ABD2F19726484E3A0019BCED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABD2F19A26484E3A0019BCED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABD2F19C26484E3A0019BCED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 				ABD2F1A326484E530019BCED /* Main */,
 				ABD2F18E26484E380019BCED /* AppDelegate.swift */,
 				ABD2F19026484E380019BCED /* SceneDelegate.swift */,
-				ABD2F19426484E380019BCED /* Main.storyboard */,
 				ABD2F19726484E3A0019BCED /* Assets.xcassets */,
 				ABD2F19926484E3A0019BCED /* LaunchScreen.storyboard */,
 				ABD2F19C26484E3A0019BCED /* Info.plist */,
@@ -140,7 +137,7 @@
 		ABD2F1A326484E530019BCED /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				ABD2F19226484E380019BCED /* ViewController.swift */,
+				ABD2F19226484E380019BCED /* MainVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -233,7 +230,6 @@
 			files = (
 				ABD2F19B26484E3A0019BCED /* LaunchScreen.storyboard in Resources */,
 				ABD2F19826484E3A0019BCED /* Assets.xcassets in Resources */,
-				ABD2F19626484E380019BCED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABD2F19326484E380019BCED /* ViewController.swift in Sources */,
+				ABD2F19326484E380019BCED /* MainVC.swift in Sources */,
 				AB923032264C229300F0036A /* UIImage+Extension.swift in Sources */,
 				ABD2F18F26484E380019BCED /* AppDelegate.swift in Sources */,
 				ABCFBAE52649A106003BF2B6 /* NetworkResponse.swift in Sources */,
@@ -306,14 +302,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		ABD2F19426484E380019BCED /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ABD2F19526484E380019BCED /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		ABD2F19926484E3A0019BCED /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -457,7 +445,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "inaelee.cgv-iOS-clone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -477,7 +465,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "inaelee.cgv-iOS-clone";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
