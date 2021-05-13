@@ -12,7 +12,7 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
 
-        return dateFormatter.date(from: date)!
+        return dateFormatter.date(from: date) ?? Date()
     }
 
     func getDateToString(format: String = "yyyy.MM.dd", date: Date) -> String {

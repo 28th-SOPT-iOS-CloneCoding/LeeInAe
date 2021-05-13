@@ -120,6 +120,9 @@ class MoreMovieChartVC: UIViewController {
     private let segmentItems: [String] = [MovieChart.movieChart.rawValue, MovieChart.artHouse.rawValue, MovieChart.upcoming.rawValue]
     private var movieChartList: [Movie] = []
     private var filteredMovieChartList: [Movie] = []
+    private var currPage: Int = 1
+    private var totalPage: Int = 1
+    private var canFetchData: Bool = true
 
     private var sortButtonStatus: Int = 0 {
         willSet(newValue) {
@@ -177,6 +180,13 @@ class MoreMovieChartVC: UIViewController {
     // MARK: - Action Methods
 
     @objc func changeSegControl(_ sender: UISegmentedControl) {
+        currPage = 1
+        totalPage = 1
+
+        // FIXME: - 좀 별로.. 좋지 않은 방식같은
+        movieChartList.removeAll()
+        tableView.reloadData()
+
         switch sender.selectedSegmentIndex {
         case 2:
             nowPlayingMovieButton.isHidden = true
@@ -228,11 +238,11 @@ extension MoreMovieChartVC {
     func getMovieDataBySelectedSegmented(selectedIdx: Int) {
         switch selectedIdx {
         case 0:
-            getPopularMovie()
+            getPopularMovie(page: currPage)
         case 1:
-            getTrendMovie()
+            getTrendMovie(page: currPage)
         case 2:
-            getUpcomingMovie()
+            getUpcomingMovie(page: currPage)
         default: break
         }
     }
@@ -241,13 +251,39 @@ extension MoreMovieChartVC {
 // MARK: - Network
 
 extension MoreMovieChartVC {
-    func getPopularMovie() {
-        movieProvider.request(.getPopular(page: 1)) { response in
+    func getPopularMovie(page: Int) {
+        movieProvider.request(.getPopular(page: page)) { response in
             switch response {
             case .success(let result):
                 do {
                     let data = try result.map(NetworkResponse.self)
-                    self.movieChartList = data.results
+
+                    self.movieChartList.append(contentsOf: data.results)
+                    self.totalPage = data.totalPages
+                    self.canFetchData = true
+
+                    self.tableView.reloadData()
+                } catch {
+                    print(self.currPage)
+                    print(self.totalPage)
+                    print("parsing error")
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+
+    func getTrendMovie(page: Int) {
+        movieProvider.request(.getTrend(page: page)) { response in
+            switch response {
+            case .success(let result):
+                do {
+                    let data = try result.map(NetworkResponse.self)
+
+                    self.movieChartList.append(contentsOf: data.results)
+                    self.totalPage = data.totalPages
+                    self.canFetchData = true
 
                     self.tableView.reloadData()
                 } catch {
@@ -259,31 +295,16 @@ extension MoreMovieChartVC {
         }
     }
 
-    func getTrendMovie() {
-        movieProvider.request(.getTrend(page: 1)) { response in
+    func getUpcomingMovie(page: Int) {
+        movieProvider.request(.getUpcoming(page: page)) { response in
             switch response {
             case .success(let result):
                 do {
                     let data = try result.map(NetworkResponse.self)
-                    self.movieChartList = data.results
 
-                    self.tableView.reloadData()
-                } catch {
-                    print("parsing error")
-                }
-            case .failure(let err):
-                print(err)
-            }
-        }
-    }
-
-    func getUpcomingMovie() {
-        movieProvider.request(.getUpcoming(page: 1)) { response in
-            switch response {
-            case .success(let result):
-                do {
-                    let data = try result.map(NetworkResponse.self)
-                    self.movieChartList = data.results
+                    self.movieChartList.append(contentsOf: data.results)
+                    self.totalPage = data.totalPages
+                    self.canFetchData = true
 
                     self.tableView.reloadData()
                 } catch {
@@ -305,6 +326,16 @@ extension MoreMovieChartVC: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         44
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if tableView.contentOffset.y > tableView.contentSize.height - tableView.bounds.size.height {
+            if canFetchData, currPage < totalPage {
+                currPage += 1
+                canFetchData = false
+                getMovieDataBySelectedSegmented(selectedIdx: segmentControl.selectedSegmentIndex)
+            }
+        }
     }
 }
 
