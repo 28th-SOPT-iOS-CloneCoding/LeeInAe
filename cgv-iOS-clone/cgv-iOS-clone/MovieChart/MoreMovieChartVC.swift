@@ -36,6 +36,8 @@ class MoreMovieChartVC: UIViewController {
 
         tableView.register(MovieChartTVC.self, forCellReuseIdentifier: MovieChartTVC.identifier)
 
+        tableView.refreshControl = self.refreshControl
+
         return tableView
     }()
 
@@ -115,6 +117,13 @@ class MoreMovieChartVC: UIViewController {
         return btn
     }()
 
+    private let refreshControl: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(refreshTableView(_:)), for: .valueChanged)
+
+        return refresh
+    }()
+
     // MARK: - local variable
 
     private let segmentItems: [String] = [MovieChart.movieChart.rawValue, MovieChart.artHouse.rawValue, MovieChart.upcoming.rawValue]
@@ -187,6 +196,11 @@ class MoreMovieChartVC: UIViewController {
         movieChartList.removeAll()
         tableView.reloadData()
 
+        /// sort, filter  Button 초기화
+        sortButtonStatus = 0
+        filterButtonStatus = false
+
+        /// filter Button 숨김
         switch sender.selectedSegmentIndex {
         case 2:
             nowPlayingMovieButton.isHidden = true
@@ -207,6 +221,14 @@ class MoreMovieChartVC: UIViewController {
 
     @objc func presentListVC(_ sender: UIBarButtonItem) {
         print("list")
+    }
+
+    @objc func refreshTableView(_ sender: UIRefreshControl) {
+        movieChartList.removeAll()
+        tableView.reloadData()
+
+        getMovieDataBySelectedSegmented(selectedIdx: segmentControl.selectedSegmentIndex)
+        refreshControl.endRefreshing()
     }
 }
 
@@ -236,6 +258,9 @@ extension MoreMovieChartVC {
     }
 
     func getMovieDataBySelectedSegmented(selectedIdx: Int) {
+        sortButtonStatus = 0
+        filterButtonStatus = false
+
         switch selectedIdx {
         case 0:
             getPopularMovie(page: currPage)
