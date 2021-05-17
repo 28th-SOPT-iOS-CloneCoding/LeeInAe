@@ -124,6 +124,14 @@ class MoreMovieChartVC: UIViewController {
         return refresh
     }()
 
+    private let nowReservationButton: UIButton = {
+        let btn = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width * (100/390), height: 200)))
+        btn.backgroundColor = UIColor(red: 232/255, green: 99/255, blue: 109/255, alpha: 0.85)
+        btn.cornerRound(radius: 35)
+
+        return btn
+    }()
+
     // MARK: - local variable
 
     private let segmentItems: [String] = [MovieChart.movieChart.rawValue, MovieChart.artHouse.rawValue, MovieChart.upcoming.rawValue]
@@ -227,6 +235,9 @@ class MoreMovieChartVC: UIViewController {
         movieChartList.removeAll()
         tableView.reloadData()
 
+        currPage = 1
+        totalPage = 1
+
         getMovieDataBySelectedSegmented(selectedIdx: segmentControl.selectedSegmentIndex)
         refreshControl.endRefreshing()
     }
@@ -236,7 +247,7 @@ class MoreMovieChartVC: UIViewController {
 
 extension MoreMovieChartVC {
     func setConstraints() {
-        view.addSubviews([segmentControl, tableView])
+        view.addSubviews([segmentControl, tableView, nowReservationButton])
 
         segmentControl.snp.makeConstraints { make in
             make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -246,6 +257,13 @@ extension MoreMovieChartVC {
             make.top.equalTo(segmentControl.snp.bottom)
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalToSuperview()
+        }
+
+        nowReservationButton.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.45)
+            make.height.equalTo(70)
+            make.trailing.equalToSuperview().inset(-30)
+            make.bottom.equalToSuperview().inset(50)
         }
     }
 

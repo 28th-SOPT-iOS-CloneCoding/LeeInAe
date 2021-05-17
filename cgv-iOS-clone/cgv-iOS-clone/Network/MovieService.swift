@@ -47,9 +47,9 @@ extension MovieService: TargetType {
     var task: Task {
         switch self {
         case .getPopular(let page):
-            return .requestParameters(parameters: ["api_key": MovieService.apiKey, "language": "ko", "page": page], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["api_key": MovieService.apiKey, "language": "ko", "page": page, "region": "KR"], encoding: URLEncoding.default)
         case .getTrend(page: let page):
-            return .requestParameters(parameters: ["api_key": MovieService.apiKey, "language": "ko", "page": page], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["api_key": MovieService.apiKey, "language": "ko", "page": page, "region": "KR"], encoding: URLEncoding.default)
         case .getUpcoming(page: let page):
             return .requestParameters(parameters: ["api_key": MovieService.apiKey, "language": "ko", "page": page, "region": "KR"], encoding: URLEncoding.default)
         }
