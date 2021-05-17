@@ -21,4 +21,26 @@ extension UIView {
         self.layer.cornerRadius = radius
         self.layer.masksToBounds = true
     }
+
+    func setGradient(color1: UIColor, color2: UIColor) {
+        let gradient = CAGradientLayer()
+        gradient.colors = [color1.cgColor, color2.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.frame = bounds
+        layer.addSublayer(gradient)
+    }
+
+    func setShadow(radius: CGFloat, offset: CGSize, opacity: Float) {
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowOffset = offset
+        self.layer.shadowRadius = radius
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shouldRasterize = true
+
+        self.layer.shouldRasterize = true
+        self.layer.rasterizationScale = UIScreen.main.scale
+    }
 }

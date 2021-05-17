@@ -125,9 +125,20 @@ class MoreMovieChartVC: UIViewController {
     }()
 
     private let nowReservationButton: UIButton = {
-        let btn = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width * (100/390), height: 200)))
-        btn.backgroundColor = UIColor(red: 232/255, green: 99/255, blue: 109/255, alpha: 0.85)
+        let btn = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
+        btn.setGradient(color1: UIColor(red: 232/255, green: 99/255, blue: 109/255, alpha: 0.85), color2: UIColor(red: 218/255, green: 113/255, blue: 53/255, alpha: 0.85))
+
         btn.cornerRound(radius: 35)
+
+        return btn
+    }()
+
+    private let topButton: UIButton = {
+        let btn = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 60, height: 60)))
+        btn.backgroundColor = UIColor(white: 1.0, alpha: 0.9)
+        btn.setImage(UIImage(systemName: "arrow.up"), for: .normal)
+        btn.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(weight: .heavy), forImageIn: .normal)
+        btn.tintColor = UIColor.grayTextColor
 
         return btn
     }()
@@ -247,10 +258,11 @@ class MoreMovieChartVC: UIViewController {
 
 extension MoreMovieChartVC {
     func setConstraints() {
-        view.addSubviews([segmentControl, tableView, nowReservationButton])
+        view.addSubviews([segmentControl, tableView, nowReservationButton, topButton])
 
         segmentControl.snp.makeConstraints { make in
             make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(50)
         }
 
         tableView.snp.makeConstraints { make in
@@ -263,8 +275,17 @@ extension MoreMovieChartVC {
             make.width.equalToSuperview().multipliedBy(0.45)
             make.height.equalTo(70)
             make.trailing.equalToSuperview().inset(-30)
-            make.bottom.equalToSuperview().inset(50)
+            make.bottom.equalTo(topButton.snp.top).inset(-15)
         }
+
+        topButton.snp.makeConstraints { make in
+            make.width.height.equalTo(60)
+            make.trailing.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().inset(30)
+        }
+
+        topButton.cornerRounds()
+        topButton.setShadow(radius: 5, offset: CGSize(width: 3, height: 3), opacity: 0.4)
     }
 
     func setNavigationBar() {
