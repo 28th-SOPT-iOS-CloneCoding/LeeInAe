@@ -15,7 +15,7 @@ enum MovieChart: String {
     case upcoming = "개봉예정"
 }
 
-enum sortCase: Int {
+enum SortCase: Int {
     case popularity = 0
     case vote = 1
 }
@@ -86,7 +86,7 @@ class MoreMovieChartVC: UIViewController {
 
     private let popularitySortButton: UIButton = {
         let btn = UIButton()
-        btn.tag = sortCase.popularity.rawValue
+        btn.tag = SortCase.popularity.rawValue
         btn.setTitle("• 인기순", for: .normal)
         btn.setTitleColor(UIColor.black, for: .normal)
         btn.titleLabel?.font = UIFont.AppleSDGothic(type: .semiBold, size: 13)
@@ -97,7 +97,7 @@ class MoreMovieChartVC: UIViewController {
 
     private let voteSortButton: UIButton = {
         let btn = UIButton()
-        btn.tag = sortCase.vote.rawValue
+        btn.tag = SortCase.vote.rawValue
         btn.setTitle("• 투표율순", for: .normal)
         btn.setTitleColor(UIColor.grayTextColor, for: .normal)
         btn.titleLabel?.font = UIFont.AppleSDGothic(type: .semiBold, size: 13)
@@ -127,8 +127,9 @@ class MoreMovieChartVC: UIViewController {
     private let nowReservationButton: UIButton = {
         let btn = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
         btn.setGradient(color1: UIColor(red: 232/255, green: 99/255, blue: 109/255, alpha: 0.85), color2: UIColor(red: 218/255, green: 113/255, blue: 53/255, alpha: 0.85))
-
         btn.cornerRound(radius: 35)
+
+        btn.addTarget(self, action: #selector(presentReservationVC), for: .touchUpInside)
 
         return btn
     }()
@@ -252,6 +253,10 @@ class MoreMovieChartVC: UIViewController {
         getMovieDataBySelectedSegmented(selectedIdx: segmentControl.selectedSegmentIndex)
         refreshControl.endRefreshing()
     }
+
+    @objc func presentReservationVC(_ sender: UIButton) {
+        print("꾸욱..")
+    }
 }
 
 // MARK: - Custom Methods
@@ -275,13 +280,13 @@ extension MoreMovieChartVC {
             make.width.equalToSuperview().multipliedBy(0.45)
             make.height.equalTo(70)
             make.trailing.equalToSuperview().inset(-30)
-            make.bottom.equalTo(topButton.snp.top).inset(-15)
+            make.bottom.equalToSuperview().inset(30)
         }
 
         topButton.snp.makeConstraints { make in
             make.width.height.equalTo(60)
             make.trailing.equalToSuperview().inset(20)
-            make.bottom.equalToSuperview().inset(30)
+            make.bottom.equalToSuperview().inset(-100)
         }
 
         topButton.cornerRounds()
@@ -399,6 +404,36 @@ extension MoreMovieChartVC: UITableViewDelegate {
                 canFetchData = false
                 getMovieDataBySelectedSegmented(selectedIdx: segmentControl.selectedSegmentIndex)
             }
+        }
+
+        /// top button animation
+        UIView.animate(withDuration: 0.8) {
+            if scrollView.contentOffset.y > 10 {
+                print("show")
+                self.topButton.isHidden = false
+
+                self.topButton.snp.updateConstraints { make in
+                    make.bottom.equalToSuperview().inset(30)
+                }
+
+                self.nowReservationButton.snp.updateConstraints { make in
+                    make.bottom.equalToSuperview().inset(45 + self.topButton.bounds.height)
+                }
+
+            } else {
+                print("hide")
+                self.topButton.isHidden = true
+
+                self.topButton.snp.updateConstraints { make in
+                    make.bottom.equalToSuperview().inset(-100)
+                }
+
+                self.nowReservationButton.snp.updateConstraints { make in
+                    make.bottom.equalToSuperview().inset(30)
+                }
+            }
+
+            self.view.layoutIfNeeded()
         }
     }
 }
