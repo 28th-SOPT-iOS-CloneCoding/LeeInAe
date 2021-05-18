@@ -141,6 +141,8 @@ class MoreMovieChartVC: UIViewController {
         btn.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(weight: .heavy), forImageIn: .normal)
         btn.tintColor = UIColor.grayTextColor
 
+        btn.addTarget(self, action: #selector(scrollToTop(_:)), for: .touchUpInside)
+
         return btn
     }()
 
@@ -256,6 +258,11 @@ class MoreMovieChartVC: UIViewController {
 
     @objc func presentReservationVC(_ sender: UIButton) {
         print("꾸욱..")
+    }
+
+    @objc func scrollToTop(_ sender: UIButton) {
+        let topIndex = IndexPath(row: 0, section: 0)
+        tableView.scrollToRow(at: topIndex, at: .top, animated: true)
     }
 }
 
