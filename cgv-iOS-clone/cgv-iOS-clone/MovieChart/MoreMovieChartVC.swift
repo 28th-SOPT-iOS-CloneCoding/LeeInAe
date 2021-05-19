@@ -257,7 +257,10 @@ class MoreMovieChartVC: UIViewController {
     }
 
     @objc func presentReservationVC(_ sender: UIButton) {
-        print("꾸욱..")
+        let reservationVC = NowReservationVC()
+        reservationVC.modalPresentationStyle = .overCurrentContext
+
+        present(reservationVC, animated: true, completion: nil)
     }
 
     @objc func scrollToTop(_ sender: UIButton) {

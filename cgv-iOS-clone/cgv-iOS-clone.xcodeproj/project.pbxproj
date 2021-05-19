@@ -23,6 +23,7 @@
 		ABD2F19826484E3A0019BCED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABD2F19726484E3A0019BCED /* Assets.xcassets */; };
 		ABD2F19B26484E3A0019BCED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABD2F19926484E3A0019BCED /* LaunchScreen.storyboard */; };
 		ABD2F1A8264850880019BCED /* MoreMovieChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD2F1A7264850880019BCED /* MoreMovieChartVC.swift */; };
+		ABD5811D2654F49400DDB0D3 /* NowReservationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD5811C2654F49400DDB0D3 /* NowReservationVC.swift */; };
 		E61ED452B2D5C38E70976D8D /* Pods_cgv_iOS_clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD78B6409211CA4537D38DE /* Pods_cgv_iOS_clone.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		ABD2F19A26484E3A0019BCED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABD2F19C26484E3A0019BCED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABD2F1A7264850880019BCED /* MoreMovieChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreMovieChartVC.swift; sourceTree = "<group>"; };
+		ABD5811C2654F49400DDB0D3 /* NowReservationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowReservationVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		ABD2F18D26484E380019BCED /* cgv-iOS-clone */ = {
 			isa = PBXGroup;
 			children = (
+				ABD5811B2654F42F00DDB0D3 /* Reservation */,
 				ABCFBADA26498445003BF2B6 /* Extentsion */,
 				ABD2F1AC26485C820019BCED /* Network */,
 				ABD2F1A426484E5D0019BCED /* MovieChart */,
@@ -159,6 +162,14 @@
 				ABCFBAE72649A882003BF2B6 /* MovieService.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		ABD5811B2654F42F00DDB0D3 /* Reservation */ = {
+			isa = PBXGroup;
+			children = (
+				ABD5811C2654F49400DDB0D3 /* NowReservationVC.swift */,
+			);
+			path = Reservation;
 			sourceTree = "<group>";
 		};
 		E18FD53B780F8532F3D9235F /* Frameworks */ = {
@@ -284,6 +295,7 @@
 			files = (
 				ABD2F19326484E380019BCED /* MainVC.swift in Sources */,
 				AB923032264C229300F0036A /* UIImage+Extension.swift in Sources */,
+				ABD5811D2654F49400DDB0D3 /* NowReservationVC.swift in Sources */,
 				ABD2F18F26484E380019BCED /* AppDelegate.swift in Sources */,
 				ABCFBAE52649A106003BF2B6 /* NetworkResponse.swift in Sources */,
 				ABAACD0A264ABD330042C48F /* UIColor+Extension.swift in Sources */,
