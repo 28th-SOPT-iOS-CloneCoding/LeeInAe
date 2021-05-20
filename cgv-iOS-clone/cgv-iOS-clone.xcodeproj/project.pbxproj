@@ -73,6 +73,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AB06BFFC26564C81008C32D1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		ABCFBADA26498445003BF2B6 /* Extentsion */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +174,7 @@
 		ABD5811B2654F42F00DDB0D3 /* Reservation */ = {
 			isa = PBXGroup;
 			children = (
+				AB06BFFC26564C81008C32D1 /* Cell */,
 				ABD5811C2654F49400DDB0D3 /* NowReservationVC.swift */,
 			);
 			path = Reservation;

@@ -77,8 +77,8 @@ class NowReservationVC: UIViewController {
         btn.setTitle("조회하기", for: .normal)
         btn.titleLabel?.font = UIFont.AppleSDGothic(type: .bold, size: 18)
         btn.tintColor = UIColor.white
-        btn.backgroundColor = UIColor.grayTextColor
-        btn.cornerRound(radius: 10)
+        btn.backgroundColor = UIColor.gray
+        btn.cornerRound(radius: 13)
 
         return btn
     }()
@@ -135,8 +135,8 @@ extension NowReservationVC {
             make.bottom.equalTo(inquiryButton.snp.top)
             make.leading.trailing.equalToSuperview()
         }
-        
-        inquiryButton.snp.makeConstraints { (make) in
+
+        inquiryButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(30)
             make.height.equalTo(55)
             make.leading.trailing.equalToSuperview().inset(20)
@@ -165,26 +165,25 @@ extension NowReservationVC: UITableViewDelegate {
         let headerTitleLabel = UILabel()
         headerTitleLabel.font = UIFont.AppleSDGothic(type: .semiBold, size: 16)
 
-        header.addSubviews([headerTitleLabel, headerDateLabel])
+        header.addSubviews([headerTitleLabel])
 
         headerTitleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(20)
             make.centerY.equalToSuperview()
         }
 
-        headerDateLabel.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(20)
-            make.centerY.equalToSuperview()
-        }
-
         if section == 0 {
             headerTitleLabel.text = "극장선택"
-            headerDateLabel.isHidden = true
         }
         else {
+            header.addSubview(headerDateLabel)
+            headerDateLabel.snp.makeConstraints { make in
+                make.trailing.equalToSuperview().inset(20)
+                make.centerY.equalToSuperview()
+            }
+
             headerTitleLabel.text = "날짜/시간"
             headerDateLabel.text = "2021.5.20 (목) 오늘"
-            headerDateLabel.isHidden = false
         }
 
         return header
