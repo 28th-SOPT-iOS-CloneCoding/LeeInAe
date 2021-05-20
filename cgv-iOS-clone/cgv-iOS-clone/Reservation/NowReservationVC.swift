@@ -62,6 +62,11 @@ class NowReservationVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableView.automaticDimension
+
+        tableView.register(TheaterTVC.self, forCellReuseIdentifier: TheaterTVC.identifier)
+
         return tableView
     }()
 
@@ -158,6 +163,7 @@ extension NowReservationVC {
 // MARK: - UITableViewDelegate
 
 extension NowReservationVC: UITableViewDelegate {
+    // FIXME: - 코드 정리..
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView()
         header.backgroundColor = UIColor.white
@@ -198,7 +204,7 @@ extension NowReservationVC: UITableViewDelegate {
 
 extension NowReservationVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        1
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -207,6 +213,13 @@ extension NowReservationVC: UITableViewDataSource {
 
     // TODO: - : cell separator 없애기
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        switch indexPath.section {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TheaterTVC.identifier) as? TheaterTVC else { return UITableViewCell() }
+
+            return cell
+        default:
+            return UITableViewCell()
+        }
     }
 }
