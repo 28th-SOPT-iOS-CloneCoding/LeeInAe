@@ -31,6 +31,7 @@ class NowReservationVC: UIViewController {
         let view = UIView()
         view.setShadow(radius: 2, offset: .zero, opacity: 0.2)
         view.backgroundColor = UIColor.white
+        view.layer.zPosition = 1
 
         return view
     }()
@@ -49,7 +50,24 @@ class NowReservationVC: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "지금예매"
-        label.font = UIFont.AppleSDGothic(type: .semiBold, size: 20)
+        label.font = UIFont.AppleSDGothic(type: .semiBold, size: 18)
+
+        return label
+    }()
+
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.isScrollEnabled = false
+
+        tableView.delegate = self
+        tableView.dataSource = self
+
+        return tableView
+    }()
+
+    private lazy var headerDateLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.AppleSDGothic(type: .regular, size: 15)
 
         return label
     }()
@@ -79,7 +97,7 @@ extension NowReservationVC {
 extension NowReservationVC {
     func setConstraint() {
         view.addSubviews([popUpView, drawerView])
-        popUpView.addSubviews([headerView])
+        popUpView.addSubviews([headerView, tableView])
         headerView.addSubviews([closeButton, titleLabel])
 
         popUpView.snp.makeConstraints { make in
@@ -100,6 +118,11 @@ extension NowReservationVC {
             make.height.equalTo(50)
         }
 
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(headerView.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
@@ -110,5 +133,61 @@ extension NowReservationVC {
             make.trailing.equalToSuperview()
             make.width.height.equalTo(50)
         }
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension NowReservationVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
+        header.backgroundColor = UIColor.white
+
+        let headerTitleLabel = UILabel()
+        headerTitleLabel.font = UIFont.AppleSDGothic(type: .semiBold, size: 16)
+
+        header.addSubviews([headerTitleLabel, headerDateLabel])
+
+        headerTitleLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(20)
+            make.centerY.equalToSuperview()
+        }
+
+        headerDateLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(20)
+            make.centerY.equalToSuperview()
+        }
+
+        if section == 0 {
+            headerTitleLabel.text = "극장선택"
+            headerDateLabel.isHidden = true
+        }
+        else {
+            headerTitleLabel.text = "날짜/시간"
+            headerDateLabel.text = "2021.5.20 (목) 오늘"
+            headerDateLabel.isHidden = false
+        }
+
+        return header
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        48
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension NowReservationVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        2
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        UITableViewCell()
     }
 }
