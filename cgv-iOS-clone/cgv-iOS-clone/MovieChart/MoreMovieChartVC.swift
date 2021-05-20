@@ -419,7 +419,6 @@ extension MoreMovieChartVC: UITableViewDelegate {
         /// top button animation
         UIView.animate(withDuration: 0.8) {
             if scrollView.contentOffset.y > 10 {
-                print("show")
                 self.topButton.isHidden = false
 
                 self.topButton.snp.updateConstraints { make in
@@ -431,7 +430,6 @@ extension MoreMovieChartVC: UITableViewDelegate {
                 }
 
             } else {
-                print("hide")
                 self.topButton.isHidden = true
 
                 self.topButton.snp.updateConstraints { make in

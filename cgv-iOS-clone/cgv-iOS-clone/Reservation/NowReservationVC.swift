@@ -57,7 +57,7 @@ class NowReservationVC: UIViewController {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.isScrollEnabled = false
+        tableView.backgroundColor = UIColor.white
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -70,6 +70,17 @@ class NowReservationVC: UIViewController {
         label.font = UIFont.AppleSDGothic(type: .regular, size: 15)
 
         return label
+    }()
+
+    private let inquiryButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("조회하기", for: .normal)
+        btn.titleLabel?.font = UIFont.AppleSDGothic(type: .bold, size: 18)
+        btn.tintColor = UIColor.white
+        btn.backgroundColor = UIColor.grayTextColor
+        btn.cornerRound(radius: 10)
+
+        return btn
     }()
 
     // MARK: - LifeCycle Methods
@@ -97,7 +108,8 @@ extension NowReservationVC {
 extension NowReservationVC {
     func setConstraint() {
         view.addSubviews([popUpView, drawerView])
-        popUpView.addSubviews([headerView, tableView])
+
+        popUpView.addSubviews([headerView, tableView, inquiryButton])
         headerView.addSubviews([closeButton, titleLabel])
 
         popUpView.snp.makeConstraints { make in
@@ -120,7 +132,14 @@ extension NowReservationVC {
 
         tableView.snp.makeConstraints { make in
             make.top.equalTo(headerView.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.bottom.equalTo(inquiryButton.snp.top)
+            make.leading.trailing.equalToSuperview()
+        }
+        
+        inquiryButton.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview().inset(30)
+            make.height.equalTo(55)
+            make.leading.trailing.equalToSuperview().inset(20)
         }
 
         titleLabel.snp.makeConstraints { make in
@@ -187,6 +206,7 @@ extension NowReservationVC: UITableViewDataSource {
         2
     }
 
+    // TODO: - : cell separator 없애기
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         UITableViewCell()
     }
