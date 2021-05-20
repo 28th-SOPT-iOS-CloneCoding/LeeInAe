@@ -416,31 +416,31 @@ extension MoreMovieChartVC: UITableViewDelegate {
             }
         }
 
-        /// top button animation
-        UIView.animate(withDuration: 0.8) {
-            if scrollView.contentOffset.y > 10 {
-                self.topButton.isHidden = false
+        if scrollView.contentOffset.y > 10 {
+            topButton.isHidden = false
 
-                self.topButton.snp.updateConstraints { make in
-                    make.bottom.equalToSuperview().inset(30)
-                }
-
-                self.nowReservationButton.snp.updateConstraints { make in
-                    make.bottom.equalToSuperview().inset(45 + self.topButton.bounds.height)
-                }
-
-            } else {
-                self.topButton.isHidden = true
-
-                self.topButton.snp.updateConstraints { make in
-                    make.bottom.equalToSuperview().inset(-100)
-                }
-
-                self.nowReservationButton.snp.updateConstraints { make in
-                    make.bottom.equalToSuperview().inset(30)
-                }
+            topButton.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().inset(30)
             }
 
+            nowReservationButton.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().inset(45 + self.topButton.bounds.height)
+            }
+
+        } else {
+            topButton.isHidden = true
+
+            topButton.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().inset(-100)
+            }
+
+            nowReservationButton.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().inset(30)
+            }
+        }
+
+        /// top button animation
+        UIView.animate(withDuration: 0.8) {
             self.view.layoutIfNeeded()
         }
     }
