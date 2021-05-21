@@ -18,12 +18,12 @@ class Theater {
     }
 
     let regionArr: [String] = ["추천 CGV", "서울", "경기", "인천", "강원", "대전/충청", "대구", "부산/울산", "경상", "광주/전라/제주"]
-    var subRegionArr: [String?] = []
+    var subRegionArr: [String] = []
 
     private func getSubRegionData(idx: Int) -> [String] {
         switch idx {
         case 0:
-            return ["불광"]
+            return ["불광", "명동역 씨네라이브러리"]
         case 1:
             return ["강남", "강변", "건대입구", "구로", "대학로", "동대문", "등촌", "명동", "명동역 씨네라이브러리", "목동", "미아", "불광", "상봉", "성신여대입구", "송파"]
         case 2:

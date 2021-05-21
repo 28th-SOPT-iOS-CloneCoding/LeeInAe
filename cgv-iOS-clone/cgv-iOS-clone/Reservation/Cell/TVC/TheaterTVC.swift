@@ -72,12 +72,13 @@ extension TheaterTVC {
 
         regionCollectionView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.edges.equalToSuperview()
+            make.height.equalTo(40)
         }
 
         subRegionCollectionView.snp.makeConstraints { make in
             make.top.equalTo(regionCollectionView.snp.bottom)
             make.leading.bottom.trailing.equalToSuperview()
+            make.height.equalTo(80)
         }
     }
 
@@ -114,8 +115,8 @@ extension TheaterTVC: UICollectionViewDataSource {
 
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubRegionCVC.identifier, for: indexPath) as? SubRegionCVC else { return UICollectionViewCell() }
-            cell.backgroundColor = .blue
-
+            cell.setCell(subRegion: Theater.theater.subRegionArr[indexPath.row])
+            
             return cell
         }
     }
@@ -135,14 +136,23 @@ extension TheaterTVC: UICollectionViewDelegateFlowLayout {
 
             width = label.bounds.size.width + 12
             height = 20
-            return CGSize(width: width, height: height)
+        } else {
+            label.text = Theater.theater.subRegionArr[indexPath.row]
+            label.sizeToFit()
+
+            width = label.bounds.width < 100 ? 80 : label.bounds.width + 40
+            height = label.bounds.size.height + 30
         }
 
-        return CGSize()
+        return CGSize(width: width, height: height)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        if collectionView == subRegionCollectionView {
+            return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        }
+        
+        return UIEdgeInsets.zero
     }
 
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

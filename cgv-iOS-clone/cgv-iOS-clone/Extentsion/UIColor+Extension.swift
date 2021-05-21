@@ -23,4 +23,12 @@ extension UIColor {
     @nonobjc class var grayTextColor: UIColor {
         UIColor(red: 134/255, green: 141/255, blue: 155/255, alpha: 1)
     }
+
+    @nonobjc class var buttonBgGrayColor: UIColor {
+        UIColor(red: 250/255, green: 251/255, blue: 252/255, alpha: 1)
+    }
+
+    @nonobjc class var mainRedColor: UIColor {
+        UIColor(red: 233/255, green: 84/255, blue: 75/255, alpha: 1)
+    }
 }
