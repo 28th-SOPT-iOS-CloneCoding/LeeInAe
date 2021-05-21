@@ -199,6 +199,12 @@ extension NowReservationVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         48
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0 {
+            tableView.contentOffset.y = 0
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
