@@ -110,6 +110,11 @@ extension TheaterTVC: UICollectionViewDataSource {
         if collectionView == regionCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RegionCVC.identifier, for: indexPath) as? RegionCVC else { return UICollectionViewCell() }
             cell.setCell(region: Theater.theater.regionArr[indexPath.row])
+            
+            if indexPath.row == 0 {
+                cell.isSelected = true
+                collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .init())
+            }
 
             return cell
 
@@ -119,6 +124,10 @@ extension TheaterTVC: UICollectionViewDataSource {
 
             return cell
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
 

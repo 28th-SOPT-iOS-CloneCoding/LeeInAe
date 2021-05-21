@@ -19,6 +19,16 @@ class RegionCVC: UICollectionViewCell {
 
         return label
     }()
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                label.textColor = UIColor.mainRedColor
+            } else {
+                label.textColor = UIColor.grayTextColor
+            }
+        }
+    }
 
     // MARK: - Initializer
 
