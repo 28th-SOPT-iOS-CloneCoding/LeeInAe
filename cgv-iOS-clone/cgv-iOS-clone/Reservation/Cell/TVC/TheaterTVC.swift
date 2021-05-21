@@ -116,13 +116,13 @@ extension TheaterTVC: UICollectionViewDataSource {
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubRegionCVC.identifier, for: indexPath) as? SubRegionCVC else { return UICollectionViewCell() }
             cell.setCell(subRegion: Theater.theater.subRegionArr[indexPath.row])
-            
+
             return cell
         }
     }
 }
 
-// MARK: - UICollectionView
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension TheaterTVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -135,7 +135,7 @@ extension TheaterTVC: UICollectionViewDelegateFlowLayout {
             label.sizeToFit()
 
             width = label.bounds.size.width + 12
-            height = 20
+            height = label.bounds.size.height
         } else {
             label.text = Theater.theater.subRegionArr[indexPath.row]
             label.sizeToFit()
@@ -151,15 +151,18 @@ extension TheaterTVC: UICollectionViewDelegateFlowLayout {
         if collectionView == subRegionCollectionView {
             return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         }
-        
         return UIEdgeInsets.zero
     }
 
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        10
-//    }
-//
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == regionCollectionView {
+            return 0
+        }
+        return 10
+    }
+
+    /// 행 사이의 간격 (horizontal -> 수직이 행)
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        5
+        0
     }
 }

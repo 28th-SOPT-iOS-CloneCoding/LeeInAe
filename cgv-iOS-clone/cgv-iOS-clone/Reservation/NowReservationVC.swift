@@ -183,7 +183,17 @@ extension NowReservationVC: UITableViewDelegate {
             headerTitleLabel.text = "극장선택"
         }
         else {
-            header.addSubview(headerDateLabel)
+            let separatorView = UIView()
+            separatorView.backgroundColor = UIColor.systemGray4
+
+            header.addSubviews([headerDateLabel, separatorView])
+
+            separatorView.snp.makeConstraints { make in
+                make.top.equalToSuperview()
+                make.leading.trailing.equalToSuperview().inset(10)
+                make.height.equalTo(1)
+            }
+
             headerDateLabel.snp.makeConstraints { make in
                 make.trailing.equalToSuperview().inset(20)
                 make.centerY.equalToSuperview()
@@ -197,9 +207,9 @@ extension NowReservationVC: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        48
+        55
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y < 0 {
             tableView.contentOffset.y = 0

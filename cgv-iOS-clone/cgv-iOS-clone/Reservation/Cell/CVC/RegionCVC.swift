@@ -12,15 +12,12 @@ class RegionCVC: UICollectionViewCell {
 
     // MARK: - UIComponents
 
-    let button: UIButton = {
-        let btn = UIButton()
-        btn.titleLabel?.font = UIFont.AppleSDGothic(type: .semiBold, size: 15)
-        btn.setTitleColor(UIColor.grayTextColor, for: .normal)
-        btn.setTitleColor(UIColor.adultColor, for: .selected)
-        
-        btn.sizeToFit()
+    let label: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.AppleSDGothic(type: .semiBold, size: 16)
+        label.textColor = UIColor.grayTextColor
 
-        return btn
+        return label
     }()
 
     // MARK: - Initializer
@@ -41,13 +38,14 @@ class RegionCVC: UICollectionViewCell {
 
 extension RegionCVC {
     func setCell(region: String) {
-        button.setTitle(region, for: .normal)
+        label.text = region
+        label.sizeToFit()
     }
 
     func setConstraint() {
-        contentView.addSubviews([button])
+        contentView.addSubviews([label])
 
-        button.snp.makeConstraints { make in
+        label.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
         }
