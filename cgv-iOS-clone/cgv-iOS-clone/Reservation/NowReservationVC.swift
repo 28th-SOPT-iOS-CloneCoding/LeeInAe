@@ -57,6 +57,7 @@ class NowReservationVC: UIViewController {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.white
 
         tableView.delegate = self
