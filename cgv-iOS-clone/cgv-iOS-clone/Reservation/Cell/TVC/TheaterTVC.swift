@@ -106,6 +106,7 @@ extension TheaterTVC {
     }
 
     func setNotification() {
+        /// touchUpRegionCell
         NotificationCenter.default.addObserver(self, selector: #selector(reloadSubRegionCVC), name: Notification.Name.touchUpRegionCell, object: nil)
     }
 }
@@ -167,7 +168,7 @@ extension TheaterTVC: UICollectionViewDelegateFlowLayout {
             label.text = Theater.theater.subRegionArr[indexPath.row]
             label.sizeToFit()
 
-            width = label.bounds.width < 100 ? 80 : label.bounds.width + 40
+            width = label.bounds.width < 40 ? 80 : label.bounds.width + 40
             height = label.bounds.size.height + 30
         }
 
@@ -187,6 +188,6 @@ extension TheaterTVC: UICollectionViewDelegateFlowLayout {
 
     /// 행 사이의 간격 (horizontal -> 수직이 행)
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        0
+        return 10
     }
 }

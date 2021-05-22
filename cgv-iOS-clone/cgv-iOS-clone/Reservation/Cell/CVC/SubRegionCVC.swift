@@ -43,6 +43,7 @@ class SubRegionCVC: UICollectionViewCell {
 extension SubRegionCVC {
     func setCell(subRegion: String) {
         label.text = subRegion
+        label.sizeToFit()
 
         contentView.backgroundColor = UIColor.buttonBgGrayColor
         contentView.cornerRound(radius: 13)
