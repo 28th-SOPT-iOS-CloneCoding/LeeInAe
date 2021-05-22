@@ -20,6 +20,29 @@ class SubRegionCVC: UICollectionViewCell {
         return label
     }()
 
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                label.textColor = UIColor.mainRedColor
+
+                contentView.layer.borderColor = UIColor.mainRedColor.cgColor
+                contentView.backgroundColor = .white
+                contentView.layer.borderColor = UIColor.mainRedColor.cgColor
+
+                layer.shadowOpacity = 0.3
+
+            } else {
+                label.textColor = UIColor.grayTextColor
+
+                contentView.layer.borderColor = UIColor.mainRedColor.cgColor
+                contentView.backgroundColor = .buttonBgGrayColor
+                contentView.layer.borderColor = UIColor.systemGray4.cgColor
+
+                layer.shadowOpacity = 0
+            }
+        }
+    }
+
     // MARK: - Initializer
 
     override init(frame: CGRect) {
@@ -50,6 +73,8 @@ extension SubRegionCVC {
 
         contentView.layer.borderWidth = 1.0
         contentView.layer.borderColor = UIColor.systemGray4.cgColor
+
+        setShadow(radius: 3, offset: CGSize(width: 1, height: 3), opacity: 0, color: .mainRedColor)
     }
 
     func setConstraint() {

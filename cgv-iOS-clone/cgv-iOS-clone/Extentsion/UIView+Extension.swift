@@ -32,12 +32,12 @@ extension UIView {
         layer.addSublayer(gradient)
     }
 
-    func setShadow(radius: CGFloat, offset: CGSize, opacity: Float) {
+    func setShadow(radius: CGFloat, offset: CGSize, opacity: Float, color: UIColor = .black) {
         self.layer.shadowOpacity = opacity
         self.layer.shadowOffset = offset
         self.layer.shadowRadius = radius
         self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowColor = color.cgColor
         self.layer.shouldRasterize = true
 
         self.layer.shouldRasterize = true
