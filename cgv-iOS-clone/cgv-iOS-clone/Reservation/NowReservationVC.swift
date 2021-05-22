@@ -190,7 +190,7 @@ extension NowReservationVC: UITableViewDelegate {
 
             separatorView.snp.makeConstraints { make in
                 make.top.equalToSuperview()
-                make.leading.trailing.equalToSuperview().inset(10)
+                make.leading.trailing.equalToSuperview().inset(20)
                 make.height.equalTo(1)
             }
 

@@ -19,7 +19,7 @@ class RegionCVC: UICollectionViewCell {
 
         return label
     }()
-    
+
     override var isSelected: Bool {
         didSet {
             if isSelected {

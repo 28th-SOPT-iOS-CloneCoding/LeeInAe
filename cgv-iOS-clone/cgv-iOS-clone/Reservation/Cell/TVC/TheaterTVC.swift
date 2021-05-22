@@ -110,7 +110,7 @@ extension TheaterTVC: UICollectionViewDataSource {
         if collectionView == regionCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RegionCVC.identifier, for: indexPath) as? RegionCVC else { return UICollectionViewCell() }
             cell.setCell(region: Theater.theater.regionArr[indexPath.row])
-            
+
             if indexPath.row == 0 {
                 cell.isSelected = true
                 collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .init())
@@ -125,7 +125,7 @@ extension TheaterTVC: UICollectionViewDataSource {
             return cell
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
@@ -143,7 +143,7 @@ extension TheaterTVC: UICollectionViewDelegateFlowLayout {
             label.text = Theater.theater.regionArr[indexPath.row]
             label.sizeToFit()
 
-            width = label.bounds.size.width + 12
+            width = label.bounds.size.width
             height = label.bounds.size.height
         } else {
             label.text = Theater.theater.subRegionArr[indexPath.row]
@@ -158,16 +158,13 @@ extension TheaterTVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if collectionView == subRegionCollectionView {
-            return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+            return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         }
-        return UIEdgeInsets.zero
+        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        if collectionView == regionCollectionView {
-            return 0
-        }
-        return 10
+        10
     }
 
     /// 행 사이의 간격 (horizontal -> 수직이 행)
