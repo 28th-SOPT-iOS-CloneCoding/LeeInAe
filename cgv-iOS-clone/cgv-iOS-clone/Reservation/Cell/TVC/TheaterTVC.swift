@@ -32,6 +32,10 @@ class TheaterTVC: UITableViewCell {
         return collection
     }()
 
+    // MARK: - Local variables
+
+    var isFirst: Bool = true
+
     // MARK: - Initializer
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -136,12 +140,12 @@ extension TheaterTVC: UICollectionViewDataSource {
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubRegionCVC.identifier, for: indexPath) as? SubRegionCVC else { return UICollectionViewCell() }
             cell.setCell(subRegion: Theater.theater.subRegionArr[indexPath.row])
-            
-            if indexPath.row == 0, Theater.theater.selectedIdx == 0 {
+
+            if isFirst, indexPath.row == 0, Theater.theater.selectedIdx == 0 {
+                isFirst = false
                 cell.isSelected = true
                 collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .init())
             }
-
 
             return cell
         }
@@ -194,6 +198,6 @@ extension TheaterTVC: UICollectionViewDelegateFlowLayout {
 
     /// 행 사이의 간격 (horizontal -> 수직이 행)
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        10
     }
 }
