@@ -136,6 +136,12 @@ extension TheaterTVC: UICollectionViewDataSource {
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubRegionCVC.identifier, for: indexPath) as? SubRegionCVC else { return UICollectionViewCell() }
             cell.setCell(subRegion: Theater.theater.subRegionArr[indexPath.row])
+            
+            if indexPath.row == 0, Theater.theater.selectedIdx == 0 {
+                cell.isSelected = true
+                collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .init())
+            }
+
 
             return cell
         }
