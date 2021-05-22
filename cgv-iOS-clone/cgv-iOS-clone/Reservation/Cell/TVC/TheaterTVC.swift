@@ -39,6 +39,7 @@ class TheaterTVC: UITableViewCell {
 
         setConstraint()
         setCollectionView()
+        setNotification()
     }
 
     @available(*, unavailable)
@@ -61,6 +62,15 @@ class TheaterTVC: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+
+    // MARK: - Action Methods
+
+    @objc func reloadSubRegionCVC(_ notification: Notification) {
+        guard let idx = notification.object as? Int else { return }
+
+        Theater.theater.selectedIdx = idx
+        subRegionCollectionView.reloadData()
     }
 }
 
@@ -93,6 +103,10 @@ extension TheaterTVC {
         subRegionCollectionView.delegate = self
         subRegionCollectionView.dataSource = self
         subRegionCollectionView.register(SubRegionCVC.self, forCellWithReuseIdentifier: SubRegionCVC.identifier)
+    }
+
+    func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadSubRegionCVC), name: Notification.Name.touchUpRegionCell, object: nil)
     }
 }
 
@@ -127,7 +141,11 @@ extension TheaterTVC: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        if collectionView == regionCollectionView {
+            NotificationCenter.default.post(name: Notification.Name.touchUpRegionCell, object: indexPath.row)
+
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
     }
 }
 
