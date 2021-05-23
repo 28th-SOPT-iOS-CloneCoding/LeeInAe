@@ -43,6 +43,8 @@ class DateTimeTVC: UITableViewCell {
         return dates
     }()
 
+    var timezone = ["전체", "오전", "오후", "18시이후", "심야"]
+
     // MARK: - Initializer
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -91,7 +93,7 @@ extension DateTimeTVC {
         timezoneCollectionView.snp.makeConstraints { make in
             make.top.equalTo(weekCollectionView.snp.bottom)
             make.leading.bottom.trailing.equalToSuperview()
-            make.height.equalTo(50)
+            make.height.equalTo(70)
         }
     }
 
@@ -102,13 +104,16 @@ extension DateTimeTVC {
 
         timezoneCollectionView.delegate = self
         timezoneCollectionView.dataSource = self
-        timezoneCollectionView.register(WeekCVC.self, forCellWithReuseIdentifier: WeekCVC.identifier)
+        timezoneCollectionView.register(TimezoneCell.self, forCellWithReuseIdentifier: TimezoneCell.identifier)
     }
 }
 
 extension DateTimeTVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 0)
+        if collectionView == weekCollectionView {
+            return UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 0)
+        }
+        return UIEdgeInsets(top: 10, left: 30, bottom: 0, right: 30)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -116,18 +121,37 @@ extension DateTimeTVC: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        0
+        if collectionView == timezoneCollectionView {
+            return 10
+        }
+        return .zero
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 55, height: 100)
+        let label = UILabel()
+        var width = CGFloat()
+        var height = CGFloat()
+
+        if collectionView == weekCollectionView {
+            return CGSize(width: 55, height: 100)
+        } else {
+            label.text = timezone[indexPath.row]
+            label.sizeToFit()
+
+            width = label.bounds.width + 20
+            height = label.bounds.size.height + 20
+        }
+
+        return CGSize(width: width, height: height)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .init())
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        
-        NotificationCenter.default.post(name: Notification.Name.touchUpWeekCell, object: dates[indexPath.row])
+
+        if collectionView == weekCollectionView {
+            NotificationCenter.default.post(name: Notification.Name.touchUpWeekCell, object: dates[indexPath.row])
+        }
     }
 }
 
@@ -136,12 +160,24 @@ extension DateTimeTVC: UICollectionViewDataSource {
         if collectionView == weekCollectionView {
             return 14
         }
-        return 4
+        return timezone.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekCVC.identifier, for: indexPath) as? WeekCVC else { return UICollectionViewCell() }
-        cell.setCell(date: dates[indexPath.row], idx: indexPath.row)
+        if collectionView == weekCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekCVC.identifier, for: indexPath) as? WeekCVC else { return UICollectionViewCell() }
+            cell.setCell(date: dates[indexPath.row], idx: indexPath.row)
+
+            if indexPath.item == 0 {
+                cell.isSelected = true
+                collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .init())
+            }
+
+            return cell
+        }
+
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimezoneCell.identifier, for: indexPath) as? TimezoneCell else { return UICollectionViewCell() }
+        cell.setCell(time: timezone[indexPath.row])
 
         if indexPath.item == 0 {
             cell.isSelected = true

@@ -217,16 +217,27 @@ extension NowReservationVC: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = UIView()
+        if section == 1 {
+            let footer = UIView()
 
-        footer.addSubview(inquiryButton)
-        inquiryButton.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
-            make.height.equalTo(55)
-            make.leading.trailing.equalToSuperview().inset(20)
+            footer.addSubview(inquiryButton)
+            inquiryButton.snp.makeConstraints { make in
+                make.top.bottom.equalToSuperview()
+                make.height.equalTo(55)
+                make.leading.trailing.equalToSuperview().inset(20)
+            }
+
+            return footer
+        }
+        return UIView()
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return 55
         }
 
-        return footer
+        return 10
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

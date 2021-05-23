@@ -20,6 +20,7 @@
 		ABAACD0A264ABD330042C48F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAACD09264ABD330042C48F /* UIColor+Extension.swift */; };
 		ABAACD18264B05220042C48F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAACD17264B05220042C48F /* Date+Extension.swift */; };
 		ABC87EC72659F01A00CB390C /* WeekCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EC62659F01A00CB390C /* WeekCVC.swift */; };
+		ABC87ECA265A9A5400CB390C /* TimezoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EC9265A9A5400CB390C /* TimezoneCell.swift */; };
 		ABCFBADC26498471003BF2B6 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBADB26498471003BF2B6 /* UIView+Extension.swift */; };
 		ABCFBAE226499FE2003BF2B6 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBAE126499FE2003BF2B6 /* Movie.swift */; };
 		ABCFBAE52649A106003BF2B6 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFBAE42649A106003BF2B6 /* NetworkResponse.swift */; };
@@ -51,6 +52,7 @@
 		ABAACD09264ABD330042C48F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		ABAACD17264B05220042C48F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		ABC87EC62659F01A00CB390C /* WeekCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCVC.swift; sourceTree = "<group>"; };
+		ABC87EC9265A9A5400CB390C /* TimezoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneCell.swift; sourceTree = "<group>"; };
 		ABCFBADB26498471003BF2B6 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		ABCFBAE126499FE2003BF2B6 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		ABCFBAE42649A106003BF2B6 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				AB06C01126569889008C32D1 /* RegionCVC.swift */,
 				AB06C0152656A015008C32D1 /* SubRegionCVC.swift */,
 				ABC87EC62659F01A00CB390C /* WeekCVC.swift */,
+				ABC87EC9265A9A5400CB390C /* TimezoneCell.swift */,
 			);
 			path = CVC;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				AB06C01E2656D4BB008C32D1 /* Theater.swift in Sources */,
 				AB06C01226569889008C32D1 /* RegionCVC.swift in Sources */,
 				ABA2E0B026590CCF00FF36B4 /* Notification.Name+Extension.swift in Sources */,
+				ABC87ECA265A9A5400CB390C /* TimezoneCell.swift in Sources */,
 				ABA2E0B326598BC800FF36B4 /* DateTimeTVC.swift in Sources */,
 				AB06C0162656A015008C32D1 /* SubRegionCVC.swift in Sources */,
 				ABD2F19326484E380019BCED /* MainVC.swift in Sources */,
