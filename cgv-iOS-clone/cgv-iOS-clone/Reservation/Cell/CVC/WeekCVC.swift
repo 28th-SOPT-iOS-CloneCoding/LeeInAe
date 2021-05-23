@@ -96,4 +96,10 @@ extension WeekCVC {
             make.centerY.equalToSuperview()
         }
     }
+
+    func setCell(date: Date) {
+        print(date.getDateToString(date: date))
+        dayLabel.text = date.getDateToString(format: "d", date: date)
+        dayOfWeekLabel.text = date.getDateToString(format: "EEEEE", date: date)
+    }
 }

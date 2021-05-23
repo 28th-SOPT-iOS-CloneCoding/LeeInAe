@@ -34,7 +34,14 @@ class DateTimeTVC: UITableViewCell {
 
     // MARK: - Local variables
 
-    var isFirst: Bool = true
+    var dates: [Date] = {
+        var dates: [Date] = []
+        for t in 0 ..< 14 {
+            dates.append(Date(timeIntervalSinceNow: TimeInterval(86400 * t)))
+        }
+
+        return dates
+    }()
 
     // MARK: - Initializer
 
@@ -132,6 +139,7 @@ extension DateTimeTVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekCVC.identifier, for: indexPath) as? WeekCVC else { return UICollectionViewCell() }
+        cell.setCell(date: dates[indexPath.row])
 
         if indexPath.item == 0 {
             cell.isSelected = true
