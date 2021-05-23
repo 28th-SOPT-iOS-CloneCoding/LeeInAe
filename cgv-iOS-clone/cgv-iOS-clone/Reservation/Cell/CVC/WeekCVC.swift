@@ -97,8 +97,14 @@ extension WeekCVC {
         }
     }
 
-    func setCell(date: Date) {
+    func setCell(date: Date, idx: Int) {
         dayLabel.text = date.getDateToString(format: "d", date: date)
         dayOfWeekLabel.text = date.getDateToString(format: "EEEEE", date: date)
+        
+        if idx == 0 {
+            dayOfWeekLabel.text = "오늘"
+        } else if idx == 1 {
+            dayOfWeekLabel.text = "내일"
+        }
     }
 }

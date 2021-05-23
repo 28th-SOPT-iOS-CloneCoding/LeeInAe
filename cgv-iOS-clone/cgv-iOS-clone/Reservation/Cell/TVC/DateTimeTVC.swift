@@ -141,7 +141,7 @@ extension DateTimeTVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekCVC.identifier, for: indexPath) as? WeekCVC else { return UICollectionViewCell() }
-        cell.setCell(date: dates[indexPath.row])
+        cell.setCell(date: dates[indexPath.row], idx: indexPath.row)
 
         if indexPath.item == 0 {
             cell.isSelected = true
