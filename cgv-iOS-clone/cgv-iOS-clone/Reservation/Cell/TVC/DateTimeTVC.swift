@@ -115,15 +115,28 @@ extension DateTimeTVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: 55, height: 100)
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .init())
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
 }
 
 extension DateTimeTVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        if collectionView == weekCollectionView {
+            return 14
+        }
+        return 4
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekCVC.identifier, for: indexPath) as? WeekCVC else { return UICollectionViewCell() }
+
+        if indexPath.item == 0 {
+            cell.isSelected = true
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .init())
+        }
 
         return cell
     }
