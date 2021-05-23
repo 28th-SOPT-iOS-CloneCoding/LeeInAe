@@ -146,14 +146,7 @@ extension NowReservationVC {
 
         tableView.snp.makeConstraints { make in
             make.top.equalTo(headerView.snp.bottom)
-            make.bottom.equalTo(inquiryButton.snp.top)
-            make.leading.trailing.equalToSuperview()
-        }
-
-        inquiryButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(30)
-            make.height.equalTo(55)
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.leading.bottom.trailing.equalToSuperview()
         }
 
         titleLabel.snp.makeConstraints { make in
@@ -221,6 +214,19 @@ extension NowReservationVC: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         50
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = UIView()
+
+        footer.addSubview(inquiryButton)
+        inquiryButton.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.height.equalTo(55)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+
+        return footer
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
