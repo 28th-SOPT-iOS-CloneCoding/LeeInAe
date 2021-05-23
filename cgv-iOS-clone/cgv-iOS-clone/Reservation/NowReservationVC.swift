@@ -74,7 +74,7 @@ class NowReservationVC: UIViewController {
 
     private lazy var headerDateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.AppleSDGothic(type: .regular, size: 15)
+        label.font = UIFont.AppleSDGothic(type: .semiBold, size: 15)
 
         return label
     }()
@@ -99,6 +99,7 @@ class NowReservationVC: UIViewController {
         view.backgroundColor = UIColor(white: 0, alpha: 0.6)
 
         setConstraint()
+        setNotification()
     }
 }
 
@@ -107,6 +108,12 @@ class NowReservationVC: UIViewController {
 extension NowReservationVC {
     @objc func touchUpClose(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+
+    @objc func changeHeaderDateLabel(_ notification: Notification) {
+        guard let date = notification.object as? Date else { return }
+
+        headerDateLabel.text = Date().getDateToString(date: date)
     }
 }
 
@@ -160,6 +167,11 @@ extension NowReservationVC {
             make.width.height.equalTo(50)
         }
     }
+
+    func setNotification() {
+        /// touchUpWeekCell
+        NotificationCenter.default.addObserver(self, selector: #selector(changeHeaderDateLabel(_:)), name: Notification.Name.touchUpWeekCell, object: nil)
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -201,7 +213,7 @@ extension NowReservationVC: UITableViewDelegate {
             }
 
             headerTitleLabel.text = "날짜/시간"
-            headerDateLabel.text = "2021.5.20 (목) 오늘"
+            headerDateLabel.text = Date().getDateToString(date: Date())
         }
 
         return header
@@ -229,7 +241,6 @@ extension NowReservationVC: UITableViewDataSource {
         2
     }
 
-    // TODO: - : cell separator 없애기
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
@@ -238,7 +249,7 @@ extension NowReservationVC: UITableViewDataSource {
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DateTimeTVC.identifier) as? DateTimeTVC else { return UITableViewCell() }
-            
+
             return cell
         default:
             return UITableViewCell()

@@ -126,6 +126,8 @@ extension DateTimeTVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .init())
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
+        NotificationCenter.default.post(name: Notification.Name.touchUpWeekCell, object: dates[indexPath.row])
     }
 }
 

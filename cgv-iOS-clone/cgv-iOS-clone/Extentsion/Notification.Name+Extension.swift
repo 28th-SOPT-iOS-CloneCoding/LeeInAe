@@ -10,4 +10,5 @@ import UIKit
 
 extension Notification.Name {
     static let touchUpRegionCell = Notification.Name("touchUpRegionCell")
+    static let touchUpWeekCell = Notification.Name("touchUpWeekCell")
 }
