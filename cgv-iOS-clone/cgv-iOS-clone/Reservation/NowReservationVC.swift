@@ -67,6 +67,7 @@ class NowReservationVC: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
 
         tableView.register(TheaterTVC.self, forCellReuseIdentifier: TheaterTVC.identifier)
+        tableView.register(DateTimeTVC.self, forCellReuseIdentifier: DateTimeTVC.identifier)
 
         return tableView
     }()
@@ -207,7 +208,7 @@ extension NowReservationVC: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        55
+        50
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -234,6 +235,10 @@ extension NowReservationVC: UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TheaterTVC.identifier) as? TheaterTVC else { return UITableViewCell() }
 
+            return cell
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: DateTimeTVC.identifier) as? DateTimeTVC else { return UITableViewCell() }
+            
             return cell
         default:
             return UITableViewCell()

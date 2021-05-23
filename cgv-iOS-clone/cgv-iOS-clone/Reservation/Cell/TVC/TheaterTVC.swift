@@ -92,7 +92,7 @@ extension TheaterTVC {
         subRegionCollectionView.snp.makeConstraints { make in
             make.top.equalTo(regionCollectionView.snp.bottom)
             make.leading.bottom.trailing.equalToSuperview()
-            make.height.equalTo(80)
+            make.height.equalTo(60)
         }
     }
 
