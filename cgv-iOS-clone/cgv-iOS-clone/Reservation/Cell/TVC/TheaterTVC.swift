@@ -154,9 +154,8 @@ extension TheaterTVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == regionCollectionView {
             NotificationCenter.default.post(name: Notification.Name.touchUpRegionCell, object: indexPath.row)
-
-            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
 

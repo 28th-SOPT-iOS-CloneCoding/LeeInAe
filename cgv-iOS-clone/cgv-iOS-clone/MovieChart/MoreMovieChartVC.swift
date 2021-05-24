@@ -408,7 +408,7 @@ extension MoreMovieChartVC: UITableViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if tableView.contentOffset.y > tableView.contentSize.height - tableView.bounds.size.height {
+        if scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.bounds.size.height {
             if canFetchData, currPage < totalPage {
                 currPage += 1
                 canFetchData = false
