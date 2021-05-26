@@ -13,7 +13,7 @@
 		AB0E9210265E8F5E00D56840 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E920F265E8F5E00D56840 /* UIView+Extension.swift */; };
 		ABC87EFD265C1E4B00CB390C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */; };
 		ABC87EFF265C1E4B00CB390C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */; };
-		ABC87F01265C1E4B00CB390C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87F00265C1E4B00CB390C /* MainVC.swift */; };
+		ABC87F01265C1E4B00CB390C /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87F00265C1E4B00CB390C /* StoryVC.swift */; };
 		ABC87F06265C1E4D00CB390C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABC87F05265C1E4D00CB390C /* Assets.xcassets */; };
 		ABC87F1B265C1F6C00CB390C /* NotoSerifKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABC87F16265C1F6A00CB390C /* NotoSerifKR-Bold.otf */; };
 		ABC87F1C265C1F6C00CB390C /* NotoSerifKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABC87F17265C1F6B00CB390C /* NotoSerifKR-Light.otf */; };
@@ -32,7 +32,7 @@
 		ABC87EF9265C1E4B00CB390C /* pencake-iOS-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pencake-iOS-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ABC87F00265C1E4B00CB390C /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		ABC87F00265C1E4B00CB390C /* StoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryVC.swift; sourceTree = "<group>"; };
 		ABC87F05265C1E4D00CB390C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABC87F0A265C1E4D00CB390C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABC87F16265C1F6A00CB390C /* NotoSerifKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifKR-Bold.otf"; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		ABC87F12265C1E7400CB390C /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				ABC87F00265C1E4B00CB390C /* MainVC.swift */,
+				ABC87F00265C1E4B00CB390C /* StoryVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -277,7 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABC87F01265C1E4B00CB390C /* MainVC.swift in Sources */,
+				ABC87F01265C1E4B00CB390C /* StoryVC.swift in Sources */,
 				AB0E9210265E8F5E00D56840 /* UIView+Extension.swift in Sources */,
 				ABC87EFD265C1E4B00CB390C /* AppDelegate.swift in Sources */,
 				ABC87F2B265C248100CB390C /* UIFont+Extension.swift in Sources */,

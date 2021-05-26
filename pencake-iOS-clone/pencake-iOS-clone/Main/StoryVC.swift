@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class MainVC: UIViewController {
+class StoryVC: UIViewController {
     // MARK: - UIComponents
 
     private let titleButton: UIButton = {
@@ -50,7 +50,7 @@ class MainVC: UIViewController {
 
 // MARK: - Custom Methods
 
-extension MainVC {
+extension StoryVC {
     func setView() {
         view.backgroundColor = .white
     }
@@ -64,14 +64,29 @@ extension MainVC {
     }
 
     func setTableView() {
-//        tableView.delegate = self
+        tableView.delegate = self
         tableView.dataSource = self
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension StoryVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
+        header.backgroundColor = .blue
+        
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        100
     }
 }
 
 // MARK: - UITableViewDataSource
 
-extension MainVC: UITableViewDataSource {
+extension StoryVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         100
     }
