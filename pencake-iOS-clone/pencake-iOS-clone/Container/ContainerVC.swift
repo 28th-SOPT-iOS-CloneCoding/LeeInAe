@@ -10,7 +10,8 @@ import UIKit
 class ContainerVC: UIPageViewController {
     // MARK: - Local Variables
 
-    var pages: [UIViewController] = [StoryVC(), AddStoryVC()]
+    // FIXME: - (임시) 데이터 베이스로 옮기거나 userDefaults
+    static var pages: [UIViewController] = [StoryVC(), AddStoryVC()]
     private var currPage: Int = 0
 
     // MARK: - LifeCycle Methods
@@ -26,7 +27,7 @@ class ContainerVC: UIPageViewController {
 
 extension ContainerVC {
     private func setPageController() {
-        setViewControllers([pages[currPage]], direction: .forward, animated: true, completion: nil)
+        setViewControllers([ContainerVC.pages[currPage]], direction: .forward, animated: true, completion: nil)
 
         dataSource = self
     }
@@ -36,14 +37,14 @@ extension ContainerVC {
 
 extension ContainerVC: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let idx = pages.firstIndex(of: viewController) else { return nil }
+        guard let idx = ContainerVC.pages.firstIndex(of: viewController) else { return nil }
 
-        return idx - 1 < 0 ? nil : pages[idx - 1]
+        return idx - 1 < 0 ? nil : ContainerVC.pages[idx - 1]
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let idx = pages.firstIndex(of: viewController) else { return nil }
+        guard let idx = ContainerVC.pages.firstIndex(of: viewController) else { return nil }
 
-        return idx + 1 >= pages.count ? nil : pages[idx + 1]
+        return idx + 1 >= ContainerVC.pages.count ? nil : ContainerVC.pages[idx + 1]
     }
 }

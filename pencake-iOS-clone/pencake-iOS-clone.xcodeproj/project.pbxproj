@@ -11,6 +11,8 @@
 		AB0E920B265D57B700D56840 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E920A265D57B700D56840 /* ContainerVC.swift */; };
 		AB0E920E265D5AAA00D56840 /* AddStoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E920D265D5AAA00D56840 /* AddStoryVC.swift */; };
 		AB0E9210265E8F5E00D56840 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E920F265E8F5E00D56840 /* UIView+Extension.swift */; };
+		AB0E9214265EB21E00D56840 /* StoryTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9213265EB21E00D56840 /* StoryTitleVC.swift */; };
+		AB0E9217265EB2C700D56840 /* StorySubTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9216265EB2C700D56840 /* StorySubTitleVC.swift */; };
 		ABC87EFD265C1E4B00CB390C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */; };
 		ABC87EFF265C1E4B00CB390C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */; };
 		ABC87F01265C1E4B00CB390C /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87F00265C1E4B00CB390C /* StoryVC.swift */; };
@@ -29,6 +31,8 @@
 		AB0E920A265D57B700D56840 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
 		AB0E920D265D5AAA00D56840 /* AddStoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoryVC.swift; sourceTree = "<group>"; };
 		AB0E920F265E8F5E00D56840 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		AB0E9213265EB21E00D56840 /* StoryTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTitleVC.swift; sourceTree = "<group>"; };
+		AB0E9216265EB2C700D56840 /* StorySubTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorySubTitleVC.swift; sourceTree = "<group>"; };
 		ABC87EF9265C1E4B00CB390C /* pencake-iOS-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pencake-iOS-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				AB0E920D265D5AAA00D56840 /* AddStoryVC.swift */,
+				AB0E9213265EB21E00D56840 /* StoryTitleVC.swift */,
+				AB0E9216265EB2C700D56840 /* StorySubTitleVC.swift */,
 			);
 			path = AddStory;
 			sourceTree = "<group>";
@@ -280,10 +286,12 @@
 				ABC87F01265C1E4B00CB390C /* StoryVC.swift in Sources */,
 				AB0E9210265E8F5E00D56840 /* UIView+Extension.swift in Sources */,
 				ABC87EFD265C1E4B00CB390C /* AppDelegate.swift in Sources */,
+				AB0E9217265EB2C700D56840 /* StorySubTitleVC.swift in Sources */,
 				ABC87F2B265C248100CB390C /* UIFont+Extension.swift in Sources */,
 				ABC87EFF265C1E4B00CB390C /* SceneDelegate.swift in Sources */,
 				AB0E920E265D5AAA00D56840 /* AddStoryVC.swift in Sources */,
 				AB0E920B265D57B700D56840 /* ContainerVC.swift in Sources */,
+				AB0E9214265EB21E00D56840 /* StoryTitleVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

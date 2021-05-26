@@ -16,6 +16,8 @@ class AddStoryVC: UIViewController {
         btn.tintColor = UIColor.lightGray
         btn.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 100, weight: .light), forImageIn: .normal)
 
+        btn.addTarget(self, action: #selector(touchUpPlus(_:)), for: .touchUpInside)
+
         return btn
     }()
 
@@ -36,6 +38,8 @@ class AddStoryVC: UIViewController {
     }
 }
 
+// MARK: -  Custom Methods
+
 extension AddStoryVC {
     func setView() {
         view.backgroundColor = .white
@@ -53,5 +57,18 @@ extension AddStoryVC {
             make.top.equalTo(plusButton.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
         }
+    }
+}
+
+// MARK: - action Methods
+
+extension AddStoryVC {
+    @objc func touchUpPlus(_ sender: UIButton) {
+        let storyTitleVC = StoryTitleVC()
+        let navigationController = UINavigationController(rootViewController: storyTitleVC)
+
+        navigationController.modalPresentationStyle = .fullScreen
+
+        present(navigationController, animated: true, completion: nil)
     }
 }
