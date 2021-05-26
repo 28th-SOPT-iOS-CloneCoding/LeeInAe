@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: scene)
         self.window?.backgroundColor = .white
         
-        self.window?.rootViewController = ViewController()
+        self.window?.rootViewController = ContainerVC(transitionStyle: .scroll, navigationOrientation: .horizontal, options: .none)
         self.window?.makeKeyAndVisible()
     }
 

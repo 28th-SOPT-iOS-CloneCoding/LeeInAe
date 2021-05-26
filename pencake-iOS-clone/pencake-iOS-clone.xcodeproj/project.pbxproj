@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		13861BB01F8CACF093E8ED00 /* Pods_pencake_iOS_clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEC82FC4D88BBA8E7DC5F3F /* Pods_pencake_iOS_clone.framework */; };
+		AB0E920B265D57B700D56840 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E920A265D57B700D56840 /* ContainerVC.swift */; };
+		AB0E920E265D5AAA00D56840 /* AddStoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E920D265D5AAA00D56840 /* AddStoryVC.swift */; };
 		ABC87EFD265C1E4B00CB390C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */; };
 		ABC87EFF265C1E4B00CB390C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */; };
-		ABC87F01265C1E4B00CB390C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87F00265C1E4B00CB390C /* ViewController.swift */; };
+		ABC87F01265C1E4B00CB390C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87F00265C1E4B00CB390C /* MainVC.swift */; };
 		ABC87F06265C1E4D00CB390C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABC87F05265C1E4D00CB390C /* Assets.xcassets */; };
 		ABC87F1B265C1F6C00CB390C /* NotoSerifKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABC87F16265C1F6A00CB390C /* NotoSerifKR-Bold.otf */; };
 		ABC87F1C265C1F6C00CB390C /* NotoSerifKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABC87F17265C1F6B00CB390C /* NotoSerifKR-Light.otf */; };
@@ -23,10 +25,12 @@
 /* Begin PBXFileReference section */
 		08C65CD985955F14C4C6BCB9 /* Pods-pencake-iOS-clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pencake-iOS-clone.release.xcconfig"; path = "Target Support Files/Pods-pencake-iOS-clone/Pods-pencake-iOS-clone.release.xcconfig"; sourceTree = "<group>"; };
 		1CEC82FC4D88BBA8E7DC5F3F /* Pods_pencake_iOS_clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pencake_iOS_clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB0E920A265D57B700D56840 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
+		AB0E920D265D5AAA00D56840 /* AddStoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoryVC.swift; sourceTree = "<group>"; };
 		ABC87EF9265C1E4B00CB390C /* pencake-iOS-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pencake-iOS-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ABC87F00265C1E4B00CB390C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ABC87F00265C1E4B00CB390C /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		ABC87F05265C1E4D00CB390C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABC87F0A265C1E4D00CB390C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABC87F16265C1F6A00CB390C /* NotoSerifKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifKR-Bold.otf"; sourceTree = "<group>"; };
@@ -67,6 +71,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AB0E9209265D570900D56840 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				AB0E920A265D57B700D56840 /* ContainerVC.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		AB0E920C265D5A4900D56840 /* AddStory */ = {
+			isa = PBXGroup;
+			children = (
+				AB0E920D265D5AAA00D56840 /* AddStoryVC.swift */,
+			);
+			path = AddStory;
+			sourceTree = "<group>";
+		};
 		ABC87EF0265C1E4B00CB390C = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +108,8 @@
 		ABC87EFB265C1E4B00CB390C /* pencake-iOS-clone */ = {
 			isa = PBXGroup;
 			children = (
+				AB0E920C265D5A4900D56840 /* AddStory */,
+				AB0E9209265D570900D56840 /* Container */,
 				ABC87F28265C246400CB390C /* Extension */,
 				ABC87F13265C1E8200CB390C /* Supporting Files */,
 				ABC87F12265C1E7400CB390C /* Main */,
@@ -98,7 +120,7 @@
 		ABC87F12265C1E7400CB390C /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				ABC87F00265C1E4B00CB390C /* ViewController.swift */,
+				ABC87F00265C1E4B00CB390C /* MainVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -252,10 +274,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABC87F01265C1E4B00CB390C /* ViewController.swift in Sources */,
+				ABC87F01265C1E4B00CB390C /* MainVC.swift in Sources */,
 				ABC87EFD265C1E4B00CB390C /* AppDelegate.swift in Sources */,
 				ABC87F2B265C248100CB390C /* UIFont+Extension.swift in Sources */,
 				ABC87EFF265C1E4B00CB390C /* SceneDelegate.swift in Sources */,
+				AB0E920E265D5AAA00D56840 /* AddStoryVC.swift in Sources */,
+				AB0E920B265D57B700D56840 /* ContainerVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +344,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -374,6 +399,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
