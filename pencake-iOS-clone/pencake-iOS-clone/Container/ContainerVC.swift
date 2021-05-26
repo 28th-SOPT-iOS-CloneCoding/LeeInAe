@@ -10,7 +10,7 @@ import UIKit
 class ContainerVC: UIPageViewController {
     // MARK: - Local Variables
 
-    var pages: [UIViewController] = [MainVC(), AddStoryVC(), MainVC()]
+    var pages: [UIViewController] = [MainVC(), AddStoryVC()]
     private var currPage: Int = 0
 
     // MARK: - LifeCycle Methods
