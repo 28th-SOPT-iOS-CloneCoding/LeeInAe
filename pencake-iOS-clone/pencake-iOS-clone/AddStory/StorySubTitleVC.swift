@@ -8,22 +8,37 @@
 import UIKit
 
 class StorySubTitleVC: UIViewController {
+    // MARK: - UIComponents
+
+    private lazy var completionButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(touchUpCompletionButton(_:)))
+
+        return button
+    }()
+
+    // MARK: - LifeCycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setNavigationBar()
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
+// MARK: - Action Methods
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension StorySubTitleVC {
+    @objc func touchUpCompletionButton(_ sender: UIBarButtonItem) {
+        ContainerVC.pages.insert(StoryVC(), at: 0)
+
+        self.dismiss(animated: true, completion: nil)
     }
-    */
+}
 
+// MARK: - Custom Methods
+
+extension StorySubTitleVC {
+    func setNavigationBar() {
+        self.navigationItem.rightBarButtonItem = self.completionButton
+    }
 }
