@@ -66,6 +66,10 @@ extension StoryVC {
     func setTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+
+        tableView.register(WritingTVC.self, forCellReuseIdentifier: WritingTVC.identifier)
+        
+        tableView.separatorStyle = .none
     }
 }
 
@@ -75,12 +79,16 @@ extension StoryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView()
         header.backgroundColor = .blue
-        
+
         return header
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        100
+        150
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        80
     }
 }
 
@@ -92,6 +100,8 @@ extension StoryVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WritingTVC.identifier) as? WritingTVC else { return UITableViewCell() }
+
+        return cell
     }
 }

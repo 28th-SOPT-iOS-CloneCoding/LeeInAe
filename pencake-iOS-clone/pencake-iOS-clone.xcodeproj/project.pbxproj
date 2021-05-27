@@ -15,6 +15,7 @@
 		AB0E9217265EB2C700D56840 /* StorySubTitleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E9216265EB2C700D56840 /* StorySubTitleVC.swift */; };
 		AB0E92232660008100D56840 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E92222660008100D56840 /* Story.swift */; };
 		AB0E92252660069300D56840 /* Writing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E92242660069300D56840 /* Writing.swift */; };
+		AB0E922826600A6900D56840 /* WritingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E922726600A6900D56840 /* WritingTVC.swift */; };
 		ABC87EFD265C1E4B00CB390C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */; };
 		ABC87EFF265C1E4B00CB390C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */; };
 		ABC87F01265C1E4B00CB390C /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87F00265C1E4B00CB390C /* StoryVC.swift */; };
@@ -37,6 +38,7 @@
 		AB0E9216265EB2C700D56840 /* StorySubTitleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorySubTitleVC.swift; sourceTree = "<group>"; };
 		AB0E92222660008100D56840 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		AB0E92242660069300D56840 /* Writing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Writing.swift; sourceTree = "<group>"; };
+		AB0E922726600A6900D56840 /* WritingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingTVC.swift; sourceTree = "<group>"; };
 		ABC87EF9265C1E4B00CB390C /* pencake-iOS-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pencake-iOS-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,14 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
+		AB0E922626600A3F00D56840 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AB0E922726600A6900D56840 /* WritingTVC.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		ABC87EF0265C1E4B00CB390C = {
 			isa = PBXGroup;
 			children = (
@@ -134,17 +144,18 @@
 				AB0E9209265D570900D56840 /* Container */,
 				ABC87F28265C246400CB390C /* Extension */,
 				ABC87F13265C1E8200CB390C /* Supporting Files */,
-				ABC87F12265C1E7400CB390C /* Main */,
+				ABC87F12265C1E7400CB390C /* Story */,
 			);
 			path = "pencake-iOS-clone";
 			sourceTree = "<group>";
 		};
-		ABC87F12265C1E7400CB390C /* Main */ = {
+		ABC87F12265C1E7400CB390C /* Story */ = {
 			isa = PBXGroup;
 			children = (
+				AB0E922626600A3F00D56840 /* Cell */,
 				ABC87F00265C1E4B00CB390C /* StoryVC.swift */,
 			);
-			path = Main;
+			path = Story;
 			sourceTree = "<group>";
 		};
 		ABC87F13265C1E8200CB390C /* Supporting Files */ = {
@@ -301,6 +312,7 @@
 				AB0E9210265E8F5E00D56840 /* UIView+Extension.swift in Sources */,
 				ABC87EFD265C1E4B00CB390C /* AppDelegate.swift in Sources */,
 				AB0E9217265EB2C700D56840 /* StorySubTitleVC.swift in Sources */,
+				AB0E922826600A6900D56840 /* WritingTVC.swift in Sources */,
 				ABC87F2B265C248100CB390C /* UIFont+Extension.swift in Sources */,
 				ABC87EFF265C1E4B00CB390C /* SceneDelegate.swift in Sources */,
 				AB0E920E265D5AAA00D56840 /* AddStoryVC.swift in Sources */,
