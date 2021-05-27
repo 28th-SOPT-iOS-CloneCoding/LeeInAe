@@ -15,10 +15,19 @@ class ContainerVC: UIPageViewController {
     static var pages: [UIViewController] = [StoryVC(), AddStoryVC()]
     private var currPage: Int = 0
 
+    // MARK: - local variables
+
+    let realm = try! Realm()
+
     // MARK: - LifeCycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let rappers = realm.objects(Story.self)
+        print(rappers)
+
+        print(Realm.Configuration.defaultConfiguration.fileURL)
 
         setPageController()
     }
