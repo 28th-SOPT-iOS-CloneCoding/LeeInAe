@@ -7,4 +7,5 @@ target 'pencake-iOS-clone' do
 
   # Pods for pencake-iOS-clone
     pod 'SnapKit', '~> 5.0.0'
+    pod 'RealmSwift', '=10.7.6'
 end
