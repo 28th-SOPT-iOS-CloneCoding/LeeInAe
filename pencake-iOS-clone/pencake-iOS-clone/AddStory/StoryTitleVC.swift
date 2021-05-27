@@ -12,6 +12,14 @@ class StoryTitleVC: UIViewController {
 
     private lazy var closeButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "닫기", style: .plain, target: self, action: #selector(touchUpCloseButton(_:)))
+        button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSerifKR(type: .regular, size: 17), NSAttributedString.Key.foregroundColor: UIColor.lightGray], for: .normal)
+
+        return button
+    }()
+
+    private lazy var nextButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "다음", style: .plain, target: self, action: #selector(touchUpNextButton(_:)))
+        button.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSerifKR(type: .regular, size: 17)], for: .normal)
 
         return button
     }()
@@ -30,6 +38,10 @@ extension StoryTitleVC {
     @objc func touchUpCloseButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
+
+    @objc func touchUpNextButton(_ sender: UIBarButtonItem) {
+        navigationController?.pushViewController(StorySubTitleVC(), animated: true)
+    }
 }
 
 // MARK: - Custom Methods
@@ -45,5 +57,6 @@ extension StoryTitleVC {
         self.navigationController?.navigationBar.shadowImage = UIImage()
 
         self.navigationItem.leftBarButtonItem = self.closeButton
+        self.navigationItem.rightBarButtonItem = self.nextButton
     }
 }
