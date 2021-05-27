@@ -60,11 +60,12 @@ class StoryVC: UIViewController {
 
 extension StoryVC {
     @objc func addNewWriting(_ sender: UIRefreshControl) {
-        sender.endRefreshing()
-        print("new writing!")
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            sender.endRefreshing()
+        }
+
         let writingVC = UINavigationController(rootViewController: WritingVC())
-        writingVC.modalPresentationStyle = .fullScreen
+        writingVC.modalPresentationStyle = .overFullScreen
         present(writingVC, animated: true, completion: nil)
     }
 }
