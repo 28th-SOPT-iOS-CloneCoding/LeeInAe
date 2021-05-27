@@ -37,6 +37,14 @@ class StoryVC: UIViewController {
         return table
     }()
 
+    private lazy var newWritingControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.addTarget(self, action: #selector(addNewWriting(_:)), for: .valueChanged)
+        control.tintColor = .clear
+
+        return control
+    }()
+
     // MARK: - LifeCycle Methods
 
     override func viewDidLoad() {
@@ -45,6 +53,19 @@ class StoryVC: UIViewController {
         setView()
         setTableView()
         setConstraint()
+    }
+}
+
+// MARK: - Action Methods
+
+extension StoryVC {
+    @objc func addNewWriting(_ sender: UIRefreshControl) {
+        sender.endRefreshing()
+        print("new writing!")
+        
+        let writingVC = UINavigationController(rootViewController: WritingVC())
+        writingVC.modalPresentationStyle = .fullScreen
+        present(writingVC, animated: true, completion: nil)
     }
 }
 
@@ -68,7 +89,8 @@ extension StoryVC {
         tableView.dataSource = self
 
         tableView.register(WritingTVC.self, forCellReuseIdentifier: WritingTVC.identifier)
-        
+        tableView.refreshControl = newWritingControl
+
         tableView.separatorStyle = .none
     }
 }
@@ -76,17 +98,6 @@ extension StoryVC {
 // MARK: - UITableViewDelegate
 
 extension StoryVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = UIView()
-        header.backgroundColor = .blue
-
-        return header
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        150
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         80
     }
