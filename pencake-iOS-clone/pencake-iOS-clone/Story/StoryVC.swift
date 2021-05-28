@@ -60,7 +60,7 @@ class StoryVC: UIViewController {
 
 extension StoryVC {
     @objc func addNewWriting(_ sender: UIRefreshControl) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             sender.endRefreshing()
         }
 
@@ -101,6 +101,14 @@ extension StoryVC {
 extension StoryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         80
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        UIView()
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        .zero
     }
 }
 

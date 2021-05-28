@@ -12,7 +12,7 @@ class ContainerVC: UIPageViewController {
     // MARK: - Local Variables
 
     // FIXME: - (임시) 데이터 베이스로 옮기거나 userDefaults
-    static var pages: [UIViewController] = [StoryVC(), AddStoryVC()]
+    static var pages: [UIViewController] = [UINavigationController(rootViewController: StoryVC()), AddStoryVC()]
     private var currPage: Int = 0
 
     // MARK: - local variables
