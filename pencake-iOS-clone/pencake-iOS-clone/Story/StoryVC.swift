@@ -11,6 +11,21 @@ import UIKit
 class StoryVC: UIViewController {
     // MARK: - UIComponents
 
+    private let headerView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200))
+        view.backgroundColor = .white
+        view.clipsToBounds = true
+
+        return view
+    }()
+
+    private let separator: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.systemGray5
+
+        return view
+    }()
+
     private let titleButton: UIButton = {
         let btn = UIButton()
         btn.setTitle("이야기 1", for: .normal)
@@ -25,7 +40,7 @@ class StoryVC: UIViewController {
         let btn = UIButton()
         btn.setTitle("여기를 눌러서 제목을 변경하세요", for: .normal)
         btn.titleLabel?.font = UIFont.NotoSerifKR(type: .regular, size: 18)
-        btn.tintColor = .black
+        btn.setTitleColor(.black, for: .normal)
         btn.sizeToFit()
 
         return btn
@@ -33,8 +48,9 @@ class StoryVC: UIViewController {
 
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
-        table.contentInset = UIEdgeInsets(top: 150, left: 0, bottom: 0, right: 0)
-        table.contentOffset.y = -150
+        table.backgroundColor = .white
+        table.contentInset = UIEdgeInsets(top: 200, left: 0, bottom: 0, right: 0)
+        table.contentOffset.y = -200
 
         return table
     }()
@@ -45,20 +61,6 @@ class StoryVC: UIViewController {
         control.tintColor = .clear
 
         return control
-    }()
-
-    private let headerView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 150))
-        view.backgroundColor = .white
-
-        return view
-    }()
-
-    private let separator: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.systemGray5
-
-        return view
     }()
 
     // MARK: - LifeCycle Methods
@@ -97,7 +99,7 @@ extension StoryVC {
 
     func setConstraint() {
         view.addSubviews([tableView, headerView])
-        headerView.addSubviews([separator])
+        headerView.addSubviews([titleButton, subTitleButton, separator])
 
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -105,13 +107,23 @@ extension StoryVC {
 
         headerView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(150)
+            make.height.equalTo(200)
         }
 
         separator.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(1)
+        }
+
+        titleButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(20)
+        }
+
+        subTitleButton.snp.makeConstraints { make in
+            make.centerX.equalTo(titleButton.snp.centerX)
+            make.top.equalTo(titleButton.snp.bottom).offset(10)
         }
     }
 
@@ -146,8 +158,8 @@ extension StoryVC: UITableViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let y = 150 - (scrollView.contentOffset.y + 150)
-        let height = min(max(y, 100), 300)
+        let y = 200 - (scrollView.contentOffset.y + 200)
+        let height = min(max(y, 100), 250)
 
         headerView.snp.updateConstraints { make in
             make.height.equalTo(height)
@@ -159,7 +171,7 @@ extension StoryVC: UITableViewDelegate {
 
 extension StoryVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        100
+        40
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
