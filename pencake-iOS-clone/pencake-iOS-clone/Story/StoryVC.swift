@@ -49,7 +49,14 @@ class StoryVC: UIViewController {
 
     private let headerView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 150))
-        view.backgroundColor = .orange
+        view.backgroundColor = .white
+
+        return view
+    }()
+
+    private let separator: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.systemGray5
 
         return view
     }()
@@ -90,6 +97,7 @@ extension StoryVC {
 
     func setConstraint() {
         view.addSubviews([tableView, headerView])
+        headerView.addSubviews([separator])
 
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -98,6 +106,12 @@ extension StoryVC {
         headerView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(150)
+        }
+
+        separator.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(1)
         }
     }
 
