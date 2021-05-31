@@ -33,6 +33,8 @@ class StoryVC: UIViewController {
 
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
+        table.contentInset = UIEdgeInsets(top: 150, left: 0, bottom: 0, right: 0)
+        table.contentOffset.y = -150
 
         return table
     }()
@@ -45,6 +47,13 @@ class StoryVC: UIViewController {
         return control
     }()
 
+    private let headerView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 150))
+        view.backgroundColor = .orange
+
+        return view
+    }()
+
     // MARK: - LifeCycle Methods
 
     override func viewDidLoad() {
@@ -53,6 +62,7 @@ class StoryVC: UIViewController {
         setView()
         setTableView()
         setConstraint()
+        setNavigationBar()
     }
 }
 
@@ -60,13 +70,14 @@ class StoryVC: UIViewController {
 
 extension StoryVC {
     @objc func addNewWriting(_ sender: UIRefreshControl) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            sender.endRefreshing()
-        }
+        sender.endRefreshing()
 
-        let writingVC = UINavigationController(rootViewController: WritingVC())
-        writingVC.modalPresentationStyle = .overFullScreen
-        present(writingVC, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            let writingVC = UINavigationController(rootViewController: WritingVC())
+            writingVC.modalPresentationStyle = .overFullScreen
+
+            self.present(writingVC, animated: true, completion: nil)
+        }
     }
 }
 
@@ -78,10 +89,15 @@ extension StoryVC {
     }
 
     func setConstraint() {
-        view.addSubviews([tableView])
+        view.addSubviews([tableView, headerView])
 
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+
+        headerView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(150)
         }
     }
 
@@ -93,6 +109,10 @@ extension StoryVC {
         tableView.refreshControl = newWritingControl
 
         tableView.separatorStyle = .none
+    }
+
+    func setNavigationBar() {
+        navigationController?.navigationBar.isHidden = true
     }
 }
 
@@ -109,6 +129,15 @@ extension StoryVC: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         .zero
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let y = 150 - (scrollView.contentOffset.y + 150)
+        let height = min(max(y, 100), 300)
+
+        headerView.snp.updateConstraints { make in
+            make.height.equalTo(height)
+        }
     }
 }
 
