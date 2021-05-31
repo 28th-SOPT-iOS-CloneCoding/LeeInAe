@@ -34,16 +34,30 @@ class WritingVC: UIViewController {
 
     private let contentTextView: UITextView = {
         let textview = UITextView()
-        
+
         return textview
+    }()
+
+    private lazy var naviTitleButton: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.NotoSerifKR(type: .regular, size: 17)
+        button.addTarget(self, action: #selector(touchUpNavigation(_:)), for: .touchUpInside)
+
+        return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setView()
+        setTextField()
         setNavigationBar()
         setConstraint()
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.titleTextField.endEditing(true)
     }
 }
 
@@ -52,6 +66,11 @@ class WritingVC: UIViewController {
 extension WritingVC {
     @objc func touchUpCancleButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
+    }
+
+    @objc func touchUpNavigation(_ sender: UIButton) {
+        print("네비")
+        deRegisterNavigationTitleButton()
     }
 }
 
@@ -69,6 +88,9 @@ extension WritingVC {
 
         self.navigationItem.leftBarButtonItem = self.cancleButton
         self.navigationItem.rightBarButtonItem = self.completionButton
+
+        self.navigationItem.titleView = .none
+        self.navigationItem.titleView?.alpha = 0
     }
 
     func setConstraint() {
@@ -85,5 +107,42 @@ extension WritingVC {
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalToSuperview()
         }
+    }
+
+    func setTextField() {
+        self.titleTextField.delegate = self
+        self.titleTextField.becomeFirstResponder()
+    }
+
+    func registerNavigationTitleButton() {
+        guard let title = self.titleTextField.text else { return }
+        self.naviTitleButton.setTitle(title, for: .normal)
+
+        UIView.animate(withDuration: 0.4) {
+            self.navigationItem.titleView?.alpha = 1
+            self.navigationItem.titleView = self.naviTitleButton
+        }
+    }
+
+    func deRegisterNavigationTitleButton() {
+        UIView.animate(withDuration: 0.4) {
+            self.navigationItem.titleView?.alpha = 0
+        } completion: { _ in
+            self.navigationItem.titleView = .none
+        }
+    }
+}
+
+extension WritingVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.registerNavigationTitleButton()
+        self.titleTextField.resignFirstResponder()
+
+        return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.titleTextField.resignFirstResponder()
+        self.registerNavigationTitleButton()
     }
 }
