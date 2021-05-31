@@ -24,11 +24,26 @@ class WritingVC: UIViewController {
         return button
     }()
 
+    private let titleTextField: UITextField = {
+        let textfield = UITextField()
+        textfield.placeholder = "제목"
+        textfield.font = UIFont.NotoSerifKR(type: .semiBold, size: 20)
+
+        return textfield
+    }()
+
+    private let contentTextView: UITextView = {
+        let textview = UITextView()
+        
+        return textview
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
 
+        setView()
         setNavigationBar()
+        setConstraint()
     }
 }
 
@@ -43,8 +58,32 @@ extension WritingVC {
 // MARK: - Custom Methods
 
 extension WritingVC {
+    func setView() {
+        view.backgroundColor = .white
+    }
+
     func setNavigationBar() {
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+
         self.navigationItem.leftBarButtonItem = self.cancleButton
         self.navigationItem.rightBarButtonItem = self.completionButton
+    }
+
+    func setConstraint() {
+        view.addSubviews([self.titleTextField, self.contentTextView])
+
+        self.titleTextField.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.height.equalTo(60)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+
+        self.contentTextView.snp.makeConstraints { make in
+            make.top.equalTo(titleTextField.snp.bottom)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview()
+        }
     }
 }
