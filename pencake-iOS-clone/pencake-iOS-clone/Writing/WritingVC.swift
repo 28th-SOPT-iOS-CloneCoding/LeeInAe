@@ -47,6 +47,13 @@ class WritingVC: UIViewController {
         return button
     }()
 
+    private let separator: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.systemGray5
+
+        return view
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -94,7 +101,7 @@ extension WritingVC {
     }
 
     func setConstraint() {
-        view.addSubviews([self.titleTextField, self.contentTextView])
+        view.addSubviews([self.titleTextField, self.contentTextView, self.separator])
 
         self.titleTextField.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -103,9 +110,15 @@ extension WritingVC {
         }
 
         self.contentTextView.snp.makeConstraints { make in
-            make.top.equalTo(titleTextField.snp.bottom)
+            make.top.equalTo(separator.snp.bottom)
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalToSuperview()
+        }
+
+        self.separator.snp.makeConstraints { make in
+            make.top.equalTo(titleTextField.snp.bottom)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(1)
         }
     }
 
@@ -119,14 +132,22 @@ extension WritingVC {
         self.naviTitleButton.setTitle(title, for: .normal)
 
         UIView.animate(withDuration: 0.4) {
-            self.navigationItem.titleView?.alpha = 1
             self.navigationItem.titleView = self.naviTitleButton
+            self.navigationItem.titleView?.alpha = 1
+
+            self.titleTextField.snp.updateConstraints { make in
+                make.height.equalTo(0)
+            }
         }
     }
 
     func deRegisterNavigationTitleButton() {
         UIView.animate(withDuration: 0.4) {
             self.navigationItem.titleView?.alpha = 0
+
+            self.titleTextField.snp.updateConstraints { make in
+                make.height.equalTo(60)
+            }
         } completion: { _ in
             self.navigationItem.titleView = .none
         }
