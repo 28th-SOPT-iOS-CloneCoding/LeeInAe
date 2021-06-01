@@ -34,6 +34,7 @@ class WritingVC: UIViewController {
 
     private let contentTextView: UITextView = {
         let textview = UITextView()
+        textview.font = UIFont.NotoSerifKR(type: .regular, size: 15)
 
         return textview
     }()
@@ -110,7 +111,7 @@ extension WritingVC {
         }
 
         self.contentTextView.snp.makeConstraints { make in
-            make.top.equalTo(separator.snp.bottom)
+            make.top.equalTo(separator.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalToSuperview()
         }
@@ -150,6 +151,7 @@ extension WritingVC {
             }
         } completion: { _ in
             self.navigationItem.titleView = .none
+            self.titleTextField.becomeFirstResponder()
         }
     }
 }
