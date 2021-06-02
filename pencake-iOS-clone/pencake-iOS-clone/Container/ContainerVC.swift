@@ -92,7 +92,7 @@ extension ContainerVC {
     }
 
     private func setPageController() {
-        setViewControllers([ContainerVC.pages[currPage]], direction: .forward, animated: true, completion: nil)
+        setViewControllers([ContainerVC.pages[ContainerVC.pages.count - currPage - 1]], direction: .forward, animated: true, completion: nil)
 
         dataSource = self
         delegate = self
@@ -131,12 +131,12 @@ extension ContainerVC: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let idx = ContainerVC.pages.firstIndex(of: viewController) else { return nil }
 
-        return idx - 1 < 0 ? nil : ContainerVC.pages[idx - 1]
+        return idx + 1 >= ContainerVC.pages.count ? nil : ContainerVC.pages[idx + 1]
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let idx = ContainerVC.pages.firstIndex(of: viewController) else { return nil }
 
-        return idx + 1 >= ContainerVC.pages.count ? nil : ContainerVC.pages[idx + 1]
+        return idx - 1 < 0 ? nil : ContainerVC.pages[idx - 1]
     }
 }
