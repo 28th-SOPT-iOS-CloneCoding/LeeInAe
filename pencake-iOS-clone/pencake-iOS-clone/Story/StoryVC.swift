@@ -5,6 +5,7 @@
 //  Created by inae Lee on 2021/05/25.
 //
 
+import RealmSwift
 import SnapKit
 import UIKit
 
@@ -62,6 +63,18 @@ class StoryVC: UIViewController {
 
         return control
     }()
+
+    // MARK: - local variables
+
+    var story: Story? {
+        willSet(newStory) {
+            guard let story = newStory else { return }
+
+            print("new story! 🤖")
+            titleButton.setTitle(story.title, for: .normal)
+            subTitleButton.setTitle(story.subTitle, for: .normal)
+        }
+    }
 
     // MARK: - LifeCycle Methods
 

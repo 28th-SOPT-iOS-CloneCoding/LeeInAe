@@ -19,8 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.backgroundColor = .white
 
         let containerVC = ContainerVC(transitionStyle: .scroll, navigationOrientation: .horizontal, options: .none)
-
-        self.window?.rootViewController = containerVC
+        let navigationController = UINavigationController(rootViewController: containerVC)
+        navigationController.isNavigationBarHidden = true
+        
+        self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
     }
 

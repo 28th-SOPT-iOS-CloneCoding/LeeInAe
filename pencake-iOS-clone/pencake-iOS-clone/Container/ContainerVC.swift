@@ -27,8 +27,7 @@ class ContainerVC: UIPageViewController {
 
     // MARK: - Local Variables
 
-    // FIXME: - (임시) 데이터 베이스로 옮기거나 userDefaults
-    static var pages: [UIViewController] = [UINavigationController(rootViewController: StoryVC()), AddStoryVC()]
+    static var pages: [UIViewController] = [AddStoryVC()]
     private var currPage: Int = 0
 
     // MARK: - local variables
@@ -40,11 +39,7 @@ class ContainerVC: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let rappers = realm.objects(Story.self)
-        print(rappers)
-
-        print(Realm.Configuration.defaultConfiguration.fileURL)
-
+        setRealm()
         setConstraint()
         setPageController()
     }
@@ -61,6 +56,41 @@ extension ContainerVC {
 // MARK: - Custom Methods
 
 extension ContainerVC {
+    private func setRealm() {
+        print(Realm.Configuration.defaultConfiguration.fileURL)
+
+        let stories = realm.objects(Story.self)
+
+        if stories.isEmpty {
+            /// 초기값 세팅
+            let mainStory = Story()
+            mainStory.index = 1
+            mainStory.title = "이야기1"
+            mainStory.subTitle = "여기를 눌러서 제목을 변경하세요"
+
+            mainStory.writings.append(Writing())
+            mainStory.writings.append(Writing())
+            mainStory.writings.append(Writing())
+
+            try! realm.write {
+                realm.add(mainStory)
+            }
+        } else {
+            for idx in 1 ... stories.count {
+                ContainerVC.pages.append(StoryVC())
+
+                guard let story = stories.filter("index == \(idx)").first else { return }
+                setStoryData(story: story, idx: idx)
+            }
+        }
+    }
+
+    func setStoryData(story: Story, idx: Int) {
+        if let storyVC = ContainerVC.pages[idx] as? StoryVC {
+            storyVC.story = story
+        }
+    }
+
     private func setPageController() {
         setViewControllers([ContainerVC.pages[currPage]], direction: .forward, animated: true, completion: nil)
 
