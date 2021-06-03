@@ -186,7 +186,7 @@ extension StoryVC: UITableViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let y = 200 - (scrollView.contentOffset.y + 200)
+        let y = -scrollView.contentOffset.y
         let height = min(max(y, 100), 250)
 
         headerView.snp.updateConstraints { make in

@@ -16,6 +16,10 @@ class StorySubTitleVC: UIViewController {
         return button
     }()
 
+    // MARK: - local variables
+
+    var storyTitle: String?
+
     // MARK: - LifeCycle Methods
 
     override func viewDidLoad() {

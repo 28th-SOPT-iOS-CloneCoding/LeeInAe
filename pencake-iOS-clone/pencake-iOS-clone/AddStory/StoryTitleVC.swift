@@ -81,9 +81,22 @@ extension StoryTitleVC {
     }
 
     @objc func touchUpNextButton(_ sender: UIBarButtonItem) {
-        navigationController?.pushViewController(StorySubTitleVC(), animated: true)
-    }
+        guard let title = titleTextField.text else { return }
 
+        if title.isEmpty {
+            let alert = UIAlertController(title: nil, message: "제목을 입력해주세요", preferredStyle: .alert)
+            let submitAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(submitAction)
+
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let subTitleVC = StorySubTitleVC()
+            subTitleVC.storyTitle = title
+
+            navigationController?.pushViewController(subTitleVC, animated: true)
+        }
+    }
+    
     @objc func willShowKeyboard(_ noti: Notification) {
         let topAnchor = self.labelTopAnchor - 40
 
