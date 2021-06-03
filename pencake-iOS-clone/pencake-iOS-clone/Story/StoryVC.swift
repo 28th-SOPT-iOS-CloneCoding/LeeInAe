@@ -66,15 +66,6 @@ class StoryVC: UIViewController {
 
     // MARK: - local variables
 
-//    var story: Story? {
-//        willSet(newStory) {
-//            guard let story = newStory else { return }
-//
-//            print("new story! 🤖")
-//            titleButton.setTitle(story.title, for: .normal)
-//            subTitleButton.setTitle(story.subTitle, for: .normal)
-//        }
-//    }
     var viewModel: StoryViewModel
 
     // MARK: - Initializer

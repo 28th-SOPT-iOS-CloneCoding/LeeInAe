@@ -42,6 +42,7 @@ class ContainerVC: UIPageViewController {
         setRealm()
         setConstraint()
         setPageController()
+        setNotification()
     }
 }
 
@@ -50,6 +51,13 @@ class ContainerVC: UIPageViewController {
 extension ContainerVC {
     @objc func touchUpMoreButton(_ sender: UIButton) {
         print("👍 currPage: \(currPage)")
+    }
+
+    @objc func changeCurrPage(_ sender: Notification) {
+        guard let newStoryVC = sender.object as? StoryVC else { return }
+        guard let idx = ContainerVC.pages.firstIndex(of: newStoryVC) else { return }
+
+        setViewControllers([ContainerVC.pages[idx]], direction: .forward, animated: false, completion: nil)
     }
 }
 
@@ -106,6 +114,10 @@ extension ContainerVC {
 
         moreButton.layer.cornerRadius = moreButton.frame.height / 2
         moreButton.layer.masksToBounds = true
+    }
+
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(changeCurrPage(_:)), name: Notification.Name.didSavedNewStory, object: nil)
     }
 }
 

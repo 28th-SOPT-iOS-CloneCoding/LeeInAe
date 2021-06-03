@@ -67,7 +67,7 @@ extension AddStoryVC {
         let storyTitleVC = StoryTitleVC()
         let navigationController = UINavigationController(rootViewController: storyTitleVC)
 
-        navigationController.modalPresentationStyle = .fullScreen
+        navigationController.modalPresentationStyle = .overCurrentContext
 
         present(navigationController, animated: true, completion: nil)
     }

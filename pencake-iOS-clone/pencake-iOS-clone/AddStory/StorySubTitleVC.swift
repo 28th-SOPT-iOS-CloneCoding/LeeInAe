@@ -40,9 +40,10 @@ class StorySubTitleVC: UIViewController {
 
     // MARK: - local variables
 
-    var storyTitle: String?
     let labelTopAnchor: CGFloat = -120
     let realm = try! Realm()
+
+    var storyTitle: String?
 
     // MARK: - LifeCycle Methods
 
@@ -154,8 +155,6 @@ extension StorySubTitleVC {
     }
 
     func saveNewStory() {
-        ContainerVC.pages.append(StoryVC(viewModel: StoryViewModel()))
-
         do {
             try self.realm.write {
                 let newStory = Story()
@@ -170,6 +169,12 @@ extension StorySubTitleVC {
 
                 realm.add(newStory)
             }
+
+            /// local 저장
+            let newStoryVC = StoryVC(viewModel: StoryViewModel())
+            ContainerVC.pages.append(newStoryVC)
+
+            NotificationCenter.default.post(name: Notification.Name.didSavedNewStory, object: newStoryVC)
         } catch {
             let alert = UIAlertController(title: "- 죄 송 -", message: "저장에.. 실패했습니다", preferredStyle: .alert)
             let submitAction = UIAlertAction(title: "용서하기", style: .default, handler: nil)
