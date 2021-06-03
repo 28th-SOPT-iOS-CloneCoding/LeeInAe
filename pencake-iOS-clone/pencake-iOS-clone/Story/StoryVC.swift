@@ -64,6 +64,16 @@ class StoryVC: UIViewController {
         return control
     }()
 
+    private let guideLabel: UILabel = {
+        let label = UILabel()
+        label.text = "여기를 아래로 당기면 글을 쓸 수 있어요"
+        label.font = UIFont.NotoSerifKR(type: .light, size: 13)
+        label.textColor = UIColor.lightGray
+        label.isUserInteractionEnabled = false
+
+        return label
+    }()
+
     // MARK: - local variables
 
     var viewModel: StoryViewModel
@@ -117,7 +127,7 @@ extension StoryVC {
     }
 
     func setConstraint() {
-        view.addSubviews([tableView, headerView])
+        view.addSubviews([tableView, headerView, guideLabel])
         headerView.addSubviews([titleButton, subTitleButton, separator])
 
         tableView.snp.makeConstraints { make in
@@ -143,6 +153,11 @@ extension StoryVC {
         subTitleButton.snp.makeConstraints { make in
             make.centerX.equalTo(titleButton.snp.centerX)
             make.top.equalTo(titleButton.snp.bottom).offset(10)
+        }
+
+        guideLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(separator.snp.bottom).offset(40)
         }
     }
 
@@ -214,6 +229,12 @@ extension StoryVC: StoryViewModelDelegate {
     func didChangedStory(story: Story) {
         titleButton.setTitle(story.title, for: .normal)
         subTitleButton.setTitle(story.subTitle, for: .normal)
+
+        if story.writings.count == 0 {
+            guideLabel.isHidden = false
+        } else {
+            guideLabel.isHidden = true
+        }
 
         tableView.reloadData()
     }
