@@ -5,6 +5,7 @@
 //  Created by inae Lee on 2021/05/27.
 //
 
+import RealmSwift
 import UIKit
 
 class StorySubTitleVC: UIViewController {
@@ -41,6 +42,7 @@ class StorySubTitleVC: UIViewController {
 
     var storyTitle: String?
     let labelTopAnchor: CGFloat = -120
+    let realm = try! Realm()
 
     // MARK: - LifeCycle Methods
 
@@ -81,7 +83,7 @@ extension StorySubTitleVC {
 
             self.present(alert, animated: true, completion: nil)
         } else {
-            ContainerVC.pages.append(StoryVC(viewModel: StoryViewModel()))
+            saveNewStory()
 
             self.dismiss(animated: true, completion: nil)
         }
@@ -149,5 +151,29 @@ extension StorySubTitleVC {
     func setNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.willShowKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.willHideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    func saveNewStory() {
+        ContainerVC.pages.append(StoryVC(viewModel: StoryViewModel()))
+
+        do {
+            try self.realm.write {
+                let newStory = Story()
+
+                if let title = storyTitle,
+                   let subTitle = subTitleTextField.text
+                {
+                    newStory.title = title
+                    newStory.subTitle = subTitle
+                    newStory.index = realm.objects(Story.self).count + 1
+                }
+
+                realm.add(newStory)
+            }
+        } catch {
+            let alert = UIAlertController(title: "- 죄 송 -", message: "저장에.. 실패했습니다", preferredStyle: .alert)
+            let submitAction = UIAlertAction(title: "용서하기", style: .default, handler: nil)
+            alert.addAction(submitAction)
+        }
     }
 }
