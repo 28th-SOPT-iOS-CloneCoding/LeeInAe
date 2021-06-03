@@ -29,7 +29,7 @@ class StorySubTitleVC: UIViewController {
 
 extension StorySubTitleVC {
     @objc func touchUpCompletionButton(_ sender: UIBarButtonItem) {
-        ContainerVC.pages.append(StoryVC())
+        ContainerVC.pages.append(StoryVC(viewModel: StoryViewModel()))
 
         self.dismiss(animated: true, completion: nil)
     }

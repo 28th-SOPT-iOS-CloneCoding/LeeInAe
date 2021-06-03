@@ -67,4 +67,9 @@ extension WritingTVC {
             make.centerY.equalToSuperview()
         }
     }
+
+    func setCellData(writing: Writing) {
+        titleLabel.text = writing.title
+        dateLabel.text = Date().getDateToString(format: "MM.dd", date: writing.date)
+    }
 }

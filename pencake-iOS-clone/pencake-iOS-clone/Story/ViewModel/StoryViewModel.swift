@@ -6,3 +6,24 @@
 //
 
 import Foundation
+
+protocol StoryViewModelDelegate {
+    func didChangedStory(story: Story)
+}
+
+class StoryViewModel {
+    // MARK: - property
+
+    var story: Story? {
+        willSet(newStory) {
+            print("new story! 🤖")
+            guard let story = newStory else { return }
+
+            storyDelegate?.didChangedStory(story: story)
+        }
+    }
+
+    // MARK: - delegate
+
+    var storyDelegate: StoryViewModelDelegate?
+}

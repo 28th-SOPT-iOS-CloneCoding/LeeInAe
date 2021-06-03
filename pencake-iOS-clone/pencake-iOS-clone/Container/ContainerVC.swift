@@ -77,17 +77,14 @@ extension ContainerVC {
             }
         } else {
             for idx in 1 ... stories.count {
-                ContainerVC.pages.append(StoryVC())
-
                 guard let story = stories.filter("index == \(idx)").first else { return }
-                setStoryData(story: story, idx: idx)
-            }
-        }
-    }
 
-    func setStoryData(story: Story, idx: Int) {
-        if let storyVC = ContainerVC.pages[idx] as? StoryVC {
-            storyVC.story = story
+                let storyVC = StoryVC(viewModel: StoryViewModel())
+                storyVC.viewModel.storyDelegate = storyVC
+                storyVC.viewModel.story = story
+
+                ContainerVC.pages.append(storyVC)
+            }
         }
     }
 

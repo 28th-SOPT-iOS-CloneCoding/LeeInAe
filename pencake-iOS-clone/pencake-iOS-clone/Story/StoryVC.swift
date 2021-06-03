@@ -66,20 +66,35 @@ class StoryVC: UIViewController {
 
     // MARK: - local variables
 
-    var story: Story? {
-        willSet(newStory) {
-            guard let story = newStory else { return }
+//    var story: Story? {
+//        willSet(newStory) {
+//            guard let story = newStory else { return }
+//
+//            print("new story! 🤖")
+//            titleButton.setTitle(story.title, for: .normal)
+//            subTitleButton.setTitle(story.subTitle, for: .normal)
+//        }
+//    }
+    var viewModel: StoryViewModel
 
-            print("new story! 🤖")
-            titleButton.setTitle(story.title, for: .normal)
-            subTitleButton.setTitle(story.subTitle, for: .normal)
-        }
+    // MARK: - Initializer
+
+    init(viewModel: StoryViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - LifeCycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        viewModel.storyDelegate = self
 
         setView()
         setTableView()
@@ -184,12 +199,31 @@ extension StoryVC: UITableViewDelegate {
 
 extension StoryVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        40
+        if let story = viewModel.story {
+            return story.writings.count
+        }
+
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WritingTVC.identifier) as? WritingTVC else { return UITableViewCell() }
 
+        if let story = viewModel.story {
+            cell.setCellData(writing: story.writings[indexPath.row])
+        }
+
         return cell
+    }
+}
+
+// MARK: - StoryViewModelDelegate
+
+extension StoryVC: StoryViewModelDelegate {
+    func didChangedStory(story: Story) {
+        titleButton.setTitle(story.title, for: .normal)
+        subTitleButton.setTitle(story.subTitle, for: .normal)
+
+        tableView.reloadData()
     }
 }
