@@ -45,21 +45,31 @@ class StoryTitleVC: UIViewController {
         return label
     }()
 
+    // MARK: - local variables
+
+    let labelTopAnchor: CGFloat = -120
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setView()
         setNavigation()
         setConstraint()
+        setNotification()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
+        /// textfield border
         let border = CALayer()
         border.frame = CGRect(x: 0, y: self.titleTextField.frame.size.height - 1, width: self.titleTextField.frame.width, height: 1)
         border.backgroundColor = UIColor.systemGray4.cgColor
         self.titleTextField.layer.addSublayer(border)
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
 
@@ -73,6 +83,30 @@ extension StoryTitleVC {
     @objc func touchUpNextButton(_ sender: UIBarButtonItem) {
         navigationController?.pushViewController(StorySubTitleVC(), animated: true)
     }
+
+    @objc func willShowKeyboard(_ noti: Notification) {
+        let topAnchor = self.labelTopAnchor - 40
+
+        self.guideLabel.snp.updateConstraints { make in
+            make.centerY.equalToSuperview().offset(topAnchor)
+        }
+
+        UIView.animate(withDuration: 0.8) {
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    @objc func willHideKeyboard(_ noti: Notification) {
+        let topAnchor = self.labelTopAnchor + 40
+
+        self.guideLabel.snp.updateConstraints { make in
+            make.centerY.equalToSuperview().offset(topAnchor)
+        }
+
+        UIView.animate(withDuration: 0.8) {
+            self.view.layoutIfNeeded()
+        }
+    }
 }
 
 // MARK: - Custom Methods
@@ -80,6 +114,8 @@ extension StoryTitleVC {
 extension StoryTitleVC {
     func setView() {
         view.backgroundColor = .white
+
+        self.titleTextField.becomeFirstResponder()
     }
 
     func setNavigation() {
@@ -96,7 +132,7 @@ extension StoryTitleVC {
 
         self.guideLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(-60)
+            make.centerY.equalToSuperview().offset(labelTopAnchor)
         }
 
         self.titleTextField.snp.makeConstraints { make in
@@ -104,5 +140,11 @@ extension StoryTitleVC {
             make.height.equalTo(guideLabel.bounds.height + 10)
             make.leading.trailing.equalToSuperview().inset(40)
         }
+    }
+
+    func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.willShowKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(self.willHideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
