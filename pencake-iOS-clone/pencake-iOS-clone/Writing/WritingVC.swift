@@ -132,23 +132,27 @@ extension WritingVC {
         guard let title = self.titleTextField.text else { return }
         self.naviTitleButton.setTitle(title, for: .normal)
 
-        UIView.animate(withDuration: 0.4) {
+        self.titleTextField.snp.updateConstraints { make in
+            make.height.equalTo(0)
+        }
+
+        UIView.animate(withDuration: 0.6) {
             self.navigationItem.titleView = self.naviTitleButton
             self.navigationItem.titleView?.alpha = 1
 
-            self.titleTextField.snp.updateConstraints { make in
-                make.height.equalTo(0)
-            }
+            self.view.layoutIfNeeded()
         }
     }
 
     func deRegisterNavigationTitleButton() {
-        UIView.animate(withDuration: 0.4) {
+        self.titleTextField.snp.updateConstraints { make in
+            make.height.equalTo(60)
+        }
+
+        UIView.animate(withDuration: 0.6) {
             self.navigationItem.titleView?.alpha = 0
 
-            self.titleTextField.snp.updateConstraints { make in
-                make.height.equalTo(60)
-            }
+            self.view.layoutIfNeeded()
         } completion: { _ in
             self.navigationItem.titleView = .none
             self.titleTextField.becomeFirstResponder()
