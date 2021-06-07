@@ -27,7 +27,7 @@ class ContainerVC: UIPageViewController {
     // MARK: - Local Variables
 
     static var pages: [UIViewController] = [AddStoryVC()]
-    private var currPage: Int = 0
+    static var currPage: Int = ContainerVC.pages.count - 1
 
     // MARK: - LifeCycle Methods
 
@@ -45,7 +45,7 @@ class ContainerVC: UIPageViewController {
 
 extension ContainerVC {
     @objc func touchUpMoreButton(_ sender: UIButton) {
-        print("👍 currPage: \(currPage)")
+        print("👍 currPage: \(ContainerVC.currPage)")
     }
 
     @objc func changeCurrPage(_ sender: Notification) {
@@ -64,7 +64,7 @@ extension ContainerVC {
     }
 
     private func setPageController() {
-        setViewControllers([ContainerVC.pages[ContainerVC.pages.count - currPage - 1]], direction: .forward, animated: true, completion: nil)
+        setViewControllers([ContainerVC.pages[ContainerVC.currPage]], direction: .forward, animated: true, completion: nil)
 
         dataSource = self
         delegate = self
@@ -95,7 +95,7 @@ extension ContainerVC: UIPageViewControllerDelegate {
         if completed {
             if let currVC = viewControllers?.first {
                 guard let idx = ContainerVC.pages.firstIndex(of: currVC) else { return }
-                currPage = idx
+                ContainerVC.currPage = idx
             }
         }
     }
