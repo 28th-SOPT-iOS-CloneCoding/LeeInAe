@@ -20,6 +20,7 @@
 		AB0E926326689DD900D56840 /* StoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E926226689DD900D56840 /* StoryViewModel.swift */; };
 		AB0E92662668A73400D56840 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E92652668A73400D56840 /* Date+Extension.swift */; };
 		AB0E926A26690CDB00D56840 /* Notification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E926926690CDB00D56840 /* Notification.Name+Extension.swift */; };
+		AB0E92BE266E146700D56840 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E92BD266E146700D56840 /* Database.swift */; };
 		ABC87EFD265C1E4B00CB390C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */; };
 		ABC87EFF265C1E4B00CB390C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */; };
 		ABC87F01265C1E4B00CB390C /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87F00265C1E4B00CB390C /* StoryVC.swift */; };
@@ -47,6 +48,7 @@
 		AB0E926226689DD900D56840 /* StoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModel.swift; sourceTree = "<group>"; };
 		AB0E92652668A73400D56840 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		AB0E926926690CDB00D56840 /* Notification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extension.swift"; sourceTree = "<group>"; };
+		AB0E92BD266E146700D56840 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		ABC87EF9265C1E4B00CB390C /* pencake-iOS-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pencake-iOS-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				AB0E92222660008100D56840 /* Story.swift */,
 				AB0E92242660069300D56840 /* Writing.swift */,
+				AB0E92BD266E146700D56840 /* Database.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				AB0E920E265D5AAA00D56840 /* AddStoryVC.swift in Sources */,
 				AB0E920B265D57B700D56840 /* ContainerVC.swift in Sources */,
 				AB0E92252660069300D56840 /* Writing.swift in Sources */,
+				AB0E92BE266E146700D56840 /* Database.swift in Sources */,
 				AB0E9214265EB21E00D56840 /* StoryTitleVC.swift in Sources */,
 				AB0E926A26690CDB00D56840 /* Notification.Name+Extension.swift in Sources */,
 				AB0E92232660008100D56840 /* Story.swift in Sources */,

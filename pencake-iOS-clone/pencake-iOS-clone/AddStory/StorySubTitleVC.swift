@@ -5,7 +5,6 @@
 //  Created by inae Lee on 2021/05/27.
 //
 
-import RealmSwift
 import UIKit
 
 class StorySubTitleVC: UIViewController {
@@ -41,7 +40,6 @@ class StorySubTitleVC: UIViewController {
     // MARK: - local variables
 
     let labelTopAnchor: CGFloat = -120
-    let realm = try! Realm()
 
     var storyTitle: String?
 
@@ -85,8 +83,6 @@ extension StorySubTitleVC {
             self.present(alert, animated: true, completion: nil)
         } else {
             saveNewStory()
-
-            self.dismiss(animated: true, completion: nil)
         }
     }
 
@@ -155,30 +151,33 @@ extension StorySubTitleVC {
     }
 
     func saveNewStory() {
-        do {
-            try self.realm.write {
-                let newStory = Story()
+        let newStory = Story()
 
-                if let title = storyTitle,
-                   let subTitle = subTitleTextField.text
-                {
-                    newStory.title = title
-                    newStory.subTitle = subTitle
-                    newStory.index = realm.objects(Story.self).count + 1
-                }
+        if let title = storyTitle,
+           let subTitle = subTitleTextField.text
+        {
+            newStory.title = title
+            newStory.subTitle = subTitle
+            newStory.index = Database.shared.getTotalCount(model: Story.self)
+        }
 
-                realm.add(newStory)
-            }
+        let result = Database.shared.saveModelData(model: newStory)
 
+        if result {
             /// local 저장
             let newStoryVC = StoryVC(viewModel: StoryViewModel())
             ContainerVC.pages.append(newStoryVC)
 
             NotificationCenter.default.post(name: Notification.Name.didSavedNewStory, object: newStoryVC)
-        } catch {
+
+            Database.shared.updateStory()
+            self.dismiss(animated: true, completion: nil)
+        } else {
             let alert = UIAlertController(title: "- 죄 송 -", message: "저장에.. 실패했습니다", preferredStyle: .alert)
             let submitAction = UIAlertAction(title: "용서하기", style: .default, handler: nil)
             alert.addAction(submitAction)
+
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }

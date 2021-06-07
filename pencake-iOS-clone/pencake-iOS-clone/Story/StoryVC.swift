@@ -5,7 +5,6 @@
 //  Created by inae Lee on 2021/05/25.
 //
 
-import RealmSwift
 import SnapKit
 import UIKit
 

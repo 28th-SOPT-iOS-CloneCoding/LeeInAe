@@ -5,7 +5,6 @@
 //  Created by inae Lee on 2021/05/26.
 //
 
-import RealmSwift
 import UIKit
 
 class ContainerVC: UIPageViewController {
@@ -29,10 +28,6 @@ class ContainerVC: UIPageViewController {
 
     static var pages: [UIViewController] = [AddStoryVC()]
     private var currPage: Int = 0
-
-    // MARK: - local variables
-
-    let realm = try! Realm()
 
     // MARK: - LifeCycle Methods
 
@@ -65,35 +60,7 @@ extension ContainerVC {
 
 extension ContainerVC {
     private func setRealm() {
-        print(Realm.Configuration.defaultConfiguration.fileURL)
-
-        let stories = realm.objects(Story.self)
-
-        if stories.isEmpty {
-            /// 초기값 세팅
-            let mainStory = Story()
-            mainStory.index = 1
-            mainStory.title = "이야기1"
-            mainStory.subTitle = "여기를 눌러서 제목을 변경하세요"
-
-            mainStory.writings.append(Writing())
-            mainStory.writings.append(Writing())
-            mainStory.writings.append(Writing())
-
-            try! realm.write {
-                realm.add(mainStory)
-            }
-        } else {
-            for idx in 1 ... stories.count {
-                guard let story = stories.filter("index == \(idx)").first else { return }
-
-                let storyVC = StoryVC(viewModel: StoryViewModel())
-                storyVC.viewModel.storyDelegate = storyVC
-                storyVC.viewModel.story = story
-
-                ContainerVC.pages.append(storyVC)
-            }
-        }
+        Database.shared.fetchStoryData()
     }
 
     private func setPageController() {
