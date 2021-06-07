@@ -84,4 +84,18 @@ class Database {
     func getTotalCount<T: Object>(model: T.Type) -> Int {
         realm.objects(model).count
     }
+
+    func updateWriting(idx: Int, writing: Writing, completion: @escaping (Bool) -> Void) {
+        guard let story = realm.objects(Story.self).filter("index == \(idx)").first else { return }
+
+        do {
+            try realm.write {
+                story.writings.append(writing)
+            }
+
+            completion(true)
+        } catch {
+            completion(false)
+        }
+    }
 }
