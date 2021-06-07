@@ -18,7 +18,7 @@ class Database {
         print(Realm.Configuration.defaultConfiguration.fileURL)
     }
 
-    func fetchStoryData() {
+    func initStoryData() {
         let stories = realm.objects(Story.self)
 
         if stories.isEmpty {
@@ -54,18 +54,21 @@ class Database {
         }
     }
 
-    func updateStory() {
-        let stories = realm.objects(Story.self)
+    func updateStories() {
+        let storiesCount = Database.shared.getTotalCount(model: Story.self)
 
-        for idx in 1 ... stories.count {
-            guard let story = stories.filter("index == \(idx)").first else { return }
+        for idx in 1 ... storiesCount {
+            updateStory(idx: idx)
+        }
+    }
 
-            if let storyVC = ContainerVC.pages[idx] as? StoryVC {
-                storyVC.viewModel.storyDelegate = storyVC
-                storyVC.viewModel.story = story
+    func updateStory(idx: Int) {
+        guard let story = realm.objects(Story.self).filter("index == \(idx)").first else { return }
 
-                ContainerVC.pages[idx] = storyVC
-            }
+        if let storyVC = ContainerVC.pages[idx] as? StoryVC {
+            storyVC.viewModel.story = story
+
+            ContainerVC.pages[idx] = storyVC
         }
     }
 

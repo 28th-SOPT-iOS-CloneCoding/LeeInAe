@@ -81,24 +81,20 @@ extension WritingVC {
     }
 
     @objc func touchUpCompletionButton(_ sender: UIBarButtonItem) {
-        if let title = self.titleTextField.text,
-           let content = self.contentTextView.text
-        {
-            let writing = Writing()
-            writing.title = title
-            writing.content = content
+        guard let title = self.titleTextField.text,
+              let content = self.contentTextView.text else { return }
 
-            Database.shared.updateWriting(idx: ContainerVC.currPage, writing: writing) { result in
-                if result {
-                    Database.shared.updateStory()
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    let alert = UIAlertController(title: "- 죄 송 -", message: "저장에.. 실패했습니다", preferredStyle: .alert)
-                    let submitAction = UIAlertAction(title: "용서하기", style: .default, handler: nil)
-                    alert.addAction(submitAction)
+        let writing = Writing()
+        writing.title = title
+        writing.content = content
 
-                    self.present(alert, animated: true, completion: nil)
-                }
+        Database.shared.updateWriting(idx: ContainerVC.currPage, writing: writing) { result in
+            if result {
+                Database.shared.updateStory(idx: ContainerVC.currPage)
+
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                self.sorryAlert(message: "글 저장에 실패했습니다.")
             }
         }
     }

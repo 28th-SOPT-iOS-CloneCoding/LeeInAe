@@ -60,7 +60,7 @@ extension ContainerVC {
 
 extension ContainerVC {
     private func setRealm() {
-        Database.shared.fetchStoryData()
+        Database.shared.initStoryData()
     }
 
     private func setPageController() {

@@ -170,14 +170,10 @@ extension StorySubTitleVC {
 
             NotificationCenter.default.post(name: Notification.Name.didSavedNewStory, object: newStoryVC)
 
-            Database.shared.updateStory()
+            Database.shared.updateStories()
             self.dismiss(animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "- 죄 송 -", message: "저장에.. 실패했습니다", preferredStyle: .alert)
-            let submitAction = UIAlertAction(title: "용서하기", style: .default, handler: nil)
-            alert.addAction(submitAction)
-
-            self.present(alert, animated: true, completion: nil)
+            self.sorryAlert(message: "저장에.. 실패했습니다")
         }
     }
 }

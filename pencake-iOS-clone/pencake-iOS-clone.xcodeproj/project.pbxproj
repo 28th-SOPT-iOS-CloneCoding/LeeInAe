@@ -21,6 +21,7 @@
 		AB0E92662668A73400D56840 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E92652668A73400D56840 /* Date+Extension.swift */; };
 		AB0E926A26690CDB00D56840 /* Notification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E926926690CDB00D56840 /* Notification.Name+Extension.swift */; };
 		AB0E92BE266E146700D56840 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E92BD266E146700D56840 /* Database.swift */; };
+		AB88168A266E58EA000ADF5D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB881689266E58EA000ADF5D /* UIViewController+Extension.swift */; };
 		ABC87EFD265C1E4B00CB390C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */; };
 		ABC87EFF265C1E4B00CB390C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */; };
 		ABC87F01265C1E4B00CB390C /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87F00265C1E4B00CB390C /* StoryVC.swift */; };
@@ -49,6 +50,7 @@
 		AB0E92652668A73400D56840 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		AB0E926926690CDB00D56840 /* Notification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extension.swift"; sourceTree = "<group>"; };
 		AB0E92BD266E146700D56840 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		AB881689266E58EA000ADF5D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		ABC87EF9265C1E4B00CB390C /* pencake-iOS-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pencake-iOS-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				AB0E920F265E8F5E00D56840 /* UIView+Extension.swift */,
 				AB0E92652668A73400D56840 /* Date+Extension.swift */,
 				AB0E926926690CDB00D56840 /* Notification.Name+Extension.swift */,
+				AB881689266E58EA000ADF5D /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				AB0E9217265EB2C700D56840 /* StorySubTitleVC.swift in Sources */,
 				AB0E92662668A73400D56840 /* Date+Extension.swift in Sources */,
 				AB0E922826600A6900D56840 /* WritingTVC.swift in Sources */,
+				AB88168A266E58EA000ADF5D /* UIViewController+Extension.swift in Sources */,
 				AB0E926326689DD900D56840 /* StoryViewModel.swift in Sources */,
 				ABC87F2B265C248100CB390C /* UIFont+Extension.swift in Sources */,
 				ABC87EFF265C1E4B00CB390C /* SceneDelegate.swift in Sources */,
