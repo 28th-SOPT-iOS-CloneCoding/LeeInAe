@@ -22,6 +22,7 @@
 		AB0E926A26690CDB00D56840 /* Notification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E926926690CDB00D56840 /* Notification.Name+Extension.swift */; };
 		AB0E92BE266E146700D56840 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E92BD266E146700D56840 /* Database.swift */; };
 		AB88168A266E58EA000ADF5D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB881689266E58EA000ADF5D /* UIViewController+Extension.swift */; };
+		AB88168C266E5E20000ADF5D /* DetailWritingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB88168B266E5E20000ADF5D /* DetailWritingVC.swift */; };
 		ABC87EFD265C1E4B00CB390C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */; };
 		ABC87EFF265C1E4B00CB390C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */; };
 		ABC87F01265C1E4B00CB390C /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87F00265C1E4B00CB390C /* StoryVC.swift */; };
@@ -51,6 +52,7 @@
 		AB0E926926690CDB00D56840 /* Notification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extension.swift"; sourceTree = "<group>"; };
 		AB0E92BD266E146700D56840 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		AB881689266E58EA000ADF5D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		AB88168B266E5E20000ADF5D /* DetailWritingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWritingVC.swift; sourceTree = "<group>"; };
 		ABC87EF9265C1E4B00CB390C /* pencake-iOS-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pencake-iOS-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0E922A2660122700D56840 /* WritingVC.swift */,
+				AB88168B266E5E20000ADF5D /* DetailWritingVC.swift */,
 			);
 			path = Writing;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				AB0E92BE266E146700D56840 /* Database.swift in Sources */,
 				AB0E9214265EB21E00D56840 /* StoryTitleVC.swift in Sources */,
 				AB0E926A26690CDB00D56840 /* Notification.Name+Extension.swift in Sources */,
+				AB88168C266E5E20000ADF5D /* DetailWritingVC.swift in Sources */,
 				AB0E92232660008100D56840 /* Story.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -198,6 +198,12 @@ extension StoryVC: UITableViewDelegate {
             make.height.equalTo(height)
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailWritingVC = DetailWritingVC()
+        
+        self.navigationController?.pushViewController(detailWritingVC, animated: true)
+    }
 }
 
 // MARK: - UITableViewDataSource
