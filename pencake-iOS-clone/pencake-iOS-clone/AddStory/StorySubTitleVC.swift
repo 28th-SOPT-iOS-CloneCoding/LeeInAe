@@ -158,7 +158,7 @@ extension StorySubTitleVC {
         {
             newStory.title = title
             newStory.subTitle = subTitle
-            newStory.index = Database.shared.getTotalCount(model: Story.self)
+            newStory.index = Database.shared.getTotalCount(model: Story.self) + 1
         }
 
         let result = Database.shared.saveModelData(model: newStory)
