@@ -55,6 +55,10 @@ class WritingVC: UIViewController {
         return view
     }()
 
+    // MARK: - local variables
+
+    var writing: Writing?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -105,6 +109,11 @@ extension WritingVC {
 extension WritingVC {
     func setView() {
         view.backgroundColor = .white
+
+        if let writing = self.writing {
+            self.titleTextField.text = writing.title
+            self.contentTextView.text = writing.content
+        }
     }
 
     func setNavigationBar() {

@@ -94,7 +94,7 @@ extension DetailWritingVC {
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
         let deleteAction = UIAlertAction(title: "글 삭제", style: .destructive, handler: nil)
-        let editAction = UIAlertAction(title: "글 수정", style: .default, handler: nil)
+        let editAction = UIAlertAction(title: "글 수정", style: .default, handler: didSelectedEditButton(_:))
 
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
 
@@ -103,6 +103,16 @@ extension DetailWritingVC {
         optionMenu.addAction(cancelAction)
 
         present(optionMenu, animated: true, completion: nil)
+    }
+
+    @objc func didSelectedEditButton(_ sender: UIAlertAction) {
+        let writingVC = WritingVC()
+        writingVC.writing = writing
+
+        let navigationController = UINavigationController(rootViewController: writingVC)
+        navigationController.modalPresentationStyle = .overFullScreen
+
+        present(navigationController, animated: true, completion: nil)
     }
 }
 
