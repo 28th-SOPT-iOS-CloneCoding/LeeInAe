@@ -23,6 +23,7 @@
 		AB0E92BE266E146700D56840 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0E92BD266E146700D56840 /* Database.swift */; };
 		AB88168A266E58EA000ADF5D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB881689266E58EA000ADF5D /* UIViewController+Extension.swift */; };
 		AB88168C266E5E20000ADF5D /* DetailWritingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB88168B266E5E20000ADF5D /* DetailWritingVC.swift */; };
+		AB881694266FC3A3000ADF5D /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB881693266FC3A3000ADF5D /* MenuVC.swift */; };
 		ABC87EFD265C1E4B00CB390C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */; };
 		ABC87EFF265C1E4B00CB390C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */; };
 		ABC87F01265C1E4B00CB390C /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87F00265C1E4B00CB390C /* StoryVC.swift */; };
@@ -53,6 +54,7 @@
 		AB0E92BD266E146700D56840 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		AB881689266E58EA000ADF5D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		AB88168B266E5E20000ADF5D /* DetailWritingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWritingVC.swift; sourceTree = "<group>"; };
+		AB881693266FC3A3000ADF5D /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		ABC87EF9265C1E4B00CB390C /* pencake-iOS-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pencake-iOS-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC87EFC265C1E4B00CB390C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC87EFE265C1E4B00CB390C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		AB881692266FC38A000ADF5D /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				AB881693266FC3A3000ADF5D /* MenuVC.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		ABC87EF0265C1E4B00CB390C = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +181,7 @@
 		ABC87EFB265C1E4B00CB390C /* pencake-iOS-clone */ = {
 			isa = PBXGroup;
 			children = (
+				AB881692266FC38A000ADF5D /* Menu */,
 				AB0E92292660120D00D56840 /* Writing */,
 				AB0E921E265FE64300D56840 /* DataModel */,
 				AB0E920C265D5A4900D56840 /* AddStory */,
@@ -354,6 +365,7 @@
 				AB0E922826600A6900D56840 /* WritingTVC.swift in Sources */,
 				AB88168A266E58EA000ADF5D /* UIViewController+Extension.swift in Sources */,
 				AB0E926326689DD900D56840 /* StoryViewModel.swift in Sources */,
+				AB881694266FC3A3000ADF5D /* MenuVC.swift in Sources */,
 				ABC87F2B265C248100CB390C /* UIFont+Extension.swift in Sources */,
 				ABC87EFF265C1E4B00CB390C /* SceneDelegate.swift in Sources */,
 				AB0E920E265D5AAA00D56840 /* AddStoryVC.swift in Sources */,

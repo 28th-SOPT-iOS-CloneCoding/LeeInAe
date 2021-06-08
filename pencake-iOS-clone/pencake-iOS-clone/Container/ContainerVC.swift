@@ -46,6 +46,12 @@ class ContainerVC: UIPageViewController {
 extension ContainerVC {
     @objc func touchUpMoreButton(_ sender: UIButton) {
         print("👍 currPage: \(ContainerVC.currPage)")
+
+        let menuVC = MenuVC()
+        menuVC.modalTransitionStyle = .crossDissolve
+        menuVC.modalPresentationStyle = .overCurrentContext
+
+        present(menuVC, animated: true, completion: nil)
     }
 
     @objc func changeCurrPage(_ sender: Notification) {
