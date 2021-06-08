@@ -26,9 +26,18 @@ class DetailWritingVC: UIViewController {
         return button
     }()
 
+    private lazy var moreButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        button.tintColor = .lightGray
+        button.addTarget(self, action: #selector(touchUpMoreButton(_:)), for: .touchUpInside)
+
+        return button
+    }()
+
     private var separator: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = UIColor.systemGray4
 
         return view
     }()
@@ -44,7 +53,7 @@ class DetailWritingVC: UIViewController {
     private var dateLabel: UILabel = {
         let label = UILabel()
         label.text = Date().getDateToString(date: Date())
-        label.font = UIFont.NotoSerifKR(type: .regular, size: 13)
+        label.font = UIFont.NotoSerifKR(type: .regular, size: 15)
         label.textColor = UIColor.lightGray
 
         return label
@@ -52,8 +61,9 @@ class DetailWritingVC: UIViewController {
 
     private var contentLabel: UILabel = {
         let label = UILabel()
-        label.text = "에스파는 나야 둘이 될 수 없어"
-        label.font = UIFont.NotoSerifKR(type: .regular, size: 15)
+        label.text = "에스파는 나야 둘이 될 수 없어 Naevis. calling. ae..spa? ae.. inae..?"
+        label.font = UIFont.NotoSerifKR(type: .regular, size: 16)
+        label.numberOfLines = 0
 
         return label
     }()
@@ -74,13 +84,28 @@ extension DetailWritingVC {
     @objc func touchUpBackButton(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
+    
+    @objc func touchUpMoreButton(_ sender: UIButton) {
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: "글 삭제", style: .destructive, handler: nil)
+        let editAction = UIAlertAction(title: "글 수정", style: .default, handler: nil)
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        optionMenu.addAction(editAction)
+        optionMenu.addAction(deleteAction)
+        optionMenu.addAction(cancelAction)
+        
+        self.present(optionMenu, animated: true, completion: nil)
+    }
 }
 
 // MARK: - Custom Method
 
 extension DetailWritingVC {
     func setConstraint() {
-        view.addSubviews([navigationView, backButton, separator, titleLabel, dateLabel, contentLabel])
+        view.addSubviews([navigationView, backButton, moreButton, separator, titleLabel, dateLabel, contentLabel])
         navigationView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(44)
             make.leading.trailing.equalToSuperview()
@@ -93,9 +118,21 @@ extension DetailWritingVC {
             make.width.height.equalTo(navigationView.snp.height)
         }
 
+        moreButton.snp.makeConstraints { make in
+            make.trailing.equalTo(navigationView.snp.trailing)
+            make.centerY.equalTo(navigationView.snp.centerY)
+            make.width.height.equalTo(navigationView.snp.height)
+        }
+
+        separator.snp.makeConstraints { make in
+            make.top.equalTo(navigationView.snp.bottom)
+            make.leading.trailing.equalTo(navigationView)
+            make.height.equalTo(1)
+        }
+
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(navigationView).offset(60)
-            make.leading.trailing.equalToSuperview().inset(40)
+            make.top.equalTo(navigationView).offset(80)
+            make.leading.trailing.equalToSuperview().inset(30)
         }
 
         dateLabel.snp.makeConstraints { make in
