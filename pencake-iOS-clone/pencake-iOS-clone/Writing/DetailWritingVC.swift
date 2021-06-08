@@ -64,6 +64,7 @@ class DetailWritingVC: UIViewController {
         super.viewDidLoad()
 
         setConstraint()
+        setNavigationBar()
     }
 }
 
@@ -71,7 +72,7 @@ class DetailWritingVC: UIViewController {
 
 extension DetailWritingVC {
     @objc func touchUpBackButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -85,7 +86,7 @@ extension DetailWritingVC {
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(48)
         }
-        
+
         backButton.snp.makeConstraints { make in
             make.leading.equalTo(navigationView.snp.leading)
             make.centerY.equalTo(navigationView.snp.centerY)
@@ -108,5 +109,9 @@ extension DetailWritingVC {
             make.leading.equalTo(titleLabel.snp.leading)
             make.trailing.equalTo(titleLabel.snp.trailing)
         }
+    }
+
+    func setNavigationBar() {
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
 }
