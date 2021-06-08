@@ -68,6 +68,10 @@ class DetailWritingVC: UIViewController {
         return label
     }()
 
+    // MARK: - local Variables
+
+    var writing: Writing?
+
     // MARK: - LifeCycle Methods
 
     override func viewDidLoad() {
@@ -75,6 +79,7 @@ class DetailWritingVC: UIViewController {
 
         setConstraint()
         setNavigationBar()
+        setView()
     }
 }
 
@@ -84,20 +89,20 @@ extension DetailWritingVC {
     @objc func touchUpBackButton(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
-    
+
     @objc func touchUpMoreButton(_ sender: UIButton) {
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
+
         let deleteAction = UIAlertAction(title: "글 삭제", style: .destructive, handler: nil)
         let editAction = UIAlertAction(title: "글 수정", style: .default, handler: nil)
-        
+
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        
+
         optionMenu.addAction(editAction)
         optionMenu.addAction(deleteAction)
         optionMenu.addAction(cancelAction)
-        
-        self.present(optionMenu, animated: true, completion: nil)
+
+        present(optionMenu, animated: true, completion: nil)
     }
 }
 
@@ -150,5 +155,15 @@ extension DetailWritingVC {
 
     func setNavigationBar() {
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
+    }
+
+    func setView() {
+        view.backgroundColor = .white
+
+        if let writing = self.writing {
+            titleLabel.text = writing.title
+            contentLabel.text = writing.content
+            dateLabel.text = Date().getDateToString(format: "yyyy년 M월 d일 E a h:mm", date: writing.date)
+        }
     }
 }

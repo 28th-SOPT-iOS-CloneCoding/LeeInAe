@@ -198,11 +198,15 @@ extension StoryVC: UITableViewDelegate {
             make.height.equalTo(height)
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailWritingVC = DetailWritingVC()
+        if let story = viewModel.story {
+            detailWritingVC.writing = story.writings[indexPath.row]
+        }
         
-        self.navigationController?.pushViewController(detailWritingVC, animated: true)
+        navigationController?.pushViewController(detailWritingVC, animated: true)
+
     }
 }
 
@@ -219,6 +223,7 @@ extension StoryVC: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WritingTVC.identifier) as? WritingTVC else { return UITableViewCell() }
+        cell.selectionStyle = .none
 
         if let story = viewModel.story {
             cell.setCellData(writing: story.writings[indexPath.row])
