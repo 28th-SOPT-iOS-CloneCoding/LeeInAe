@@ -89,6 +89,10 @@ extension WritingVC {
               let content = self.contentTextView.text else { return }
 
         let writing = Writing()
+        if let existingWriting = self.writing {
+            writing.id = existingWriting.id
+            writing.date = existingWriting.date
+        }
         writing.title = title
         writing.content = content
 

@@ -93,7 +93,16 @@ class Database {
 
         do {
             try realm.write {
-                story.writings.append(writing)
+                if let existingWriting = story.writings.filter(NSPredicate(format: "id ==  %@", writing.id)).first,
+                   let idx = story.writings.index(of: existingWriting)
+                {
+                    existingWriting.title = writing.title
+                    existingWriting.content = writing.content
+
+                    story.writings.replace(index: idx, object: existingWriting)
+                } else {
+                    story.writings.append(writing)
+                }
             }
 
             completion(true)
