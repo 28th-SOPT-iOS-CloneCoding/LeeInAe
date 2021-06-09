@@ -14,6 +14,8 @@ class Database {
     let realm = try! Realm()
     var notificationToken: NotificationToken?
 
+    // MARK: - Initializer
+
     init() {
         print(Realm.Configuration.defaultConfiguration.fileURL)
     }
@@ -52,39 +54,27 @@ class Database {
         }
     }
 
-    func updateStories() {
-        let storiesCount = Database.shared.getTotalCount(model: Story.self)
+    // MARK: - save
 
-        for idx in 1 ... storiesCount {
-            updateStory(idx: idx)
-        }
-    }
-
-    func updateStory(idx: Int) {
-        guard let story = realm.objects(Story.self).filter("index == \(idx)").first else { return }
-
-        if let storyVC = ContainerVC.pages[idx] as? StoryVC {
-            storyVC.viewModel.story = story
-
-            ContainerVC.pages[idx] = storyVC
-        }
-    }
-
-    func saveModelData(model: Object) -> Bool {
+    func saveModelData(model: Object, completion: (Bool) -> Void) {
         do {
             try realm.write {
                 realm.add(model)
             }
 
-            return true
+            completion(true)
         } catch {
-            return false
+            completion(false)
         }
     }
+
+    // MARK: - get
 
     func getTotalCount<T: Object>(model: T.Type) -> Int {
         realm.objects(model).count
     }
+
+    // MARK: - update
 
     func updateWriting(idx: Int, writing: Writing, completion: @escaping (Bool) -> Void) {
         guard let story = realm.objects(Story.self).filter("index == \(idx)").first else { return }
@@ -106,6 +96,24 @@ class Database {
             completion(true)
         } catch {
             completion(false)
+        }
+    }
+
+    func updateStories() {
+        let storiesCount = Database.shared.getTotalCount(model: Story.self)
+
+        for idx in 1 ... storiesCount {
+            updateStory(idx: idx)
+        }
+    }
+
+    func updateStory(idx: Int) {
+        guard let story = realm.objects(Story.self).filter("index == \(idx)").first else { return }
+
+        if let storyVC = ContainerVC.pages[idx] as? StoryVC {
+            storyVC.viewModel.story = story
+
+            ContainerVC.pages[idx] = storyVC
         }
     }
 }

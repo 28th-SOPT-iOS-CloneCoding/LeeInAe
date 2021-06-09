@@ -161,19 +161,19 @@ extension StorySubTitleVC {
             newStory.index = Database.shared.getTotalCount(model: Story.self) + 1
         }
 
-        let result = Database.shared.saveModelData(model: newStory)
+        Database.shared.saveModelData(model: newStory) { result in
+            if result {
+                /// local 저장
+                let newStoryVC = StoryVC(viewModel: StoryViewModel())
+                ContainerVC.pages.append(newStoryVC)
 
-        if result {
-            /// local 저장
-            let newStoryVC = StoryVC(viewModel: StoryViewModel())
-            ContainerVC.pages.append(newStoryVC)
+                NotificationCenter.default.post(name: Notification.Name.didSavedNewStory, object: newStoryVC)
 
-            NotificationCenter.default.post(name: Notification.Name.didSavedNewStory, object: newStoryVC)
-
-            Database.shared.updateStories()
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            self.sorryAlert(message: "저장에.. 실패했습니다")
+                Database.shared.updateStories()
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                self.sorryAlert(message: "저장에.. 실패했습니다")
+            }
         }
     }
 }
