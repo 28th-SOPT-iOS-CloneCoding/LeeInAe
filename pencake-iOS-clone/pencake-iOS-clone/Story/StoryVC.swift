@@ -94,9 +94,8 @@ class StoryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel.storyDelegate = self
-
         setView()
+        setViewModel()
         setTableView()
         setConstraint()
         setNavigationBar()
@@ -123,6 +122,10 @@ extension StoryVC {
 extension StoryVC {
     func setView() {
         view.backgroundColor = .white
+    }
+
+    func setViewModel() {
+        viewModel.storyDelegate = self
     }
 
     func setConstraint() {
@@ -200,13 +203,13 @@ extension StoryVC: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailWritingVC = DetailWritingVC()
+        let detailWritingVC = DetailWritingVC(viewModel: WritingViewModel())
+
         if let story = viewModel.story {
             detailWritingVC.writing = story.writings[indexPath.row]
         }
-        
-        navigationController?.pushViewController(detailWritingVC, animated: true)
 
+        navigationController?.pushViewController(detailWritingVC, animated: true)
     }
 }
 

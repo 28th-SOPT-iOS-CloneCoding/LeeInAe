@@ -89,16 +89,24 @@ extension WritingVC {
               let content = self.contentTextView.text else { return }
 
         let writing = Writing()
+        writing.title = title
+        writing.content = content
+
         if let existingWriting = self.writing {
             writing.id = existingWriting.id
             writing.date = existingWriting.date
         }
-        writing.title = title
-        writing.content = content
 
         Database.shared.updateWriting(idx: ContainerVC.currPage, writing: writing) { result in
             if result {
                 Database.shared.updateStory(idx: ContainerVC.currPage)
+
+                if let presentingVC = self.presentingViewController as? UINavigationController,
+                   let detailVC = presentingVC.topViewController as? DetailWritingVC
+                {
+                    detailVC.viewModel.writing =
+                        writing
+                }
 
                 self.dismiss(animated: true, completion: nil)
             } else {

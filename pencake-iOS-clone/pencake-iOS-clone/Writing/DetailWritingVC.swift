@@ -70,7 +70,18 @@ class DetailWritingVC: UIViewController {
 
     // MARK: - local Variables
 
+    var viewModel: WritingViewModel
     var writing: Writing?
+
+    init(viewModel: WritingViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - LifeCycle Methods
 
@@ -80,6 +91,7 @@ class DetailWritingVC: UIViewController {
         setConstraint()
         setNavigationBar()
         setView()
+        setViewModel()
     }
 }
 
@@ -175,5 +187,17 @@ extension DetailWritingVC {
             contentLabel.text = writing.content
             dateLabel.text = Date().getDateToString(format: "yyyy년 M월 d일 E a h:mm", date: writing.date)
         }
+    }
+
+    func setViewModel() {
+        viewModel.writingDelegate = self
+    }
+}
+
+extension DetailWritingVC: writingViewModelDelegate {
+    func didChangedWriting(writing: Writing) {
+        titleLabel.text = writing.title
+        contentLabel.text = writing.content
+        dateLabel.text = Date().getDateToString(format: "yyyy년 M월 d일 E a h:mm", date: writing.date)
     }
 }
