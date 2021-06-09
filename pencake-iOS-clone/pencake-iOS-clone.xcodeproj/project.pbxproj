@@ -163,6 +163,18 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		AB88169726712832000ADF5D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB0E9209265D570900D56840 /* Container */,
+				AB881692266FC38A000ADF5D /* Menu */,
+				AB0E92292660120D00D56840 /* Writing */,
+				AB0E920C265D5A4900D56840 /* AddStory */,
+				ABC87F12265C1E7400CB390C /* Story */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		ABC87EF0265C1E4B00CB390C = {
 			isa = PBXGroup;
 			children = (
@@ -184,14 +196,10 @@
 		ABC87EFB265C1E4B00CB390C /* pencake-iOS-clone */ = {
 			isa = PBXGroup;
 			children = (
-				AB881692266FC38A000ADF5D /* Menu */,
-				AB0E92292660120D00D56840 /* Writing */,
+				AB88169726712832000ADF5D /* View */,
 				AB0E921E265FE64300D56840 /* DataModel */,
-				AB0E920C265D5A4900D56840 /* AddStory */,
-				AB0E9209265D570900D56840 /* Container */,
 				ABC87F28265C246400CB390C /* Extension */,
 				ABC87F13265C1E8200CB390C /* Supporting Files */,
-				ABC87F12265C1E7400CB390C /* Story */,
 			);
 			path = "pencake-iOS-clone";
 			sourceTree = "<group>";
