@@ -69,6 +69,7 @@ class StoryVC: UIViewController {
         label.font = UIFont.NotoSerifKR(type: .light, size: 13)
         label.textColor = UIColor.lightGray
         label.isUserInteractionEnabled = false
+        label.isHidden = true
 
         return label
     }()
