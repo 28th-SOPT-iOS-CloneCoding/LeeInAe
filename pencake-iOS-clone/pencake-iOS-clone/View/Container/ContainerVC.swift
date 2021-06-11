@@ -57,6 +57,7 @@ extension ContainerVC {
     @objc func changeCurrPage(_ sender: Notification) {
         guard let newStoryVC = sender.object as? StoryVC else { return }
         guard let idx = ContainerVC.pages.firstIndex(of: newStoryVC) else { return }
+        ContainerVC.currPage = idx
 
         setViewControllers([ContainerVC.pages[idx]], direction: .forward, animated: false, completion: nil)
     }
